@@ -178,7 +178,7 @@ export default function PostComment(props) {
       {commentDetail.length >= 3 ? (
         <p
           style={{
-            fontSize: '12px',
+            fontSize: '14px',
             color: '#ADB6BD',
             margin: '12px 8px',
           }}
@@ -218,7 +218,7 @@ export default function PostComment(props) {
                   </figure>
                 </div>
 
-                <div style={{ fontSize: '16px', width: '85%' }}>
+                <div style={{ fontSize: '15px', width: '85%' }}>
                   <span
                     style={{
                       fontWeight: 'bold',
