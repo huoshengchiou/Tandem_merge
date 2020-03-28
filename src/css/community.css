@@ -35,7 +35,7 @@ textarea:focus {
   color: var(--mainColor);
   transition: 0.5s;
   font-size: 18px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .C-searchBar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -69,7 +69,7 @@ textarea:focus {
   margin: 10px 4px;
   cursor: pointer;
   font-size: 18px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .C-searchButton:hover {
   background: #79cee2;
@@ -116,21 +116,53 @@ textarea:focus {
   background: var(--orange);
   color: white;
   border: 1px solid var(--orange);
-  padding: 5px 10px;
-  width: 150px;
+  padding: 6px 10px;
+  width: 155px;
   position: absolute;
-  left: 23.7%;
-  bottom: 25.8%;
+  left: 30%;
+  bottom: 25.2%;
   cursor: pointer;
   display: none;
 }
 .addfriend.active {
   display: block;
 }
+.addedfriendPost {
+  background: var(--orange);
+  color: white;
+  border: 1px solid var(--orange);
+  padding: 6px 10px;
+  width: 155px;
+  position: absolute;
+  left: 23.5%;
+  bottom: 25.4%;
+  cursor: pointer;
+  display: none;
+}
 
 /* -------------------------------------------------------------------------------------------- */
-/* postdetail comment delete button  */
+/* postdetail comment div scroll  */
 
+/* postdetail comment delete button  */
+.C-commentbar {
+  height: 180px;
+  overflow-y: scroll;
+}
+.C-commentbar::-webkit-scrollbar {
+  width: 8px;
+}
+.C-commentbar::-webkit-scrollbar-track {
+  padding: 2px 0;
+  background-color: #e6e3e3;
+  border-radius: 10px;
+}
+.C-commentbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  height: 10px;
+  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  background-color: #c2bebe;
+  /* border: 1px solid #000; */
+}
 .C-commentdeltext {
   background-color: var(--orange);
   color: white;
@@ -266,6 +298,7 @@ textarea:focus {
 /* profile add friend button */
 
 .C-profileaddbtn {
+  background: white;
   border: none;
   width: 150px;
   margin: 5px auto 30px;

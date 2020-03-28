@@ -1,6 +1,7 @@
 const initlike = {
-  likeCount: 26,
-  clicked: false,
+  // likeCount: 26,
+  // clicked: 1,
+  payload: 0,
 }
 
 const communityLike = (state = initlike, action) => {
@@ -8,8 +9,9 @@ const communityLike = (state = initlike, action) => {
     case 'LIKE_TOGGLE':
       return {
         ...state,
-        likeCount: (state.likeCount += action.num),
-        clicked: action.clicked,
+        // likeCount: (state.likeCount += action.num),
+        // clicked: action.clicked,
+        payload: action.payload,
       }
 
     default:

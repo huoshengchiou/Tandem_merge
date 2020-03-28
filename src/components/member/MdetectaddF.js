@@ -133,7 +133,14 @@ function MdetectaddF(props) {
           {/* <!-- 加好友訊息描述 --> */}
           <div className="M-addfriendDes">
             <div className="M-addfrienddesLeft">
-              <h6>{cardUseData.mbNick}</h6>
+              <h6
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  window.location.href = `/Communityprofile/${cardUseData.mbId}`
+                }}
+              >
+                {cardUseData.mbNick}
+              </h6>
               <p>{cardUseData.mbDes}</p>
               <div
                 className="M-cffrienddesLeftbtn"

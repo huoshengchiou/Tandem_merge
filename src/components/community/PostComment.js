@@ -178,7 +178,7 @@ export default function PostComment(props) {
       {commentDetail.length >= 3 ? (
         <p
           style={{
-            fontSize: '12px',
+            fontSize: '14px',
             color: '#ADB6BD',
             margin: '12px 8px',
           }}
@@ -189,13 +189,7 @@ export default function PostComment(props) {
         ''
       )}
 
-      <div
-        style={{
-          height: '180px',
-          overflow: 'scroll',
-          scrollbarColor: '#87ceeb #ff5621',
-        }}
-      >
+      <div className="C-commentbar">
         {commentDetail.map((v, i) => {
           return (
             <>
@@ -224,7 +218,7 @@ export default function PostComment(props) {
                   </figure>
                 </div>
 
-                <div style={{ fontSize: '10px', width: '85%' }}>
+                <div style={{ fontSize: '15px', width: '85%' }}>
                   <span
                     style={{
                       fontWeight: 'bold',
@@ -249,7 +243,7 @@ export default function PostComment(props) {
                       }}
                     />
                   ) : (
-                    <p>{v.postComment_content}</p>
+                    <p style={{ fontSize: '14px' }}>{v.postComment_content}</p>
                   )}
 
                   {/* 貼文發布時間和刪除按鈕 */}
@@ -331,7 +325,12 @@ export default function PostComment(props) {
       >
         <input
           placeholder="留言...."
-          style={{ padding: '2px 10px', border: 'none', fontSize: '12px' }}
+          style={{
+            padding: '2px 10px',
+            border: 'none',
+            fontSize: '12px',
+            width: '300px',
+          }}
           value={comment}
           onChange={e => {
             setComment(e.target.value)
@@ -340,6 +339,7 @@ export default function PostComment(props) {
         <button
           className="C-postbtn"
           style={{
+            background: 'white',
             border: 'none',
             borderLeft: '2px solid #ADB6BD',
             padding: '0 20px',

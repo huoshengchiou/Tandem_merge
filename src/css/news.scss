@@ -1,0 +1,110 @@
+$font-family: 'Noto Sans TC', sans-serif;
+$main_color: #79cee2;
+$icon_color: #f9a451;
+$gray: #adb6bd;
+$btn_weight: bold;
+$shadow: 0px 0px 4px $gray;
+
+.banner {
+  width: 100%;
+  height: 500px;
+  // background-size: cover;
+  // background-position: center;
+  // background-image: url('/news_images/zombie.jpg');
+}
+.object-fit {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-position: center;
+}
+.btn {
+  background: #fff;
+  border: 2px solid $main_color;
+  transition: 0.5s;
+  color: $main_color;
+}
+.btn:hover {
+  background: $main_color;
+  border: none;
+  color: #fff;
+}
+.related_news h2 {
+  font-size: 2rem;
+  font-family: $font-family;
+  letter-spacing: 3px;
+  font-weight: bold;
+  padding: 80px 0 40px 0;
+}
+
+.pagination_news {
+  h1 {
+    font-size: 30px;
+  }
+}
+.back_to_list {
+  right: 0;
+  bottom: -50px;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+}
+.related_news {
+  ul {
+    .a {
+      text-decoration: none;
+    }
+    li {
+      //background-color: #a5b7c588;
+      box-shadow: $shadow;
+      //border-radius: 25px;
+      width: 230px;
+      height: 340px;
+      transition: 0.5s;
+      border-radius: 25px;
+      .related_img {
+        height: 130px;
+        transition: 0.5s;
+        border-radius: 25px 25px 0 0;
+        img {
+          border-radius: 25px 25px 0 0;
+        }
+      }
+      .related_content {
+        padding: 20px;
+        color: #212529;
+      }
+    }
+  }
+}
+.related_title {
+  h6 {
+    line-height: 25px;
+  }
+}
+
+.related_news li:hover {
+  transform: scale(0.9);
+}
+
+.related_news li:hover > .related_img {
+  transform: scale(0.8);
+  border-radius: 25px;
+}
+.related_news li:hover .object-fit {
+  border-radius: 25px;
+}
+.get_ticket {
+  right: 0;
+  bottom: -50px;
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+}
+.get_notyet {
+  z-index: 1;
+}
+
+.sales_p {
+  margin-bottom: 100px;
+}

@@ -1,0 +1,47 @@
+<ScrollToTop>
+    {/* <Mbtestpage /> */}
+    <Switch>
+      <Route exact path="/">
+        {/* <Home /> */}
+      </Route>
+      <Route path="/activity">
+        <Activity />
+      </Route>
+      <Route path="/bulletin">
+        <Bulletin />
+      </Route>
+      <Route path="/news/:newsId">
+        <News />
+      </Route>
+      <Route path="/sales/:salesId">
+        <Sales />
+      </Route>
+      {/* //community */}
+      <Route path={`/addpost`}>
+        <AddPost />
+      </Route>
+      <Route path={`/posts`}>
+        <Posts />
+      </Route>
+      <Route path={'/postdetail/:id?'}>
+        <PostDetail />
+      </Route>
+      <Route path={'/postDetailProfile/:id?'}>
+        <PostDetailProfile />
+      </Route>
+      <Route path={'/Communityprofile/:id?'}>
+        <PostProfile />
+      </Route>
+      <Route path="/community">
+        <Community />
+      </Route>
+      <Route path="/forum">
+        <Forum />
+      </Route>
+      <Route path="/member">
+        <Mbcenterindex />
+      </Route>
+      <Route path="/cart">
+        <Cart />
+      </Route>
+    </Switch>

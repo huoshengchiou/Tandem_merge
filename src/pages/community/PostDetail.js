@@ -8,30 +8,41 @@ import PostDetailMore from '../../components/community/PostDetailMore'
 // import { NavLink } from 'react-router-dom'
 
 import {
-  AiOutlineMessage,
   AiOutlineStar,
   AiOutlineHeart,
-  // AiOutlineEye,
   AiFillEnvironment,
   AiFillHeart,
 } from 'react-icons/ai'
 import '../../css/community.css'
-import Swal from 'sweetalert2'
 
 function PostDetail(props) {
   const [posts, setPosts] = useState([])
 
   const [dataHasLoaded, setDataHasLoaded] = useState(false)
-  let postid = props.match.params.id
-
+  // let postid = props.match.params.id
+  const [PostLike, setPostLike] = useState(0)
+  const [likeHeart, setLikeHeart] = useState(false)
   const like = useSelector(state => state.communityLike)
   const dispatch = useDispatch()
 
+  //////
+
+  ////////
   //連資料庫 fetch API
   async function fetchPost() {
     let res = await fetch('http://localhost:6001/items/posts')
     let response = await res.json()
     setPosts(response)
+
+    for (let i = 0; i < response.length; i++) {
+      // console.log('response', response[i])
+      // console.log('response', props.match.params.id)
+      if (response[i].post_id === +props.match.params.id) {
+        let likes = response[i].postLikes
+        console.log('likes', likes)
+        dispatch(LikeToggle(1, likes))
+      }
+    }
   }
   useEffect(() => {
     fetchPost()
@@ -68,12 +79,13 @@ function PostDetail(props) {
   )
 
   //貼文詳細頁判斷
+
   let postDetail = null
+  // console.log(posts)
 
   for (let i = 0; i < posts.length; i++) {
     if (posts[i].post_id === +props.match.params.id) {
       postDetail = posts[i]
-      // console.log(posts)
     }
   }
   if (postDetail === null) {
@@ -83,8 +95,6 @@ function PostDetail(props) {
       </>
     )
   } else {
-    // console.log(postDetail)
-
     return (
       <>
         <div className="container my-5">
@@ -149,7 +159,7 @@ function PostDetail(props) {
                       style={{ width: '100%', height: '100%' }}
                     />
                   </figure>
-                  <div style={{ fontSize: '15px', marginTop: '8px' }}>
+                  <div style={{ fontSize: '18px', marginTop: '8px' }}>
                     {' '}
                     <span style={{ display: 'block' }}>
                       {postDetail.mbNick}
@@ -162,7 +172,7 @@ function PostDetail(props) {
                       }}
                     >
                       <AiFillEnvironment />{' '}
-                      <span style={{ fontSize: '12px', paddingLeft: '5px' }}>
+                      <span style={{ fontSize: '14px', paddingLeft: '5px' }}>
                         {postDetail.mbCountry}
                       </span>
                     </p>
@@ -189,32 +199,43 @@ function PostDetail(props) {
                 {postDetail.updated_at}
               </p>
               {/* 收藏按讚留言 */}
-              <div className="d-flex C-posticon">
+              <div className="d-flex justify-content-between C-posticon  ">
                 <div
-                  className="mx-2"
+                  className="mx-2 d-flex"
                   onClick={() => {
-                    dispatch(LikeToggle(!like.clicked))
+                    setPostLike(1)
+                    setLikeHeart(!likeHeart)
+                    // dispatch(LikeToggle(!like.clicked))
                   }}
                 >
-                  {like.clicked ? <AiFillHeart /> : <AiOutlineHeart />}
+                  <div>
+                    {likeHeart ? <AiFillHeart /> : <AiOutlineHeart />}
+                    {/* 按讚人數 */}
+                  </div>
+
+                  <p
+                    style={{
+                      fontSize: '14px',
+                      margin: '8px 10px',
+                      color: 'black',
+                      opacity: '0.7',
+                    }}
+                  >
+                    <span style={{ fontWeight: 'bold', paddingRight: ' 4px' }}>
+                      {/* {postDetail.postLikes} */}
+                      {like.payload}
+                      {/* {postDetail.postLikes} */}
+                    </span>
+                    人都說讚
+                  </p>
                 </div>
-                <div className="mx-2">
-                  <AiOutlineMessage />
-                </div>
-                <div className="mx-2">
-                  <AiOutlineStar />
+
+                <div className="m-2">
+                  <AiOutlineStar
+                    style={{ fontSize: '28px', marginRight: '10px' }}
+                  />
                 </div>
               </div>
-
-              {/* 按讚人數 */}
-
-              <p style={{ fontSize: '12px', margin: '10px' }}>
-                <span style={{ fontWeight: 'bold', paddingRight: ' 4px' }}>
-                  {/* {postDetail.postLikes} */}
-                  {like.likeCount}
-                </span>
-                人都說讚
-              </p>
 
               <PostComment postId={props.match.params.id} />
             </div>
