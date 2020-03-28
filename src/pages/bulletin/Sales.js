@@ -89,7 +89,7 @@ function Sales(props) {
         icon: 'error',
         title: 'Oops...',
         text: '麻煩請先登入會員!',
-        footer: '<a href="/member">回到登入頁面</a>',
+        footer: '<a href="/">回到登入頁面</a>',
       })
     }
   }
@@ -111,7 +111,7 @@ function Sales(props) {
 
         <div className="container pagination_news">
           <div className="pagination_news_content position-relative">
-            <h1 className=" py-3 pagination_news">
+            <h1 className=" py-3 pagination_news bh1">
               {sales == '' ? '' : salesDetailData[0].bTitle}
             </h1>
             <div className="news_index_detail d-flex justify-content-between pt-2">

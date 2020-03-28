@@ -86,10 +86,10 @@ function Bulletin(props) {
         </section>
         <div className="category d-flex">
           <p className="category_title">分類:</p>
-          <a onClick={() => handleSearchType('新聞')} className="btn">
+          <a onClick={() => handleSearchType('新聞')} className="btn ">
             新聞
           </a>
-          <a onClick={() => handleSearchType('促銷')} className="btn">
+          <a onClick={() => handleSearchType('促銷')} className="btn ">
             促銷
           </a>
         </div>
@@ -122,21 +122,21 @@ function Bulletin(props) {
               />
             </div>
             <div className="latest_news">
-              <h3>最新消息</h3>
+              <h3 className="bh3">最新消息</h3>
               {latest.map((v, i) => (
                 <LatestNews ttt={v} />
               ))}
             </div>
             <div className="category_section">
-              <h3>分類</h3>
+              <h3 className="bh3">分類</h3>
               <div className="news">
                 <a onClick={() => handleSearchType('新聞')}>
-                  <h5>新聞公告(17)</h5>
+                  <h5 className="bh5 ba">新聞公告(17)</h5>
                 </a>
               </div>
               <div className="sales">
                 <a onClick={() => handleSearchType('促銷')}>
-                  <h5>優惠公告(4)</h5>
+                  <h5 className="bh5 ba">優惠公告(4)</h5>
                 </a>
               </div>
             </div>

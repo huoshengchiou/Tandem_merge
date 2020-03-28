@@ -36,7 +36,9 @@ function RelatedNews(props) {
               </div>
             </div>
             <div className="related_title">
-              <h6 style={{ whiteSpace: 'pre-wrap' }}>{props.related.bTitle}</h6>
+              <h6 style={{ whiteSpace: 'pre-wrap' }} className="bh6">
+                {props.related.bTitle}
+              </h6>
             </div>
           </div>
         </li>

@@ -16,7 +16,7 @@ function NewsIntroduction(props) {
 
   return (
     <>
-      <div className="card news_introduction">
+      <div className="b_card_style news_introduction">
         <div className="intro_img">
           <img
             src={`data:image/png;base64,${img}`}
@@ -26,10 +26,10 @@ function NewsIntroduction(props) {
         </div>
         <div className="news card-body">
           <div className="news_index_title">
-            <h3 className="card-title">{title}</h3>
+            <h3 className="card-title bh3">{title}</h3>
           </div>
           <div className="news_index_content">
-            <p className="card-text ellipsis">{content}</p>
+            <p className="card-text ellipsis bp">{content}</p>
           </div>
           <div className="news_index_detail d-flex justify-content-between ">
             <div className="news_index_detail_icon_group d-flex justify-content-between">
@@ -42,7 +42,7 @@ function NewsIntroduction(props) {
               </div>
               <div className="time_group d-flex">
                 <AiOutlineClockCircle className="icon" />
-                <p className=" d-flex">{date}</p>
+                <p className=" d-flex bp">{date}</p>
               </div>
             </div>
             <NavLink to={`/${url}`} className="more_btn btn">
