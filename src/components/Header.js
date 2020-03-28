@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-bootstrap'
 import logo from '../logo.svg'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 import {
@@ -21,7 +21,8 @@ import { IoMdNotificationsOutline } from 'react-icons/io'
 import Mlogcard from '../components/member/Mlogcard'
 // 好友提示卡
 import MdetectaddF from '../components/member/MdetectaddF'
-
+// 行事曆
+import ActivityCalendar from './activity/ActivityCalendar'
 // 登出相關
 import { mlogcontroll } from '../actions/Maction'
 
@@ -150,6 +151,42 @@ function Header() {
     </>
   )
 
+  // activity calender 基本設定
+  const history = useHistory()
+  const [modalShow, setModalShow] = React.useState(false)
+  const [loginStatus, setLoginStatus] = useState(false)
+
+  // 進入即判斷localStorage裡面的登入Data(沒有表示尚未登入或已經登出)
+  // 因為有可能是其他頁面以登入狀態跳轉過來，所以進入日曆前先作判斷
+  useEffect(() => {
+    if (localStorage.getItem('LoginUserData')) {
+      setLoginStatus(true)
+    } else {
+      setLoginStatus(false)
+    }
+  }, [])
+
+  //若為登入狀態才能顯示行事曆
+  function mayIShow() {
+    if (loginStatus) {
+      setModalShow(true)
+    } else {
+      Swal.fire({
+        title: '請先登入喲！',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#79CEE2',
+        cancelButtonColor: '#F9A451',
+        confirmButtonText: '登入',
+        cancelButtonText: '取消',
+      }).then(result => {
+        if (result.value) {
+          history.push('/login')
+        }
+      })
+    }
+  }
+
   return (
     <>
       <nav className="T-navWrapper container">
@@ -229,14 +266,14 @@ function Header() {
           <div
             className={`T-detectgoodfriendwrapper ${
               comfirmfcardon ? 'active' : ''
-            }`}
+              }`}
           >
             <div
               className={`M-popUpDivheader ${
                 comfirmfcardon && addFevent.addfriendsignal && pop
                   ? 'active'
                   : ''
-              }`}
+                }`}
               style={{
                 display: `${addFevent.addfriendsignal && pop ? '' : 'none'}`,
               }}
@@ -250,7 +287,7 @@ function Header() {
                   comfirmfcardon && loginAut && addFevent.addfriendsignal
                     ? ''
                     : 'none'
-                }`,
+                  }`,
               }}
               onClick={() => {
                 setPop(false)
@@ -297,11 +334,11 @@ function Header() {
                 <IoMdNotificationsOutline
                   className={`T-notification ${
                     addFevent.addfriendsignal && loginAut ? 'active' : ''
-                  }`}
+                    }`}
                   style={{
                     color: `${
                       addFevent.addfriendsignal && loginAut ? '#F9A451' : ''
-                    }`,
+                      }`,
                   }}
                   onClick={() => {
                     setPop(true)
@@ -316,9 +353,13 @@ function Header() {
               </NavLink>
             </li>
             <li className="T-personiconpart">
-              <NavLink>
+              <NavLink onClick={mayIShow}>
                 <AiOutlineCalendar />
               </NavLink>
+              <ActivityCalendar
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
             </li>
 
             {/* //-----------登出按鈕------------------ */}
