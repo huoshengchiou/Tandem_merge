@@ -11,15 +11,6 @@
  ------------------------ */
 
 /* 套用至所有版面連結的基本設定 */
-a{
-  color: #79CEE2;
-  text-decoration: none;
-}
-a:hover{
-  color: #005CAF;
-  text-decoration: none;
-  transition: none;
-}
 .aBtn.aAgree{
   border: 1px solid #79CEE2;
   background: white;
