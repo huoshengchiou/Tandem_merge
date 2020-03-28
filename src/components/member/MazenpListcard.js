@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // 按鈕轉頁後改變state，啟動fetch取值
 // TODO  增加連結至商品細節頁
@@ -27,7 +28,11 @@ function MazenpListcard() {
               </div>
               <div className="M-azenproductDes">
                 <p>{val.itemIntro}</p>
-                <div className="M-azenproductDesbtn">more</div>
+                <div className="M-azenproductDesbtn">
+                  <a href={`http://localhost:3000/product/${val.itemId}`}>
+                    more
+                  </a>
+                </div>
               </div>
               <div className="M-azenproductName">
                 <span>{val.itemName}</span>
