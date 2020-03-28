@@ -148,9 +148,12 @@ function PostProfile(props) {
     if (loginUserFriend.length >= 1) {
       for (let i = 0; i < loginUserFriend.length; i++) {
         addedFriendId = loginUserFriend[i].mbId
-        console.log('add', addedFriendId)
+        console.log('loginuser', loginUserId)
         if (addedFriendId == props.match.params.id) {
           setAddedFriend(true)
+          if (addedFriendId == loginUserId) {
+            return setAddedFriend(false)
+          }
         }
       }
     }
@@ -158,13 +161,7 @@ function PostProfile(props) {
   useEffect(() => {
     addedfriend(loginUserFriend)
   }, [loginUserFriend])
-  // console.log('1', loginUserFriend)
 
-  // console.log(loginUserFriend.mbFd)
-
-  // let userFriend = loginUserFriend[0].mbFd
-
-  // console.log(addingfriend)
   // ----------------------
   //文章判斷會員文章首頁
   let postProfile = null
@@ -602,7 +599,7 @@ function PostProfile(props) {
                   ''
                 )}
                 <button
-                  className={`addedfriend ${!addedFriend ? '' : 'active'}`}
+                  className={`addedfriendPost ${!addedFriend ? '' : 'active'}`}
                   disabled
                 >
                   已成為好友
