@@ -98,12 +98,16 @@ function PostProfile(props) {
   useEffect(() => {
     applyfriend(loginUserId)
   }, [loginUserId])
+  console.log('friend', friendList)
 
   const checkaddfriend = () => {
     let addFriendId = null
+    let invateFriendId = null
+
     if (friendList.length >= 1) {
       for (let i = 0; i < friendList.length; i++) {
         addFriendId = friendList[i].addmbId
+        // invateFriendId = friendList[i].invitedmbId
       }
       if (addFriendId == props.match.params.id) {
         // console.log(addFriendId === props.match.params.id)
@@ -144,11 +148,11 @@ function PostProfile(props) {
   // console.log(loginUserFriend)
   const addedfriend = () => {
     let addedFriendId = null
-    console.log(loginUserFriend)
+    // console.log(loginUserFriend)
     if (loginUserFriend.length >= 1) {
       for (let i = 0; i < loginUserFriend.length; i++) {
         addedFriendId = loginUserFriend[i].mbId
-        console.log('loginuser', loginUserId)
+        // console.log('loginuser', loginUserId)
         if (addedFriendId == props.match.params.id) {
           setAddedFriend(true)
           if (addedFriendId == loginUserId) {

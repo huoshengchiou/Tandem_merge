@@ -94,7 +94,7 @@ function Bulletin(props) {
           </a>
         </div>
         <div className="row d-flex justify-content-between ">
-          <div className="col-md-7 ">
+          <div className="col-md-7">
             <div
               className=" position-relative mobile_input"
               style={{ marginBottom: 80 + 'px' }}
