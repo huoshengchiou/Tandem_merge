@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 import Home from './pages/Home'
 import Activity from './pages/activity/Activity'
@@ -16,6 +17,10 @@ import PostDetail from './pages/community/PostDetail'
 import PostDetailProfile from './pages/community/PostDetailProfile'
 import PostProfile from './pages/community/PostProfile'
 //---------------------------------------------------------------//
+//                            bulletin                           //
+import News from './pages/bulletin/News'
+import Sales from './pages/bulletin/Sales'
+//--------------------------------------------------------------//
 //                    forum pages                          //
 import Forum from './pages/forum/Forum'
 import Article from './pages/forum/Article'
@@ -32,6 +37,54 @@ function App() {
     <Router>
       <>
         <Header />
+        <ScrollToTop>
+          {/* <Mbtestpage /> */}
+          <Switch>
+            <Route exact path="/">
+              {/* <Home /> */}
+            </Route>
+            <Route path="/activity">
+              <Activity />
+            </Route>
+            <Route path="/bulletin">
+              <Bulletin />
+            </Route>
+            <Route path="/news/:newsId">
+              <News />
+            </Route>
+            <Route path="/sales/:salesId">
+              <Sales />
+            </Route>
+            {/* //community */}
+            <Route path={`/addpost`}>
+              <AddPost />
+            </Route>
+            <Route path={`/posts`}>
+              <Posts />
+            </Route>
+            <Route path={'/postdetail/:id?'}>
+              <PostDetail />
+            </Route>
+            <Route path={'/postDetailProfile/:id?'}>
+              <PostDetailProfile />
+            </Route>
+            <Route path={'/Communityprofile/:id?'}>
+              <PostProfile />
+            </Route>
+            <Route path="/community">
+              <Community />
+            </Route>
+            <Route path="/forum">
+              <Forum />
+            </Route>
+            <Route path="/member">
+              <Mbcenterindex />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
+          </Switch>
+        </ScrollToTop>
         {/* <Mbtestpage /> */}
         <Switch>
           <Route exact path="/">
