@@ -31,11 +31,15 @@ import ActivityContentPage from './pages/activity/ActivityContentPage'
 import ActivityAddNew from './pages/activity/ActivityAddNew'
 //css
 import '../src/css/activity.css'
-//---------------------------------------------------------------//
-
 import Mbcenterindex from './pages/member/Mbcenterindex'
 import Cart from './pages/shop/Cart'
-
+//---------------------------------------------------------------//
+//                         shop pages                            //
+import ProductList from './pages/shop/ProductList'
+import Product from './pages/shop/Product'
+import Payment from './pages/shop/Payment'
+import Order from './pages/shop/Order'
+import Cart_new from './pages/shop/Cart_new'
 import Mbtestpage from './pages/member/Mbtestpage'
 
 function App() {
@@ -101,8 +105,20 @@ function App() {
             <Route path="/member">
               <Mbcenterindex />
             </Route>
-            <Route path="/cart">
-              <Cart />
+            <Route path="/cart_new">
+              <Cart_new />
+            </Route>
+            <Route path="/productlist/:type?/:page?">
+              <ProductList />
+            </Route>
+            <Route path="/product/:type?/:id?">
+              <Product />
+            </Route>
+            <Route path="/payment">
+              <Payment />
+            </Route>
+            <Route path="/order">
+              <Order />
             </Route>
           </Switch>
         </ScrollToTop>

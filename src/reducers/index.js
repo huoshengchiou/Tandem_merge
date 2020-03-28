@@ -17,6 +17,9 @@ import getArticleData from './articleReducers'
 import getArticleDetail from './articleReducers'
 import getCommentData from './articleReducers'
 
+//Shop
+import Sleavecomment from './Sleavecomment'
+
 import { combineReducers } from 'redux'
 
 const allReducers = combineReducers({
@@ -35,6 +38,7 @@ const allReducers = combineReducers({
   getArticleData,
   getArticleDetail,
   getCommentData,
+  Sleavecomment,
 })
 
 export default allReducers

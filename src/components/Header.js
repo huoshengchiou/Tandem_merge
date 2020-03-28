@@ -215,7 +215,7 @@ function Header() {
               {/* 連結細節 */}
               <ul className="T-rwdlinklist">
                 <li className="T-rwdlinkpart">
-                  <NavLink href="/cart">遊戲庫</NavLink>
+                  <NavLink href="/productlist">遊戲庫</NavLink>
                 </li>
                 <li className="T-rwdlinkpart">
                   <NavLink href="/community">社群探索</NavLink>
@@ -238,7 +238,7 @@ function Header() {
           {/* 中央連結細項----------------- */}
           <ul className="T-linklist">
             <li className="T-linkpart">
-              <NavLink href="/cart">遊戲庫</NavLink>
+              <NavLink href="/productlist">遊戲庫</NavLink>
             </li>
             <li className="T-linkpart">
               <NavLink href="/community">社群探索</NavLink>
@@ -266,14 +266,14 @@ function Header() {
           <div
             className={`T-detectgoodfriendwrapper ${
               comfirmfcardon ? 'active' : ''
-              }`}
+            }`}
           >
             <div
               className={`M-popUpDivheader ${
                 comfirmfcardon && addFevent.addfriendsignal && pop
                   ? 'active'
                   : ''
-                }`}
+              }`}
               style={{
                 display: `${addFevent.addfriendsignal && pop ? '' : 'none'}`,
               }}
@@ -287,7 +287,7 @@ function Header() {
                   comfirmfcardon && loginAut && addFevent.addfriendsignal
                     ? ''
                     : 'none'
-                  }`,
+                }`,
               }}
               onClick={() => {
                 setPop(false)
@@ -334,11 +334,11 @@ function Header() {
                 <IoMdNotificationsOutline
                   className={`T-notification ${
                     addFevent.addfriendsignal && loginAut ? 'active' : ''
-                    }`}
+                  }`}
                   style={{
                     color: `${
                       addFevent.addfriendsignal && loginAut ? '#F9A451' : ''
-                      }`,
+                    }`,
                   }}
                   onClick={() => {
                     setPop(true)
@@ -348,7 +348,7 @@ function Header() {
               </NavLink>
             </li>
             <li className="T-personiconpart">
-              <NavLink>
+              <NavLink href="/cart_new">
                 <AiOutlineShoppingCart />
               </NavLink>
             </li>
