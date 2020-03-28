@@ -293,7 +293,10 @@ function MindexProfile() {
               <div className="M-markpdDes">
                 <p>{val.itemIntro}</p>
               </div>
-              <a className="M-markpdTrans clearfix" href="#">
+              <a
+                href={`http://localhost:3000/product/${val.itemId}`}
+                className="M-markpdTrans clearfix"
+              >
                 <IoIosMore />
               </a>
             </div>
@@ -386,7 +389,9 @@ function MindexProfile() {
           >
             <MdReplay />
           </div>
-
+          <div className="M-avatarsecondgear">
+            <AiFillSetting />
+          </div>
           {/* 呼叫紙娃娃btn redux*/}
           <div
             className="M-avatarChange"

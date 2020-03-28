@@ -250,22 +250,24 @@ body {
 }
 .M-FgpwdCardpic {
   width: 10rem;
-  height: 19rem;
+  height: 18rem;
   margin: 0 auto;
+
   /* border: 1px solid black; */
-  margin-bottom: 0.2rem;
+  margin-bottom: 2rem;
   /* border: 1px solid teal; */
 }
 .M-FgpwdCardpic img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .M-FgpwdCardinput {
   border: 1px solid #79cee2;
 }
 .M-sendMail {
   margin-top: 0.8rem;
+  margin-left: 0.2rem;
   padding: 0.2rem 0.5rem;
   color: #ec8824;
   font-weight: 400;
@@ -374,9 +376,10 @@ body {
   color: green;
 }
 .M-forgetpwd {
-  margin-top: 1rem;
   padding: 5px 5px;
-  margin-left: 9rem;
+  position: absolute;
+  bottom: -5rem;
+  left: 2rem;
   border: 1px solid #f9a451;
   color: #f9a451;
 }
@@ -485,6 +488,7 @@ body {
   height: 8rem;
   margin-top: 1.5rem;
   margin-left: 1rem;
+  background: white;
   border: 0.5px solid #adb6bd;
   overflow: hidden;
   /* box-shadow: 2px 3px 0px black; */
@@ -508,7 +512,9 @@ body {
 }
 .M-avatarTop h3 {
   margin-top: 1rem;
-  font-size: 1.4rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .M-avatarDes h6 {
@@ -559,6 +565,26 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+.M-avatarsecondgear {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  text-align: center;
+  line-height: 2rem;
+  color: #f9a451;
+  font-size: 2rem;
+  animation: reverRotate 6s infinite linear;
+  top: 5.2rem;
+  left: -0.1rem;
+}
+@keyframes reverRotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 
@@ -663,8 +689,8 @@ border: 1px solid black;
 }
 .M-mbdesformIpt h6 {
   display: inline-block;
-  height: 1.5rem;
-  line-height: 2.5rem;
+  height: 1.7rem;
+  line-height: 3.2rem;
 }
 
 .M-mbdesformIpt input {
@@ -874,7 +900,7 @@ border: 1px solid black;
 }
 
 .M-markpdBody.active {
-  height: 51%;
+  height: 49%;
   border: 2px solid #707070;
   border-top: 0;
 }
@@ -947,6 +973,8 @@ border: 1px solid black;
   margin: 0;
   transition: 0.75s;
   line-height: 150px;
+  font-weight: 600;
+
   /* white-space: normal; */
 }
 
@@ -1930,16 +1958,15 @@ border: 1px solid black;
 .M-leftcuponwrapper {
   background: white;
   position: absolute;
-  right: -19.9rem;
-  bottom: -1.3rem;
+  right: -20rem;
+  top: -50rem;
+  z-index: 1;
   box-shadow: 0px 3px 2px #707070;
   transition: 0.75s;
-  z-index: -1;
-  opacity: 0;
 }
 .M-leftcuponwrapper.active {
   z-index: 1;
-  opacity: 1;
+  top: -0.25rem;
 }
 .M-mycupontopbtn {
   width: 3rem;
@@ -1962,11 +1989,11 @@ border: 1px solid black;
 .M-mycupontopbtn:hover {
   color: #4691f6;
 }
-.M-mycupontopbtn.active {
+/* .M-mycupontopbtn.active {
   z-index: 2;
   right: -3rem;
   top: 9.2rem;
-}
+} */
 /* --------------- */
 .M-mycuponlistwrapper {
   width: 20rem;
@@ -2023,6 +2050,7 @@ border: 1px solid black;
   height: 28rem;
   /* padding: 0 5rem; */
   margin: 0 auto;
+  margin-top: 2rem;
   /* border: 1px solid white; */
   display: flex;
 }
