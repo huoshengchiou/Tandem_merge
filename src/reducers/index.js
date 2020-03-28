@@ -12,6 +12,11 @@ import Mconfirmfriend from './Mconfirmfriend'
 //community
 import communityLike from './communityLike'
 
+//forum
+import getArticleData from './articleReducers'
+import getArticleDetail from './articleReducers'
+import getCommentData from './articleReducers'
+
 import { combineReducers } from 'redux'
 
 const allReducers = combineReducers({
@@ -26,6 +31,10 @@ const allReducers = combineReducers({
   Mbazenproduct,
   Maddfriend,
   Mconfirmfriend,
+
+  getArticleData,
+  getArticleDetail,
+  getCommentData,
 })
 
 export default allReducers

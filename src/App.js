@@ -16,8 +16,12 @@ import PostDetail from './pages/community/PostDetail'
 import PostDetailProfile from './pages/community/PostDetailProfile'
 import PostProfile from './pages/community/PostProfile'
 //---------------------------------------------------------------//
-
+//                    forum pages                          //
 import Forum from './pages/forum/Forum'
+import Article from './pages/forum/Article'
+import ArticlePost from './pages/forum/ArticlePost'
+//---------------------------------------------------------------//
+
 import Mbcenterindex from './pages/member/Mbcenterindex'
 import Cart from './pages/shop/Cart'
 
@@ -31,7 +35,7 @@ function App() {
         {/* <Mbtestpage /> */}
         <Switch>
           <Route exact path="/">
-            {/* <Home /> */}
+            <Home />
           </Route>
           <Route path="/activity">
             <Activity />
@@ -60,6 +64,12 @@ function App() {
           </Route>
           <Route path="/forum">
             <Forum />
+          </Route>
+          <Route path="/article/:articleId?">
+            <Article />
+          </Route>
+          <Route path="/articlepost">
+            <ArticlePost />
           </Route>
           <Route path="/member">
             <Mbcenterindex />
