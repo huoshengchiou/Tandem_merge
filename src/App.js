@@ -21,7 +21,12 @@ import PostProfile from './pages/community/PostProfile'
 import News from './pages/bulletin/News'
 import Sales from './pages/bulletin/Sales'
 //--------------------------------------------------------------//
+//                    forum pages                          //
 import Forum from './pages/forum/Forum'
+import Article from './pages/forum/Article'
+import ArticlePost from './pages/forum/ArticlePost'
+//---------------------------------------------------------------//
+
 import Mbcenterindex from './pages/member/Mbcenterindex'
 import Cart from './pages/shop/Cart'
 
@@ -80,6 +85,52 @@ function App() {
             </Route>
           </Switch>
         </ScrollToTop>
+        {/* <Mbtestpage /> */}
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/activity">
+            <Activity />
+          </Route>
+          <Route path="/bulletin">
+            <Bulletin />
+          </Route>
+          {/* //community */}
+          <Route path={`/addpost`}>
+            <AddPost />
+          </Route>
+          <Route path={`/posts`}>
+            <Posts />
+          </Route>
+          <Route path={'/postdetail/:id?'}>
+            <PostDetail />
+          </Route>
+          <Route path={'/postDetailProfile/:id?'}>
+            <PostDetailProfile />
+          </Route>
+          <Route path={'/Communityprofile/:id?'}>
+            <PostProfile />
+          </Route>
+          <Route path="/community">
+            <Community />
+          </Route>
+          <Route path="/forum">
+            <Forum />
+          </Route>
+          <Route path="/article/:articleId?">
+            <Article />
+          </Route>
+          <Route path="/articlepost">
+            <ArticlePost />
+          </Route>
+          <Route path="/member">
+            <Mbcenterindex />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+        </Switch>
         <Footer />
       </>
     </Router>
