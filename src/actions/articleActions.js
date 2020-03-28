@@ -27,6 +27,17 @@ export const getArticleData = () => {
   }
 }
 
+//表單資訊
+// const articleInfo = {
+//   mbId: mbId,
+//   articleName: '',
+//   articleCategoryId: '',
+//   articleClassId: '',
+//   articleContent: '',
+// }
+
+//寫入文章資訊
+
 //要資料--留言
 export const getCommentData = () => {
   return async dispatch => {

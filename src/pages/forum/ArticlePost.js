@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+
 import {
   Container,
   Row,
@@ -7,6 +8,7 @@ import {
   Col,
   Dropdown,
   DropdownButton,
+  Form,
 } from 'react-bootstrap'
 import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
@@ -15,6 +17,8 @@ import { useHistory } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 import { AiOutlinePicture } from 'react-icons/ai'
 import '../../css/forum.scss'
+
+//表單資訊
 
 // 圖檔上傳設定
 const thumbsContainer = {
@@ -47,6 +51,97 @@ const img = {
 }
 
 function ArticlePost(props) {
+  useEffect(() => {
+    getfriendinfo()
+    // test()
+  }, [])
+
+  const [mbId, setmbId] = useState('')
+  // const test = () => {
+  //   const localdata = JSON.parse(localStorage.getItem('LoginUserData'))
+  //   const mbId = localdata.mbId
+  //   setcopymbid(mbId)
+  // }
+  // console.log('copymbid的值' + copymbid)
+
+  const articleInfo = {
+    mbId: mbId,
+    articleName: '',
+    articleCategoryId: '',
+    articleClassId: '',
+    articleContent: '',
+  }
+  console.log('info', articleInfo)
+
+  //寫入文章資訊
+  function articleFormInfo(e, info) {
+    switch (info) {
+      case 'articleName':
+        articleInfo.articleName = e.currentTarget.value
+        break
+      case 'articleCategoryId':
+        articleInfo.articleCategoryId = e.currentTarget.value
+        break
+      case 'articleClassId':
+        articleInfo.articleClassId = e.currentTarget.value
+        break
+      // case 'articleContent':
+      //   articleInfo.articleContent = e.currentTarget.value
+      //   break
+      default:
+        break
+    }
+  }
+
+  const getfriendinfo = () => {
+    const UserData = JSON.parse(localStorage.getItem('LoginUserData'))
+    const mbId = UserData.mbId
+
+    setmbId(mbId)
+    // 需要利用點擊取得對方id
+    const input = { mbId }
+    async function Findfriendinfo(mbId, callback) {
+      const request = new Request(
+        'http://localhost:6001/tandem/member/getUserfromFetch',
+        {
+          method: 'POST',
+          body: JSON.stringify(mbId),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+
+      const response = await fetch(request)
+      console.log('RE fetch完成')
+      const payload = await response.json()
+      console.log(payload)
+      //TODO
+
+      // 轉址
+      // window.location.href = 'http://localhost:3000/'
+    }
+    //呼叫上方fetch送後端
+    Findfriendinfo(input)
+  }
+
+  //建立文章
+  async function postArticle() {
+    const req = new Request('http://localhost:6001/articles/articlepost', {
+      method: 'POST',
+      credentials: 'include',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify(articleInfo),
+    })
+    const res = await fetch(req)
+    const order = await res.json()
+    await console.log('order', order)
+  }
+
   const history = useHistory()
   //文章類型 , 主題類型 , 文章標題 , 文章內容 , 文章圖檔
   const [articleCategory, setArticleCategory] = useState('')
@@ -104,7 +199,7 @@ function ArticlePost(props) {
         'Content-Type': 'application/json',
       }),
     })
-    // console.log('addNewPost', JSON.stringify(addNewPost))
+    console.log('addNewPost', JSON.stringify(addNewPost))
 
     const response = await fetch(request)
     const data = await response.json()
@@ -118,48 +213,55 @@ function ArticlePost(props) {
 
   return (
     <>
+      {/* <h1>這裡的值是{copymbid}</h1> */}
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="f-gap-2"></div>
             <div class="forum-form">
-              <form action="">
+              <Form action="">
                 <div class="row">
                   <div class="col-12">
                     <div class="d-flex f-post-category">
                       <label>文章類型：</label>
-                      {/* <input name="title" type="text" placeholder="Enter topic title here"/> */}
-                      <DropdownButton
+                      <Form.Control
+                        as="select"
                         className="f-post-dropdown"
-                        title="選擇文章類型"
-                        name="articleCategory"
-                        id="articleCategory"
+                        // title="選擇文章類型"
+                        // placeholder="選擇文章類型"
+                        name="articleCategoryId"
+                        // id="articleCategory"
                         required
-                        onChange={e => setArticleCategory(e.target.value)}
+                        onChange={e => articleFormInfo(e, 'articleCategoryId')}
                       >
-                        <Dropdown.Item>技術研討</Dropdown.Item>
-                        <Dropdown.Item>原畫創作</Dropdown.Item>
-                        <Dropdown.Item>廠商徵才</Dropdown.Item>
-                      </DropdownButton>
+                        <option>選擇文章類型</option>
+                        <option value="1">技術研討</option>
+                        <option value="2">原畫創作</option>
+                        <option value="3">廠商徵才</option>
+                      </Form.Control>
                     </div>
+
                     <div class="f-gap"></div>
                     <div class="d-flex f-post-category">
                       <label>主題類型：</label>
-                      {/* <input name="title" type="text" placeholder="Enter topic title here"/> */}
-                      <DropdownButton
-                        className="f-post-dropdown"
-                        title="選擇主題類型"
-                        name="articleClass"
-                        id="articleClass"
-                        required
-                        onChange={e => setArticleClass(e.target.value)}
-                      >
-                        <Dropdown.Item>技術分享</Dropdown.Item>
-                        <Dropdown.Item>問題求解</Dropdown.Item>
-                        <Dropdown.Item>聯合創作</Dropdown.Item>
-                        <Dropdown.Item>情報分享</Dropdown.Item>
-                        <Dropdown.Item>輕鬆閒聊</Dropdown.Item>
-                      </DropdownButton>
+                      <Form.Group>
+                        <Form.Control
+                          as="select"
+                          className="f-post-dropdown"
+                          // title="選擇主題類型"
+                          name="articleClassId"
+                          // id="articleClass"
+                          required
+                          onChange={e => articleFormInfo(e, 'articleClassId')}
+                        >
+                          <option value="">選擇主題類型</option>
+                          <option value="1">技術分享</option>
+                          <option value="2">問題求解</option>
+                          <option value="3">聯合創作</option>
+                          <option value="4">情報分享</option>
+                          <option value="5">輕鬆閒聊</option>
+                        </Form.Control>
+                      </Form.Group>
                     </div>
                     <div class="f-gap"></div>
                   </div>
@@ -174,7 +276,7 @@ function ArticlePost(props) {
                         name="articleName"
                         id="articleName"
                         required
-                        onChange={e => setArticleName(e.target.value)}
+                        onChange={e => articleFormInfo(e, 'articleName')}
                       />
                     </div>
                   </div>
@@ -185,7 +287,7 @@ function ArticlePost(props) {
                       <label>文章內容：</label>
                       <CKEditor
                         editor={ClassicEditor}
-                        data="<p>Hello from CKEditor 5!</p>"
+                        data=""
                         onInit={editor => {
                           // You can store the "editor" and use when it is needed.
                           console.log('Editor is ready to use!', editor)
@@ -194,9 +296,12 @@ function ArticlePost(props) {
                         id="articleContent"
                         required
                         // onChange={e => setArticleContent(e.target.value)}
-                        onChange={(event, editor) => {
+                        onChange={(e, editor) => {
                           const data = editor.getData()
-                          console.log({ event, editor, data })
+                          articleInfo.articleContent = editor.getData()
+                          // onChange={(event, editor) => {
+                          //   const data = editor.getData()
+                          // console.log({ event, editor, data })
                         }}
                         onBlur={(event, editor) => {
                           console.log('Blur.', editor)
@@ -246,10 +351,9 @@ function ArticlePost(props) {
                   <div class="f-gap-3"></div>
                   <div class="col-12 f-article-post-btn ">
                     <button
-                      href="#"
                       class="f-index-btn f-index-btn-rounded f-index-btn-color"
-                      onClick={() => addNewArticle()}
-                      onSubmit
+                      onClick={postArticle}
+                      // onSubmit={postArticle}
                     >
                       留言
                     </button>
@@ -266,7 +370,7 @@ function ArticlePost(props) {
                                         <textarea className="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
                                     </div> */}
                 </div>
-              </form>
+              </Form>
             </div>
           </div>
         </div>

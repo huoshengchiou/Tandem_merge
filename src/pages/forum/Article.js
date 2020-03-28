@@ -109,7 +109,7 @@ function Article(props) {
         <div class="f-gap-2"></div>
         <ul class="f-breadcrumbs">
           <li>
-            <a href="./home">首頁</a>
+            <a href="/home">首頁</a>
           </li>
           <li>
             <AiOutlineRight />
