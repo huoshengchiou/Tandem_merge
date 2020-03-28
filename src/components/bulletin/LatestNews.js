@@ -22,11 +22,11 @@ function LatestNews(props) {
         </div>
         <div className="latest_news_title">
           <Link to={`/${url}`}>
-            <h6>{title}</h6>
+            <h6 className="bh6 ba">{title}</h6>
           </Link>
           <div className="time_group d-flex">
             <AiOutlineClockCircle className="icon" />
-            <p className=" d-flex">{time}</p>
+            <p className=" d-flex bp">{time}</p>
           </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ function App() {
           {/* <Mbtestpage /> */}
           <Switch>
             <Route exact path="/">
-              {/* <Home /> */}
+              <Home />
             </Route>
             <Route path="/activity">
               <Activity />
@@ -77,6 +77,12 @@ function App() {
             <Route path="/forum">
               <Forum />
             </Route>
+            <Route path="/article/:articleId?">
+              <Article />
+            </Route>
+            <Route path="/articlepost">
+              <ArticlePost />
+            </Route>
             <Route path="/member">
               <Mbcenterindex />
             </Route>
@@ -85,52 +91,6 @@ function App() {
             </Route>
           </Switch>
         </ScrollToTop>
-        {/* <Mbtestpage /> */}
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/activity">
-            <Activity />
-          </Route>
-          <Route path="/bulletin">
-            <Bulletin />
-          </Route>
-          {/* //community */}
-          <Route path={`/addpost`}>
-            <AddPost />
-          </Route>
-          <Route path={`/posts`}>
-            <Posts />
-          </Route>
-          <Route path={'/postdetail/:id?'}>
-            <PostDetail />
-          </Route>
-          <Route path={'/postDetailProfile/:id?'}>
-            <PostDetailProfile />
-          </Route>
-          <Route path={'/Communityprofile/:id?'}>
-            <PostProfile />
-          </Route>
-          <Route path="/community">
-            <Community />
-          </Route>
-          <Route path="/forum">
-            <Forum />
-          </Route>
-          <Route path="/article/:articleId?">
-            <Article />
-          </Route>
-          <Route path="/articlepost">
-            <ArticlePost />
-          </Route>
-          <Route path="/member">
-            <Mbcenterindex />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-        </Switch>
         <Footer />
       </>
     </Router>

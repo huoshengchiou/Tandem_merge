@@ -7,6 +7,12 @@ $shadow: 0px 0px 10px $gray;
 a {
   cursor: pointer;
 }
+.ba {
+  transition: 0.5s;
+}
+.ba:hover {
+  color: $icon_color;
+}
 .btn {
   background: #fff;
   border: 2px solid $main_color;
@@ -28,20 +34,20 @@ a.btn:hover {
   color: $icon_color;
   margin: 0 5px;
 }
-h3 {
+.bh3 {
   font-family: $font-family;
   letter-spacing: 3px;
   font-weight: bold;
   padding: 20px 0;
 }
-h5 {
+.bh5 {
   font-family: $font-family;
   letter-spacing: 3px;
 }
-h6 {
+.bh6 {
   font-weight: bold;
 }
-p {
+.bp {
   letter-spacing: 1px;
   font-family: $font-family;
   line-height: 28px;
@@ -127,7 +133,7 @@ p {
 .news_index_detail_icon_group {
   font-size: 10px;
   font-weight: bold;
-  width: 300px;
+  width: 350px;
   a {
     text-decoration: none;
     color: #333;
@@ -263,4 +269,7 @@ a.btn {
   .category_section {
     display: none;
   }
+}
+.b_card_style {
+  box-shadow: 1px 1px 10px $gray;
 }

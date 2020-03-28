@@ -48,7 +48,7 @@ function News(props) {
         </div>
         <div className="container pagination_news">
           <div className="pagination_news_content position-relative">
-            <h1 className=" py-3 pagination_news">
+            <h1 className=" py-3 pagination_news bh1">
               {news == '' ? '' : bulletinDetailData[0].bTitle}
             </h1>
             <div className="news_index_detail d-flex justify-content-between pt-2">
@@ -74,7 +74,7 @@ function News(props) {
             </Link>
           </div>
           <div className="related_news">
-            <h2>相關新聞</h2>
+            <h2 className="bh2">相關新聞</h2>
             <ul className="d-flex justify-content-between">
               {relatedNews.map((v, i) => (
                 <RelatedNews related={v} />
