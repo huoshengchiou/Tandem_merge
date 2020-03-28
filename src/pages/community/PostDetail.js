@@ -8,30 +8,41 @@ import PostDetailMore from '../../components/community/PostDetailMore'
 // import { NavLink } from 'react-router-dom'
 
 import {
-  AiOutlineMessage,
   AiOutlineStar,
   AiOutlineHeart,
-  // AiOutlineEye,
   AiFillEnvironment,
   AiFillHeart,
 } from 'react-icons/ai'
 import '../../css/community.css'
-import Swal from 'sweetalert2'
 
 function PostDetail(props) {
   const [posts, setPosts] = useState([])
 
   const [dataHasLoaded, setDataHasLoaded] = useState(false)
-  let postid = props.match.params.id
-
+  // let postid = props.match.params.id
+  const [PostLike, setPostLike] = useState(0)
+  const [likeHeart, setLikeHeart] = useState(false)
   const like = useSelector(state => state.communityLike)
   const dispatch = useDispatch()
 
+  //////
+
+  ////////
   //連資料庫 fetch API
   async function fetchPost() {
     let res = await fetch('http://localhost:6001/items/posts')
     let response = await res.json()
     setPosts(response)
+
+    for (let i = 0; i < response.length; i++) {
+      // console.log('response', response[i])
+      // console.log('response', props.match.params.id)
+      if (response[i].post_id === +props.match.params.id) {
+        let likes = response[i].postLikes
+        console.log('likes', likes)
+        dispatch(LikeToggle(1, likes))
+      }
+    }
   }
   useEffect(() => {
     fetchPost()
@@ -68,12 +79,13 @@ function PostDetail(props) {
   )
 
   //貼文詳細頁判斷
+
   let postDetail = null
+  // console.log(posts)
 
   for (let i = 0; i < posts.length; i++) {
     if (posts[i].post_id === +props.match.params.id) {
       postDetail = posts[i]
-      // console.log(posts)
     }
   }
   if (postDetail === null) {
@@ -83,8 +95,6 @@ function PostDetail(props) {
       </>
     )
   } else {
-    // console.log('post detail', postDetail)
-
     return (
       <>
         <div className="container my-5">
@@ -193,11 +203,13 @@ function PostDetail(props) {
                 <div
                   className="mx-2 d-flex"
                   onClick={() => {
-                    dispatch(LikeToggle(!like.clicked))
+                    setPostLike(1)
+                    setLikeHeart(!likeHeart)
+                    // dispatch(LikeToggle(!like.clicked))
                   }}
                 >
                   <div>
-                    {like.clicked ? <AiFillHeart /> : <AiOutlineHeart />}
+                    {likeHeart ? <AiFillHeart /> : <AiOutlineHeart />}
                     {/* 按讚人數 */}
                   </div>
 
@@ -211,8 +223,8 @@ function PostDetail(props) {
                   >
                     <span style={{ fontWeight: 'bold', paddingRight: ' 4px' }}>
                       {/* {postDetail.postLikes} */}
-                      {like.likeCount}
-                      {postDetail.postLikes}
+                      {like.payload}
+                      {/* {postDetail.postLikes} */}
                     </span>
                     人都說讚
                   </p>
