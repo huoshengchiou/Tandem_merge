@@ -459,6 +459,7 @@ body {
   /* height: 50rem; */
   height: 12.5rem;
   /* background: lightblue; */
+  margin: 0 auto;
   position: relative;
   transition: 2s;
   overflow: hidden;
@@ -470,7 +471,7 @@ body {
 /* } */
 
 .M-avatarTop {
-  border-bottom: 3px solid #79cee2;
+  /* border-bottom: 3px solid #79cee2; */
   /* box-shadow: 0px 3px 6px #707070; */
   padding-bottom: 1rem;
   /* border-top: 10px solid #43341b; */
@@ -701,7 +702,7 @@ border: 1px solid black;
 /* 會員頁左邊選鈕     fix------- */
 .M-subbtnGroup {
   /* border-top: 5px solid #43341b; */
-  margin: 10px 0;
+  margin: 10px auto;
   width: 23.2rem;
   height: 7.9rem;
   /* background: pink; */
@@ -722,8 +723,9 @@ border: 1px solid black;
 }
 .M-subbtnGroupbrick {
   width: 100%;
-  height: 3px;
+  height: 20px;
   background: #adb6bd;
+  margin-bottom: 2rem;
 }
 .M-subbtnwrapper {
   margin-top: 0.5rem;
@@ -741,7 +743,7 @@ border: 1px solid black;
   font-size: 1.15rem;
   font-weight: 500;
   border: 0;
-  margin-top: 0.2rem;
+  /* margin-top: 0.2rem; */
   margin: 0 0.5rem 0.2rem;
   /* border: 0.5px solid #79cee2; */
   color: #79cee2;
@@ -761,7 +763,7 @@ border: 1px solid black;
   width: 6rem;
   height: 3.5rem;
   font-size: 1.5rem;
-  box-shadow: 0px 3px 2px #707070;
+  /* box-shadow: 0px 3px 2px #707070; */
   /* transform: scale(0.95); */
 }
 
@@ -769,7 +771,7 @@ border: 1px solid black;
   outline: none;
   color: #f9a451;
   z-index: 2;
-  box-shadow: 0px 3px 12px #707070;
+  /* box-shadow: 0px 3px 12px #707070; */
 }
 .M-subbtnGroup button:hover {
   background: #79cee2;
@@ -779,8 +781,9 @@ border: 1px solid black;
 
 /* 關注商品列表 */
 .M-LikeproductWrapper {
+  margin: 0 auto;
   width: 23.2rem;
-  border: 0.5px solid #adb6bd;
+  /* border: 0.5px solid #adb6bd; */
   text-align: center;
 }
 .M-Likeproducthead {
@@ -789,7 +792,8 @@ border: 1px solid black;
   background: #adb6bd;
   margin-bottom: 2rem;
   text-align: center;
-  box-shadow: 0px 3px 2px #707070;
+
+  /* box-shadow: 0px 3px 2px #707070; */
 }
 .M-Likeproducthead h3 {
   /* margin-top: 1rem; */
@@ -1415,7 +1419,7 @@ border: 1px solid black;
   font-weight: 600;
   font-size: 1.2rem;
   margin-top: 0.2rem;
-  line-height: 4rem;
+  line-height: 2rem;
 }
 
 .M-friendcollectCardright p {
@@ -1623,7 +1627,7 @@ border: 1px solid black;
   position: absolute;
   z-index: 1;
   transition: 0.75s;
-  left: 0.05rem;
+  left: 0.1rem;
   top: -1rem;
 }
 /* 功能取代 */
@@ -1638,7 +1642,7 @@ border: 1px solid black;
   background: white;
   position: relative;
   box-shadow: 0px 3px 12px #707070;
-  border: 0.5px solid #adb6bd;
+  /* border: 0.5px solid #adb6bd; */
 }
 
 /* canvas容器 */
@@ -2081,8 +2085,8 @@ border: 1px solid black;
 }
 
 .M-comuHead_des h5 {
-  font-weight: 500;
-  font-size: 1.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
   line-height: 10px;
 }
 
@@ -2116,12 +2120,12 @@ border: 1px solid black;
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  border: 0.5px solid #adb6bd;
+  border: 0.5px solid black;
   /* border: 0.5px solid black; */
   overflow: hidden;
   position: absolute;
-  bottom: 33%;
-  left: 8.8%;
+  bottom: 1.86rem;
+  left: 1.23rem;
 }
 
 .M-comuPoster img {
@@ -2158,6 +2162,7 @@ border: 1px solid black;
 }
 .M-indexLeftContainer {
   width: 23.4375rem;
+  border: 0.5px solid #adb6bd;
   /* height: 50rem; */
   /* background: lightblue; */
 }
@@ -2222,9 +2227,9 @@ border: 1px solid black;
   content: '';
   display: block;
   flex: 100;
-  border-bottom: 4px solid;
+  border-bottom: 2px solid;
   transform: translateY(-10px);
-  border-bottom-color: #79cee2;
+  border-bottom-color: #adb6bd;
   /* border-bottom-color: #adb6bd; */
 }
 
