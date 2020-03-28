@@ -134,18 +134,20 @@ function Comment2(props) {
                 </div>
                 <div className="col-7 col-md-10">
                   <p className="row">
-                    <strong className="col-10 py-2">
+                    <strong className="col-md-8 py-2">
                       <input
+                        className="form-control col-5"
                         type="text"
                         placeholder="請輸入暱稱"
                         onChange={e => setUsername(e.target.value)}
                       ></input>
                     </strong>
-                    <span className="float-right mx-2 py-2">
+                    <span className="float-right col-md-3 row mx-2 py-2">
                       <span>請給評分: </span>
                       <input
+                        className="form-control"
                         type="number"
-                        style={{ width: '35px' }}
+                        style={{ width: '60px' }}
                         min="0"
                         max="5"
                         onChange={e => setRating(e.target.value)}
@@ -166,7 +168,7 @@ function Comment2(props) {
                   </form>
                   <p>
                     <button
-                      className="float-right btn btn-outline-primary ml-2"
+                      className="float-right btn btn-outline-primary ml-2 s-btn-common"
                       onClick={() => {
                         handleSubmit()
                       }}
@@ -294,11 +296,11 @@ function Comment2(props) {
                   </div>
                   <div className="col-7 col-md-10">
                     <p className="row">
-                      <a className="float-left col-10 py-2" href="#">
+                      <a className="float-left col-md-8 py-2" href="#">
                         <strong>{msg.name}</strong>
                       </a>
 
-                      <span className="float-right mx-2 py-2">
+                      <span className="float-right col-md-3 row mx-2 py-2">
                         {msg.rating}
                         <AiTwotoneStar
                           className="text-warning"
@@ -312,7 +314,7 @@ function Comment2(props) {
                     </form>
                     <p>
                       <button
-                        className="float-right btn btn-outline-primary ml-2"
+                        className="float-right btn btn-outline-primary ml-2 s-btn-common"
                         onClick={e => handleShowReply(e.target)}
                       >
                         {' '}
@@ -350,12 +352,7 @@ function Comment2(props) {
                               </p>
 
                               <p>{innermsg.content}</p>
-                              <p>
-                                <a className="float-right btn text-white btn-danger">
-                                  {' '}
-                                  <i className="fa fa-heart"></i> Like
-                                </a>
-                              </p>
+                              <p></p>
                             </>
                           </div>
                         </div>
@@ -396,18 +393,20 @@ function Comment2(props) {
                         </div>
                         <div className="col-7 col-md-10">
                           <p className="row">
-                            <strong className="col-10 py-2">
+                            <strong className="col-md-8 py-2">
                               <input
+                                className="form-control col-5"
                                 type="text"
                                 placeholder="請輸入暱稱"
                                 onChange={e => setUsername(e.target.value)}
                               ></input>
                             </strong>
-                            <span className="float-right mx-2 py-2">
+                            <span className="float-right col-md-3 row mx-2 py-2">
                               <span>請給評分: </span>
                               <input
+                                className="form-control"
                                 type="number"
-                                style={{ width: '35px' }}
+                                style={{ width: '60px' }}
                                 min="0"
                                 max="5"
                                 onChange={e => {
@@ -430,7 +429,7 @@ function Comment2(props) {
                           </form>
                           <p>
                             <button
-                              className="float-right btn btn-outline-primary ml-2"
+                              className="float-right btn btn-outline-primary ml-2 s-btn-common"
                               onClick={() => {
                                 handleSubmit(msg.id)
                               }}

@@ -393,7 +393,8 @@ function Product(props) {
                 width: '75%',
                 position: 'relative',
                 left: '12px',
-                marginBottom: '5px',
+                top: '20px',
+                // marginBottom: '5px',
               }}
             ></div>
           ) : (
@@ -418,6 +419,7 @@ function Product(props) {
                 width: '75%',
                 position: 'relative',
                 left: '12px',
+                top: '20px',
               }}
             ></div>
           ) : (

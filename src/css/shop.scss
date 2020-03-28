@@ -39,6 +39,7 @@ h6 {
   border-radius: 0;
   border: 1px solid #79cee2;
   color: #79cee2;
+  font-weight: 400;
   &:hover {
     background: #79cee2;
     border: 1px solid #79cee2;
@@ -83,6 +84,7 @@ h6 {
     position: relative;
     text-align: center;
     line-height: 50px;
+    color: white;
   }
   h6 {
     position: relative;
@@ -340,6 +342,7 @@ h6 {
 .s-cardwrap {
   .s-productlist-card {
     box-shadow: 0px 0px 10px #adb6bd;
+    height: auto;
   }
   &:hover {
     .s-productlist-card {
