@@ -2,7 +2,7 @@
 $navinfo: #79cee2;
 $navbar-dark-color: $navinfo;
 
-$navhover: #005CAF;
+$navhover: #005caf;
 $navbar-dark-hover-color: $navhover;
 
 @import '~bootstrap/scss/bootstrap.scss';
@@ -15,7 +15,7 @@ $navbar-dark-hover-color: $navhover;
   margin: 0;
 }
 
-html{
+html {
   font-size: 16px;
 }
 
@@ -26,15 +26,15 @@ body {
   //   sans-serif;
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
-  font-family: 'Noto Serif TC', 'Noto Serif',serif ;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
 code {
   // font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   //   monospace;
-    font-family: 'Noto Serif TC', 'Noto Serif',serif ;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 
-article.content{
+article.content {
   min-height: calc(100vh - 430px);
 }
