@@ -1,0 +1,563 @@
+//整體共用
+p,
+.p {
+  font-size: 16px;
+}
+a:hover {
+  text-decoration: none;
+}
+h1,
+.h1 {
+  font-size: 40px;
+}
+h2,
+.h2 {
+  font-size: 32px;
+}
+h3,
+.h3 {
+  font-size: 28px;
+}
+h4,
+.h4 {
+  font-size: 24px;
+}
+h5,
+.h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 16px;
+}
+
+.s-clearFilterBtn {
+  //清除篩選功能
+  width: 50px;
+  height: 50px;
+}
+.s-btn-common {
+  border-radius: 0;
+  border: 1px solid #79cee2;
+  color: #79cee2;
+  &:hover {
+    background: #79cee2;
+    border: 1px solid #79cee2;
+  }
+}
+//以上是整體共用
+/* Cart */
+// 以下文字前後分隔線
+.s-cart-title {
+  overflow: hidden;
+  &:before,
+  &:after {
+    background-color: #000;
+    content: '';
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 30%;
+  }
+
+  &:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+  &:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
+}
+
+// 以上文字前後分隔線
+.s-circle {
+  width: 50px;
+  height: 50px;
+  background: lightgray;
+  color: white;
+  border-radius: 50%;
+  transition: 0.5s;
+
+  h3 {
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+  }
+  h6 {
+    position: relative;
+    bottom: -20px;
+    color: #79cee2;
+  }
+}
+.s-circleActive {
+  @extend .s-circle;
+  transform: scale(1.3);
+  background: lightblue;
+  transition: transfrom 0.5s;
+  h6 {
+    position: relative;
+    bottom: -20px;
+    color: #79cee2;
+  }
+}
+.s-line {
+  // margin-top: 35px;
+  width: 150px;
+  height: 10px;
+  background: lightgray;
+}
+// .btn {
+//   border-radius: 0;
+//   border: 1px solid rgb(67, 67, 236);
+//   color: rgb(67, 67, 236);
+//   &:hover {
+//     background: rgb(67, 67, 236);
+//     border: 1px solid rgb(67, 67, 236);
+//   }
+// }
+
+.s-shoppingList {
+  // width: 80%;
+  // border: 1px solid lightblue;
+  margin: 20px;
+
+  thead {
+    background-color: #458dcc;
+    color: white;
+    margin-bottom: 30px;
+  }
+  tbody {
+    border: 1px solid lightblue;
+  }
+}
+.s-couponList {
+  @extend .s-shoppingList;
+  border: 1px solid lightblue;
+  position: relative;
+  top: 10px;
+}
+.s-payment {
+  @extend .s-couponList;
+}
+.s-columnWidth1 {
+  width: 50%;
+}
+.s-columnWidth2 {
+  width: 30%;
+}
+.s-couponActive {
+  border: 5px solid coral;
+  box-shadow: 2px 2px gray;
+  border-radius: 15px;
+}
+.s-coupon-used {
+  background-color: gray;
+  position: relative;
+  top: -160px;
+  left: 0;
+  width: 240px;
+  max-height: 160px;
+  opacity: 0.5;
+  font-size: 36px;
+  text-align: center;
+  color: white;
+  line-height: 160px;
+  // z-index: -1;
+  visibility: hidden;
+}
+.s-coupon-used-show {
+  @extend .s-coupon-used;
+  max-height: 160px;
+  // z-index: 99;
+  visibility: visible;
+}
+.post {
+  /* width: 70%; */
+  height: 150px;
+
+  background: lightgrey;
+}
+.avator {
+  /* width: 30%; */
+  border-radius: 50%;
+}
+.ratings {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #ddd; /*背景星星顏色*/
+  overflow: hidden;
+  font-size: 20px; /*調整字體大小可放大縮小星星*/
+  text-shadow: 0px 1px 0 #999;
+}
+.full_star {
+  width: 90%; /*調整寬度可變更星等*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #d56a16; /*前景星星顏色*/
+}
+.s-searchicon {
+  position: relative;
+  bottom: 40px;
+  left: 5px;
+}
+
+/* slider.css */
+
+.s-slider-box {
+  width: 100%;
+  min-height: 75vh;
+  background-image: url('/images/shop/bigImage/1_MONSTER HUNTER_ WORLD_0.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(50%);
+  transition: 0.5s;
+
+  flex-wrap: wrap;
+}
+
+.sbox {
+  /* width: 200px; */
+  height: 50%;
+  /* background: white; */
+  /* transition:.5s; */
+  flex: 1 1 33.33%;
+  /* border:1px solid green; */
+}
+
+.sbox-s {
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: 0.5s;
+  border: 1px solid lightgrey;
+  a {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+  }
+}
+.sbox-s h2 {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+/* .sbox1:hover,.sbox2:hover{
+      width: 80%;
+      height: 80%;
+      margin: 10%;
+      border-radius: 20px;
+      opacity: 50%;
+  
+  } */
+.s-slider-box:hover .sbox-s {
+  /* width: 80%;
+    height: 70%; */
+  /* margin: 10%; */
+  border-radius: 20px;
+  /* opacity: 50%; */
+  /* transform: scale(0.7); */
+}
+//Filterbar
+.s-filterbar {
+  height: 45px;
+}
+.s-filterbar-btn {
+  border-radius: 25px;
+  border: 1px solid #79cee2;
+  color: #79cee2;
+  width: 150px;
+  &:hover {
+    background-color: #79cee2;
+    border: 1px solid #79cee2;
+  }
+  &:active {
+    background-color: #79cee2;
+  }
+}
+.s-filterbar-search {
+  @extend .s-filterbar-btn;
+  // margin-top: 7px;
+  &:hover {
+    background-color: white;
+  }
+}
+.s-filterClearBtn {
+  margin: 5px;
+  width: 190px;
+  // height: 50px;
+  font-size: 16px;
+  color: white;
+  border: 1px solid rgb(59, 59, 233);
+  text-align: center;
+  background-color: rgb(59, 59, 233);
+  button {
+    margin: 8px;
+    // height: 25px;
+    // width: 25px;
+    // border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: white;
+  }
+}
+//頁數element
+.s-pageItem {
+  width: 50px;
+  height: 50px;
+  border: 1.5px solid #79cee2;
+  border-radius: 50%;
+  margin: 5px;
+  line-height: 47px;
+  transition: 0.5s;
+  &:hover {
+    background-color: #79cee2;
+  }
+  a {
+    text-decoration: none;
+    color: #79cee2;
+    font-size: 24px;
+    display: block;
+    text-align: center;
+    transition: 0.5s;
+    &:hover {
+      color: white;
+    }
+  }
+}
+.s-pageItem-Active {
+  background-color: #79cee2;
+  a {
+    color: white;
+  }
+}
+
+//商品列表hover縮小
+.s-cardwrap {
+  .s-productlist-card {
+    box-shadow: 0px 0px 10px #adb6bd;
+  }
+  &:hover {
+    .s-productlist-card {
+      transition: 1s;
+      transform: scale(0.9);
+      border-radius: 25px;
+      img {
+        transition: 1s;
+        transform: scale(0.9);
+        border-radius: 25px;
+      }
+    }
+  }
+}
+// .s-productlist-card {
+//   &:hover {
+//     transform: scale(0.9);
+//     border-radius: 25px;
+//     transition: 1s;
+//   }
+//   img {
+//     &:hover {
+//       transform: scale(0.9);
+//       border-radius: 25px;
+//       transition: 1s;
+//     }
+//   }
+// }
+//商品細節頁
+.s-bigImg {
+  width: 100%;
+  min-height: 320px;
+  // vertical-align: middle;
+  img {
+    vertical-align: 25px;
+    width: 100%;
+    height: 100%;
+    // object-fit: contain;
+  }
+}
+
+.s-smallImg {
+  width: 100%;
+  li {
+    width: 25%;
+    img {
+      width: 100%;
+    }
+  }
+}
+//推薦商品頁
+.s-recommend {
+  // width: 90%;
+  background-color: whitesmoke;
+  overflow: hidden;
+  h4 {
+    color: #79cee2;
+  }
+}
+
+.s-recommend-pic {
+  width: 400px;
+  position: relative;
+  left: 0px;
+  margin-right: 20px;
+}
+.s-recommend-row {
+  width: 2000px;
+  position: relative;
+  left: 0px;
+}
+
+//客製化checkbox
+/* Customize the label (the container) */
+.s-form-check {
+  display: block;
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.s-checkbox {
+  position: absolute;
+  top: 5px;
+  left: 90px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* Hide the browser's default checkbox */
+.s-form-check input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+// On mouse-over, add a grey background color */
+.s-form-check:hover input ~ .s-checkbox {
+  background-color: #ccc;
+}
+
+// When the checkbox is checked, add a blue background */
+.s-form-check input:checked ~ .s-checkbox {
+  background-color: #2196f3;
+}
+
+//Create the checkmark/indicator (hidden when not checked) */
+.s-checkbox::after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+//Show the checkmark when checked */
+.s-form-check input:checked ~ .s-checkbox::after {
+  display: block;
+}
+
+//Style the checkmark/indicator
+.s-form-check .s-checkbox::after {
+  left: 9px;
+  top: 5px;
+  width: 8px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+//客製化radiobox
+
+/* Hide the browser's default radio button */
+.s-form-check input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+}
+/* Create a custom radio button */
+.s-radio {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+/* On mouse-over, add a grey background color */
+.s-form-check:hover input ~ .s-radio {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.s-form-check input:checked ~ .s-radio {
+  background-color: #2196f3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.s-radio:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.s-form-check input:checked ~ .s-radio:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.s-form-check .s-radio:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+.s-creditcard {
+  max-height: 0;
+  overflow: hidden;
+  // margin: 0px;
+  transition: 0.5s;
+}
+.s-creditcard-active {
+  @extend .s-creditcard;
+  max-height: 50px;
+}
+
+.s-totalprice {
+  // position: fixed;
+  // // top: 500px;
+  // bottom: 0px;
+  // left: -200px;
+  tbody {
+    // @extend .s-shoppingList;
+    border: 0px;
+    // color: red;
+  }
+}
+
+.s-totalprice-fix {
+  // @extend .s-totalprice;
+  // position: relative;
+  // bottom: 300px;
+}
+
+.s-card {
+  border: 1px solid gray;
+}
