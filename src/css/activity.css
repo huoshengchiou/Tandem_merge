@@ -1,0 +1,306 @@
+/* ------------------------
+可用的顏色:
+藍色：#79CEE2
+橘色：#F9A451
+灰色：#ADB6BD
+深藍 - 瑠璃 rgb(0, 92, 175)、#005CAF
+綠 - 木賊 rgb(45, 109, 75)、#2D6D4B
+黃 - 黄蘗 rgb(251, 226, 81)、#FBE251
+黑 - 憲法染 rgb(67, 52, 27)、#43341B
+白 - 白練 rgb(252, 250, 242)、#FCFAF2
+ ------------------------ */
+
+/* 套用至所有版面連結的基本設定 */
+a{
+  color: #79CEE2;
+  text-decoration: none;
+}
+a:hover{
+  color: #005CAF;
+  text-decoration: none;
+  transition: none;
+}
+.aBtn.aAgree{
+  border: 1px solid #79CEE2;
+  background: white;
+  color: #79CEE2;
+}
+.aBtn.aAgree:hover{
+  border: 1px solid #79CEE2;
+  background: #79CEE2;
+  color: white;
+}
+.aBtn.aCencal{
+  border: 1px solid #F9A451;
+  background: white;
+  color: #F9A451;
+}
+.aBtn.aCencal:hover{
+  border: 1px solid #F9A451;
+  background: #F9A451;
+  color: white;
+}
+
+/* ------------------------
+    pages - Activity
+------------------------ */
+
+/* component
+ActivityCarousel */
+.aKV {
+  min-height: 67vh;
+  align-items: center;
+  margin: 20px 0;
+}
+.aSideCarouselInfo{
+  bottom: 10px;
+  background: rgba(67, 52, 27 , .7);
+  padding: 10px;
+}
+
+/* component
+ActivityCategorySearchbar */
+.aSearchbar{
+  margin: auto;
+  max-width: 1140px;
+  min-height: 45px;
+  border: solid 2.5px #79cee2;
+  border-radius: 25px;
+}
+.aSearchIcon{
+  font-size: 32px;
+  top: -4px;
+  left: 30px;
+  color: #79cee2;
+  z-index: 20;
+}
+.aCategory{
+  color: #79cee2;
+  padding: 8px 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid #79cee2;
+  border-radius: 25px;
+  margin: 2px 15px;
+  transition: .5s;
+}
+.aCategory:hover{
+  color: white;
+  background: #79cee2;
+}
+
+/* component
+ActivityListCard */
+.aListCardWrap{
+  max-width: 530px;
+}
+.aListCardWrap .aListCard ,
+.aListCardWrap Img {
+  transition: 1s;
+}
+.aListCardWrap:hover .aListCard ,
+.aListCardWrap:hover Img {
+  border-radius: 25px;
+  transform: scale(.9);
+}
+.aListCard{
+  border: solid 1px #adb6bd;
+  box-shadow: 0px 0px 10px #adb6bd;
+}
+
+/* Activity
+ActivityPageNumber */
+.pagination  ul {
+  margin: 10px auto;
+}
+.pagination li {
+  width: 50px;
+  height: 50px;
+  border: 1.5px solid #79cee2;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 47px;
+  color: #79cee2;
+  margin-right: 15px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.pagination li:hover {
+  background: #79cee2;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Activity
+開新活動的icon */
+.aAddActivity{
+  font-size: 50px;
+  color: #F9A451;
+  right:150px;
+  bottom: 0px;
+  position:fixed;
+  display: none;
+  z-index: 1;
+}
+.aAddActivity:hover{
+  color: #F9A451;
+}
+.aAddActivity.active{
+  display: block;
+}
+.aAddActivity.fix{
+  position: absolute;
+  bottom: -2220px;
+}
+
+
+/* ------------------------
+pages - ActivityContentPage
+------------------------ */
+
+/* component
+ActivityContentKV */
+.activityWrap{
+  margin: 30px auto;
+  border: solid 1px #adb6bd;
+  box-shadow: 0px 0px 10px #adb6bd;
+  padding-bottom: 30px;
+}
+.aContentKV{
+  margin-top: 30px;
+}
+.aContentCatgory{
+  padding: 5px;
+  color: white;
+  background:#79cee2 ;
+  border: #79cee2 5px solid;
+  top: 20px;
+  right: 0px;
+}
+.aContentPageName{
+  color: rgb(67, 52, 27);
+  border: #79CEE2 5px solid;
+  background: rgba(252, 250, 242 ,.9);
+  bottom: -32px;
+  left: 32px;
+  padding: 10px;
+}
+.aContentCatgory h3 , .aContentPageName h1{
+  margin: auto;
+}
+
+/* component
+ActivityContentInfo */
+.aContent{
+  font-size: 22px;
+  margin-top: 60px;
+  line-height: 46px;
+  /* margin: 10px; */
+}
+.aCreatTime{
+  font-size: 18px;
+}
+.aIcon{
+  font-size: 30px;
+  margin-top: 10px;
+  color: #F9A451;
+  cursor: pointer;
+}
+
+/* component
+ActivityComment */
+.aComment{
+  margin-bottom: 10px;
+}
+.aCommentAvatar{
+  margin: 3px;
+  width: 60px;
+  height: 60px;
+  border: rgb(67, 52, 27) 2px solid;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.aCommentAvatar a img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.aReply{
+  margin-bottom: 20px;
+}
+
+/* ------------------------
+pages - ActivityAddNew
+------------------------ */
+
+/* ActivityNewInfo */
+.aAddInfo{
+  font-size: 22px;
+}
+.aUplodePic{
+  border: dashed 1px rgb(67, 52, 27);
+  font-size: 18px;
+  color: #ADB6BD;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aFixUpload{
+  margin-top: 150px;
+}
+.f-latest-title {
+  display: flex;
+}
+.f-latest-title > span {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.f-latest-title::after,
+.f-latest-title::before {
+  content: '';
+  display: block;
+  flex: 100;
+  border-bottom: 4px solid;
+  transform: translateY(-10px);
+  border-bottom-color: #adb6bd;
+}
+
+.f-latest-title::before {
+  flex: 20px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: auto;
+}
+.swiper-slide {
+  width: auto;
+  overflow: hidden;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+}
+.clearboth{clear: both;}
+.imgbox{float: left;overflow: hidden;}
+.imgstyle{width: 96%;}
+.timep{text-align: left;}
+.closebutton{
+  appearance: none;
+  border: none;
+  background: #FFD800;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  font-weight: 400;
+  font-size: 13px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.twoimage{background-color: #dab4fd!important;}
+.oneimage{background-color: #fdf136!important;}

@@ -6,7 +6,6 @@ import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 
 import Home from './pages/Home'
-import Activity from './pages/activity/Activity'
 import Bulletin from './pages/bulletin/Bulletin'
 
 //                    community pages                          //
@@ -21,10 +20,17 @@ import PostProfile from './pages/community/PostProfile'
 import News from './pages/bulletin/News'
 import Sales from './pages/bulletin/Sales'
 //--------------------------------------------------------------//
-//                    forum pages                          //
+//                         forum pages                          //
 import Forum from './pages/forum/Forum'
 import Article from './pages/forum/Article'
 import ArticlePost from './pages/forum/ArticlePost'
+//---------------------------------------------------------------//
+//                        activity pages                         //
+import Activity from './pages/activity/Activity'
+import ActivityContentPage from './pages/activity/ActivityContentPage'
+import ActivityAddNew from './pages/activity/ActivityAddNew'
+//css
+import '../src/css/activity.css'
 //---------------------------------------------------------------//
 
 import Mbcenterindex from './pages/member/Mbcenterindex'
@@ -44,9 +50,17 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
+            {/* activity */}
             <Route path="/activity">
               <Activity />
             </Route>
+            <Route path="/activityContentPage">
+              <ActivityContentPage />
+            </Route>
+            <Route path="/activityAddNew">
+              <ActivityAddNew />
+            </Route>
+
             <Route path="/bulletin">
               <Bulletin />
             </Route>
