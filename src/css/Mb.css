@@ -364,6 +364,17 @@ body {
 .M-inputwrapper {
   position: relative;
 }
+.M-rgfailmsg {
+  transform: scale(0.8) translateY(-1rem);
+  font-weight: 600;
+  color: #4691f6;
+}
+.M-lgfailmsg {
+  transform: scale(0.8) translateY(-1rem);
+  font-weight: 600;
+  color: #4691f6;
+}
+
 .M-lginputalert {
   margin: 0;
   position: absolute;
@@ -382,6 +393,10 @@ body {
   left: 2rem;
   border: 1px solid #f9a451;
   color: #f9a451;
+}
+.M-forgetpwd:hover {
+  color: white;
+  background: #f9a451;
 }
 .M-rginputalertEmail {
   margin: 0;
@@ -417,6 +432,10 @@ body {
   top: 15rem;
   left: 8.5rem;
 }
+.M-loginBtn:hover {
+  background: #79cee2;
+  color: white;
+}
 
 .M-loginSwitch {
   width: 5rem;
@@ -438,6 +457,10 @@ body {
   position: absolute;
   top: 15rem;
   left: 8.5rem;
+}
+.M-regBtn:hover {
+  color: white;
+  background: #79cee2;
 }
 
 .M-regSwitch {
