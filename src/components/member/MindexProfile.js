@@ -357,6 +357,9 @@ function MindexProfile() {
           className="M-avatarWrapper"
           style={{ height: `${editlistopen ? '52rem' : ''}` }}
         >
+          <div className="M-avatarmsg1">
+            <p>紙娃娃</p>
+          </div>
           <section className="M-avatarTop">
             {/* fix */}
             <div className="M-avatartop-up">
