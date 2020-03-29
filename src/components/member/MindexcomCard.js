@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+import { IoIosMore } from 'react-icons/io'
+
 function MindexcomCard() {
   useEffect(() => {
     findmyfriendpost()
@@ -72,6 +74,14 @@ function MindexcomCard() {
                     <h6>{val.created_at}</h6>
                     {/* 發文內容 */}
                     <p>{val.postContent}</p>
+                    <div className="M-comuFootlink">
+                      <a
+                        href={`/postDetailProfile/${val.post_id}`}
+                        style={{ color: 'black' }}
+                      >
+                        <IoIosMore />
+                      </a>
+                    </div>
                   </section>
                 </div>
                 <div className="M-comuFoot">
@@ -86,7 +96,7 @@ function MindexcomCard() {
                   </svg>
                   <figure className="M-comuPoster">
                     {/* 貼文圖片 */}
-                    <img src={val.mbAva} alt="" />
+                    <img src={val.mbAva} alt={val.mbNick} />
                   </figure>
                   <div className="M-comuDes">
                     <h5>{val.mbNick}</h5>

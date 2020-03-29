@@ -9,10 +9,14 @@ import {
   AiFillYoutube,
   AiOutlineExclamationCircle,
   AiFillAppstore,
+  AiOutlineStar,
+  AiFillStar,
+  AiOutlineAppstore,
 } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { addfriendcard } from '../../actions/Maction'
 import Maddfriendcard from '../../components/member/Maddfriendcard'
+import PostCollectionProfile from '../../components/community/PostCollectionProfile'
 
 function PostProfile(props) {
   const dispatch = useDispatch()
@@ -22,6 +26,7 @@ function PostProfile(props) {
   const [friendList, setFriendList] = useState([])
   const [loginUserFriend, setLoginUserFriend] = useState([])
 
+  const [sideNav, setSideNav] = useState(false)
   const [addingFriend, setAddingFriend] = useState(false)
   const [addedFriend, setAddedFriend] = useState(false)
 
@@ -98,7 +103,7 @@ function PostProfile(props) {
   useEffect(() => {
     applyfriend(loginUserId)
   }, [loginUserId])
-  console.log('friend', friendList)
+  // console.log('friend', friendList)
 
   const checkaddfriend = () => {
     let addFriendId = null
@@ -197,39 +202,99 @@ function PostProfile(props) {
                       margin: '20px 0',
                       borderTop: '1px solid #79cee2',
                       borderBottom: '1px solid #79cee2',
-                      // color: '#79cee2',
                     }}
                   >
-                    <p className="mx-2 my-0">
-                      <AiFillAppstore
-                        style={{
-                          fontSize: '30px',
-                          padding: '5px 0',
-                          color: '#79cee2',
-                        }}
-                      />
+                    <p
+                      className="mx-2 my-0"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => {
+                        setSideNav(false)
+                        console.log('false', sideNav)
+                      }}
+                    >
+                      {sideNav ? (
+                        <AiOutlineAppstore
+                          style={{
+                            fontSize: '30px',
+                            padding: '5px 0',
+                            color: '#79cee2',
+                          }}
+                        />
+                      ) : (
+                        <AiFillAppstore
+                          style={{
+                            fontSize: '30px',
+                            padding: '5px 0',
+                            color: '#79cee2',
+                          }}
+                        />
+                      )}
                       貼文列表
                     </p>
-                    <p className="mx-2 my-0">我的收藏</p>
-                  </div>
-                  <div
-                    className="d-flex justify-content-center align-items-center"
-                    style={{ height: '300px' }}
-                  >
-                    <h2 style={{ color: '#79cee2' }}>
-                      <h1
-                        className="mx-auto my-2"
-                        style={{
-                          width: '40px',
-                          color: '#79cee2',
-                          fontSize: '50px',
+                    {loginUserId === +props.match.params.id ? (
+                      <p
+                        className="mx-2 my-0 "
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          setSideNav(true)
                         }}
                       >
-                        <AiOutlineExclamationCircle />
-                      </h1>
-                      目前沒有任何文章
-                    </h2>
+                        {' '}
+                        {sideNav ? (
+                          <AiOutlineStar
+                            style={{
+                              fontSize: '30px',
+                              padding: '5px 0',
+                              color: '#79cee2',
+                            }}
+                          />
+                        ) : (
+                          <AiFillStar
+                            style={{
+                              fontSize: '30px',
+                              padding: '5px 0',
+                              color: '#79cee2',
+                            }}
+                          />
+                        )}
+                        收藏列表
+                      </p>
+                    ) : (
+                      ''
+                    )}
                   </div>
+
+                  {sideNav ? (
+                    <div
+                      style={{ position: 'absolute', top: '18.5%' }}
+                      // className="nonActive"
+                    >
+                      <PostCollectionProfile
+                        postId={postProfile.post_id}
+                        postMemberId={postProfile.mbId}
+                        loginMemberId={loginUserId}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="d-flex justify-content-center align-items-center"
+                      style={{ height: '300px' }}
+                    >
+                      <h2 style={{ color: '#79cee2' }}>
+                        <h1
+                          className="mx-auto my-2"
+                          style={{
+                            width: '40px',
+                            color: '#79cee2',
+                            fontSize: '50px',
+                          }}
+                        >
+                          <AiOutlineExclamationCircle />
+                        </h1>
+                        目前沒有任何文章
+                      </h2>
+                    </div>
+                  )}
                 </div>
                 <div className="col-4">
                   <div
@@ -467,7 +532,7 @@ function PostProfile(props) {
         {/* </div> */}
         <div className="container my-5">
           <div className="row">
-            <div className="col-9">
+            <div className="col-9 position-relative">
               <div
                 className="d-flex align-items-center"
                 style={{
@@ -479,47 +544,97 @@ function PostProfile(props) {
                   // color: '#79cee2',
                 }}
               >
-                <p className="mx-2 my-0">
-                  <AiFillAppstore
-                    style={{
-                      fontSize: '30px',
-                      padding: '5px 0',
-                      color: '#79cee2',
-                    }}
-                  />
+                <p
+                  className="mx-2 my-0"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    setSideNav(false)
+                    console.log('false', sideNav)
+                  }}
+                >
+                  {sideNav ? (
+                    <AiOutlineAppstore
+                      style={{
+                        fontSize: '30px',
+                        padding: '5px 0',
+                        color: '#79cee2',
+                      }}
+                    />
+                  ) : (
+                    <AiFillAppstore
+                      style={{
+                        fontSize: '30px',
+                        padding: '5px 0',
+                        color: '#79cee2',
+                      }}
+                    />
+                  )}
                   貼文列表
                 </p>
-                <p className="mx-2 my-0 ">
-                  {' '}
-                  <AiFillAppstore
-                    style={{
-                      fontSize: '30px',
-                      padding: '5px 0',
-                      color: '#79cee2',
+                {loginUserId === +props.match.params.id ? (
+                  <p
+                    className="mx-2 my-0 "
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      setSideNav(true)
                     }}
+                  >
+                    {' '}
+                    {sideNav ? (
+                      <AiFillStar
+                        style={{
+                          fontSize: '30px',
+                          padding: '5px 0',
+                          color: '#79cee2',
+                        }}
+                      />
+                    ) : (
+                      <AiOutlineStar
+                        style={{
+                          fontSize: '30px',
+                          padding: '5px 0',
+                          color: '#79cee2',
+                        }}
+                      />
+                    )}
+                    收藏列表
+                  </p>
+                ) : (
+                  ''
+                )}
+              </div>
+              {sideNav ? (
+                <div
+                  style={{ position: 'absolute', top: '18.5%' }}
+                  // className="nonActive"
+                >
+                  <PostCollectionProfile
+                    postId={postProfile.post_id}
+                    postMemberId={postProfile.mbId}
+                    loginMemberId={loginUserId}
                   />
-                  我的收藏
-                </p>
-              </div>
-              <div className="d-flex flex-wrap">
-                {arr.map((v, i) => (
-                  <div className="" key={i}>
-                    <figure
-                      className="C-profilePostFigure"
-                      onClick={() => {
-                        window.location.href = `/postDetailProfile/${v.post_id}`
-                      }}
-                    >
-                      <>
-                        <img
-                          src={`http://localhost:6001/img/${v.postImg}`}
-                          style={{ width: '100%' }}
-                        />
-                      </>
-                    </figure>
-                  </div>
-                ))}
-              </div>
+                </div>
+              ) : (
+                <div className="d-flex flex-wrap">
+                  {arr.map((v, i) => (
+                    <div className="" key={i}>
+                      <figure
+                        className="C-profilePostFigure"
+                        onClick={() => {
+                          window.location.href = `/postDetailProfile/${v.post_id}`
+                        }}
+                      >
+                        <>
+                          <img
+                            src={`http://localhost:6001/img/${v.postImg}`}
+                            style={{ width: '100%' }}
+                          />
+                        </>
+                      </figure>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="col-3">
               <div

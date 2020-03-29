@@ -198,7 +198,7 @@ function Header() {
             </div>
           </Link>
         </div>
-        {/* //RWD後切換選單 */}
+        {/* -------RWD後切換選單----------------------------------------- */}
         <div className="T-rwdmenuwrapper">
           <div
             className="T-rwdmenubtn"
@@ -215,7 +215,7 @@ function Header() {
               {/* 連結細節 */}
               <ul className="T-rwdlinklist">
                 <li className="T-rwdlinkpart">
-                  <NavLink href="/productlist">遊戲庫</NavLink>
+                  <Link to="/productlist">遊戲庫</Link>
                 </li>
                 <li className="T-rwdlinkpart">
                   <NavLink href="/community">社群探索</NavLink>
