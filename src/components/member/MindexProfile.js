@@ -379,7 +379,7 @@ function MindexProfile() {
               setEditListOpen(true)
             }}
           >
-            <AiOutlineSolution />
+            <AiOutlineSolution className="M-Deschagebtnicon" />
             修改個人資料
           </button>
           {/* 外連個人貼文按鈕 */}
@@ -534,7 +534,7 @@ function MindexProfile() {
                 dispatch(displayChange(2))
               }}
             >
-              <AiOutlineTeam />
+              <AiOutlineTeam className="M-subicon3" />
               好友管理
             </button>
             <button

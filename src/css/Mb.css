@@ -548,17 +548,18 @@ body {
   width: 8rem;
   height: 2rem;
   font-size: 1rem;
-  /* font-weight: 700; */
   border: 1px solid #79cee2;
   color: #79cee2;
   text-align: center;
   background: white;
   position: absolute;
-  /* font-weight: 600; */
   left: 5rem;
   top: 10rem;
   transition: 0.75s;
-  /* margin-left: 5rem; */
+}
+.M-Deschagebtnicon {
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
 }
 .M-mbDeschagebtn:focus {
   outline: none;
@@ -571,7 +572,6 @@ body {
 .M-avatarChange {
   width: 3rem;
   height: 3rem;
-  /* border: 1px dotted green; */
   position: absolute;
   font-size: 3rem;
   line-height: 1rem;
@@ -786,9 +786,9 @@ border: 1px solid black;
 }
 .M-sublayerbtn {
   width: 7.8125rem;
-  width: 6.58rem;
+  width: 6.7rem;
   height: 7.8125rem;
-  height: 3.5rem;
+  height: 3rem;
   /* margin-top: 3.8125rem; */
   line-height: 2rem;
   font-size: 1.15rem;
@@ -819,9 +819,16 @@ border: 1px solid black;
 }
 
 .M-subicon1 {
+  font-size: 1.2rem;
   margin-right: 0.2rem;
 }
 .M-subicon2 {
+  font-size: 1.2rem;
+
+  margin-right: 0.2rem;
+}
+.M-subicon3 {
+  font-size: 1.2rem;
   margin-right: 0.2rem;
 }
 
