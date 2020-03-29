@@ -13,28 +13,31 @@ import '../../css/forum.scss'
 import Swal from 'sweetalert2'
 
 function ArticleRelative(props) {
-  console.log('component內容', props)
+  // console.log('component內容', props)
 
   const [article, setArticle] = useState([])
   const [tagName, setTagname] = useState('')
   const articleId = props.match.params.articleId
     ? props.match.params.articleId
     : ''
-  console.log('ID', articleId)
+  console.log('相關文章ID', articleId)
 
   async function getDetailFromServer(articleId) {
-    const request = new Request('http://localhost:6001/articles/' + articleId, {
-      method: 'GET',
-      credentials: 'include',
-    })
+    const request = new Request(
+      'http://localhost:6001/articles/article/' + articleId,
+      {
+        method: 'GET',
+        credentials: 'include',
+      }
+    )
     const response = await fetch(request)
     const data = await response.json()
-    console.log('文章1', data)
-    setArticle(data[0])
+    // console.log('相關文章1', data)
+    setArticle(data)
   }
 
   useEffect(() => {
-    console.log('文章2', props)
+    // console.log('文章2', props)
     getDetailFromServer(articleId)
   }, [])
 
@@ -94,7 +97,8 @@ function ArticleRelative(props) {
 
             <div class="f-gap"></div>
             <h2 class="f-relative-post-title h4">
-              <a href="#">{article.articleName}</a>
+              <a href="">問題】關於用Input.GetAxis做角色移動的奇妙問題</a>
+              {/* <a href="#">{article.articleName}</a> */}
               {/* <a href="#">For good, too though, in consequence</a> */}
             </h2>
           </div>
@@ -117,7 +121,8 @@ function ArticleRelative(props) {
 
             <div class="f-gap"></div>
             <h2 class="f-relative-post-title h4">
-              <a href="#">{article.articleName}</a>
+              <a href="">【問題】Opencv c++庫 轉 so檔案置入問題</a>
+              {/* <a href="#">{article.articleName}</a> */}
               {/* <a href="#">We found a witch! May we burn her?</a> */}
             </h2>
           </div>

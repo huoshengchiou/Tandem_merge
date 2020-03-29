@@ -20,7 +20,7 @@ function ForumArticleListBox(props) {
               <img
                 src={`./images/forum/article${props.data.articleId}.jpg`}
                 // src="./images/forum/post-7-mid-square.jpg"
-                alt="At length one of them called out in a clear"
+                alt={props.data.articleName}
               />
               <ArticleTag tagName={props.tagName} />
             </a>
@@ -46,7 +46,11 @@ function ForumArticleListBox(props) {
               </div>
               <div class="f-gap"></div>
               <div class="f-hot-post-text">
-                <p>{props.data.articleContent}</p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: props.data.articleContent,
+                  }}
+                ></p>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 import {
   Container,
@@ -12,51 +12,72 @@ import {
 } from 'react-bootstrap'
 import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-import { useHistory } from 'react-router-dom'
 //檔案上傳套件
 import { useDropzone } from 'react-dropzone'
 import { AiOutlinePicture } from 'react-icons/ai'
+
+import Swal from 'sweetalert2'
 import '../../css/forum.scss'
 
 //表單資訊
 
 // 圖檔上傳設定
-const thumbsContainer = {
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  top: 0,
-  left: '40px',
-}
-const thumb = {
-  display: 'inline-flex',
-  borderRadius: 2,
-  border: '1px solid #eaeaea',
-  marginBottom: 8,
-  marginRight: 8,
-  width: 600,
-  height: 400,
-  padding: 4,
-  boxSizing: 'border-box',
-}
-const thumbInner = {
-  display: 'flex',
-  minWidth: 0,
-  overflow: 'hidden',
-}
-const img = {
-  display: 'block',
-  width: 'auto',
-  height: '100%',
-}
+// const thumbsContainer = {
+//   display: 'flex',
+//   flexDirection: 'row',
+//   flexWrap: 'wrap',
+//   top: 0,
+//   left: '40px',
+// }
+// const thumb = {
+//   display: 'inline-flex',
+//   borderRadius: 2,
+//   border: '1px solid #eaeaea',
+//   marginBottom: 8,
+//   marginRight: 8,
+//   width: 600,
+//   height: 400,
+//   padding: 4,
+//   boxSizing: 'border-box',
+// }
+// const thumbInner = {
+//   display: 'flex',
+//   minWidth: 0,
+//   overflow: 'hidden',
+// }
+// const img = {
+//   display: 'block',
+//   width: 'auto',
+//   height: '100%',
+// }
 
 function ArticlePost(props) {
+  const history = useHistory()
+  const [loginStatus, setLoginStatus] = useState(false)
+  const [mbId, setmbId] = useState('')
+
+  console.log('ID', mbId)
+
+  // 進入即判斷localStorage裡面的登入Data(沒有表示尚未登入或已經登出)
+  // 為避免被使用者以輸入網址的方式跳轉過來
   useEffect(() => {
-    getfriendinfo()
-    // test()
+    if (localStorage.getItem('LoginUserData')) {
+      const localUserData = JSON.parse(localStorage.getItem('LoginUserData'))
+      setmbId(localUserData.mbId)
+      // console.log('ID', mbId)
+
+      // setMinDate(rightNow)
+      setLoginStatus(true)
+      console.log('OK')
+    } else {
+      setLoginStatus(false)
+      console.log('NO')
+      Swal.fire({ title: '請先登入喲！', icon: 'warning' }).then(function(r) {
+        history.push('/forum')
+      })
+    }
   }, [])
 
-  const [mbId, setmbId] = useState('')
   // const test = () => {
   //   const localdata = JSON.parse(localStorage.getItem('LoginUserData'))
   //   const mbId = localdata.mbId
@@ -93,39 +114,6 @@ function ArticlePost(props) {
     }
   }
 
-  const getfriendinfo = () => {
-    const UserData = JSON.parse(localStorage.getItem('LoginUserData'))
-    const mbId = UserData.mbId
-
-    setmbId(mbId)
-    // 需要利用點擊取得對方id
-    const input = { mbId }
-    async function Findfriendinfo(mbId, callback) {
-      const request = new Request(
-        'http://localhost:6001/tandem/member/getUserfromFetch',
-        {
-          method: 'POST',
-          body: JSON.stringify(mbId),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
-
-      const response = await fetch(request)
-      console.log('RE fetch完成')
-      const payload = await response.json()
-      console.log(payload)
-      //TODO
-
-      // 轉址
-      // window.location.href = 'http://localhost:3000/'
-    }
-    //呼叫上方fetch送後端
-    Findfriendinfo(input)
-  }
-
   //建立文章
   async function postArticle() {
     const req = new Request('http://localhost:6001/articles/articlepost', {
@@ -142,77 +130,77 @@ function ArticlePost(props) {
     await console.log('order', order)
   }
 
-  const history = useHistory()
   //文章類型 , 主題類型 , 文章標題 , 文章內容 , 文章圖檔
-  const [articleCategory, setArticleCategory] = useState('')
-  const [articleClass, setArticleClass] = useState('')
-  const [articleName, setArticleName] = useState('')
-  const [articleContent, setArticleContent] = useState('')
-  const [articleImage, setArticleImage] = useState('')
-  const [files, setFiles] = useState([])
+  // const [articleCategory, setArticleCategory] = useState('')
+  // const [articleClass, setArticleClass] = useState('')
+  // const [articleName, setArticleName] = useState('')
+  // const [articleContent, setArticleContent] = useState('')
+  // const [articleImage, setArticleImage] = useState('')
+  // const [files, setFiles] = useState([])
 
   //圖檔上傳設定
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
-    onDrop: acceptedFiles => {
-      setFiles(
-        acceptedFiles.map(file =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
-      )
-    },
-  })
-  const thumbs = files.map(file => (
-    <div style={thumb} key={file.name}>
-      <div style={thumbInner}>
-        <img src={file.preview} style={img} alt="uploadpic" />
-      </div>
-    </div>
-  ))
+  // const { getRootProps, getInputProps } = useDropzone({
+  //   accept: 'image/*',
+  //   onDrop: acceptedFiles => {
+  //     setFiles(
+  //       acceptedFiles.map(file =>
+  //         Object.assign(file, {
+  //           preview: URL.createObjectURL(file),
+  //         })
+  //       )
+  //     )
+  //   },
+  // })
+  // const thumbs = files.map(file => (
+  //   <div style={thumb} key={file.name}>
+  //     <div style={thumbInner}>
+  //       <img src={file.preview} style={img} alt="uploadpic" />
+  //     </div>
+  //   </div>
+  // ))
 
-  useEffect(
-    () => () => {
-      files.forEach(file => URL.revokeObjectURL(file.preview))
-    },
-    [files]
-  )
+  // useEffect(
+  //   () => () => {
+  //     files.forEach(file => URL.revokeObjectURL(file.preview))
+  //   },
+  //   [files]
+  // )
 
-  const addNewArticle = () => {
-    const addNewPost = {
-      articleCategory,
-      articleClass,
-      articleName,
-      articleContent,
-      articleImage,
-    }
-    sendNewArticleDataToServer(addNewPost, redirect)
-  }
+  // const addNewArticle = () => {
+  //   const addNewPost = {
+  //     articleCategory,
+  //     articleClass,
+  //     articleName,
+  //     articleContent,
+  //     articleImage,
+  //   }
+  //   sendNewArticleDataToServer(addNewPost, redirect)
+  // }
 
-  async function sendNewArticleDataToServer(addNewPost, callback) {
-    const request = new Request(`http://localhost:6001/articles`, {
-      method: 'POST',
-      body: JSON.stringify(addNewPost),
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }),
-    })
-    console.log('addNewPost', JSON.stringify(addNewPost))
+  // async function sendNewArticleDataToServer(addNewPost, callback) {
+  //   const request = new Request(`http://localhost:6001/articles`, {
+  //     method: 'POST',
+  //     body: JSON.stringify(addNewPost),
+  //     headers: new Headers({
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //     }),
+  //   })
+  //   console.log('addNewPost', JSON.stringify(addNewPost))
 
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log(data)
-    callback()
-  }
+  //   const response = await fetch(request)
+  //   const data = await response.json()
+  //   console.log(data)
+  //   callback()
+  // }
 
-  function redirect() {
-    history.goBack()
-  }
+  // function redirect() {
+  //   history.goBack()
+  // }
 
-  return (
+  const show = (
     <>
+      {' '}
       {/* <h1>這裡的值是{copymbid}</h1> */}
       <div class="container">
         <div class="row">
@@ -313,7 +301,7 @@ function ArticlePost(props) {
                     </div>
                   </div>
 
-                  <Col md={8} className="text-center f-post-image-zone">
+                  {/* <Col md={8} className="text-center f-post-image-zone">
                     <section
                       className="aUplodePic position-relative"
                       name="aKV"
@@ -346,7 +334,7 @@ function ArticlePost(props) {
                         </aside>
                       </div>
                     </section>
-                  </Col>
+                  </Col> */}
 
                   <div class="f-gap-3"></div>
                   <div class="col-12 f-article-post-btn ">
@@ -362,13 +350,13 @@ function ArticlePost(props) {
                   <div class="f-gap-3"></div>
 
                   {/* <div className="input-group">
-                                        <div className="input-group-prepend">
-                                            <span className="input-group-text" id="basic-addon">
-                                            <i className="fas fa-pencil-alt prefix"></i>
-                                            </span>
-                                        </div>
-                                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                                    </div> */}
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" id="basic-addon">
+                                        <i className="fas fa-pencil-alt prefix"></i>
+                                        </span>
+                                    </div>
+                                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                </div> */}
                 </div>
               </Form>
             </div>
@@ -377,6 +365,16 @@ function ArticlePost(props) {
       </div>
     </>
   )
+
+  // const plslogin = (
+  //   <article className="content container">
+  //     <Row className="justify-content-center">
+  //       <h1>！！！不要走後門！！！</h1>
+  //     </Row>
+  //   </article>
+  // )
+
+  return <>{loginStatus ? show : ''}</>
 }
 
 export default ArticlePost

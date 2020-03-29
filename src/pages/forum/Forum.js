@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter, Switch, Route } from 'react-router-dom'
+import { withRouter, Switch, Route, Link, useHistory } from 'react-router-dom'
 // import { NavLink } from 'react-bootstrap'
 //redux
 import { connect } from 'react-redux'
@@ -21,11 +21,17 @@ import {
   AiOutlineRight,
   AiOutlineCaretLeft,
   AiOutlineCaretRight,
+  AiFillPlusCircle,
+  AiOutlinePlusCircle,
 } from 'react-icons/ai'
+import Swal from 'sweetalert2'
+
 import $ from 'jquery'
 import '../../css/forum.scss'
 
 function Forum(props) {
+  const history = useHistory()
+
   // const [article, setArticle] = useState([])
   // const articleId = props.match.params.type
   // console.log(articleId)
@@ -36,11 +42,11 @@ function Forum(props) {
   // const [content, setContent] = useState([])
 
   useEffect(() => {
-    console.log('dddd', props)
+    // console.log('dddd', props)
     props.getArticleData()
   }, [])
 
-  console.log('tag', tagName)
+  // console.log('tag', tagName)
   // console.log('內容', props.article)
 
   function changeTagName(newTagName) {
@@ -93,12 +99,64 @@ function Forum(props) {
   //   console.log('content', content)
   // }, [tagName])
 
+  const [loginStatus, setLoginStatus] = useState(false)
+  const [fill, setFill] = useState(false)
+
+  //若觸發新增活動Icon，即先判斷登入狀態
+  function mayIShow() {
+    if (loginStatus) {
+      history.push('/articlepost')
+    } else {
+      Swal.fire({
+        title: '請先登入喲！',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#79CEE2',
+        cancelButtonColor: '#F9A451',
+        confirmButtonText: '登入',
+        cancelButtonText: '取消',
+      }).then(result => {
+        if (result.value) {
+          history.push('/forum')
+        }
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem('LoginUserData')) {
+      setLoginStatus(true)
+    } else {
+      setLoginStatus(false)
+    }
+  }, [])
+
+  //hover新增活動按鈕使用特效及設定切換模式
+  $('.articlepost').hover(
+    () => {
+      setFill(true)
+    },
+    () => {
+      setFill(false)
+    }
+  )
+  const outlineIcon = (
+    <>
+      <AiOutlinePlusCircle />
+    </>
+  )
+  const fillIcon = (
+    <>
+      <AiFillPlusCircle />
+    </>
+  )
+
   return (
     <>
       <div class="container">
         {/* 文章分類  */}
-        <div class="f-gap-2"></div>
-        <div class="row f-vertical-gap">
+        <div class="f-gap-2 "></div>
+        <div class="row f-vertical-gap d-flex justify-content-between">
           <div class="col-lg-4">
             <div class="f-category">
               <div class="f-category-icon">
@@ -177,7 +235,9 @@ function Forum(props) {
         </div>
 
         {/* 最新文章  */}
-        <div class="f-gap-2"></div>
+        {/* <div class="f-gap-2 "></div> */}
+
+        <div class="f-gap"></div>
         <h3 class="f-latest-title">
           <span>
             <span class="f-category-text-1">最新</span> 文章
@@ -204,6 +264,9 @@ function Forum(props) {
                   props.article.map((value, index) => {
                     if (tagName) {
                       if (props.article[index].articleCategoryId === tagName) {
+                        // for (let i = 0; i < 10; i++) {
+                        //   let j = j + 1
+                        //   console.log('test', j)
                         return (
                           <ForumLatestLeftBox
                             key={index}
@@ -215,19 +278,23 @@ function Forum(props) {
                             }}
                           />
                         )
+                        // }
                       }
                     } else {
-                      return (
-                        <ForumLatestLeftBox
-                          key={index}
-                          data={props.article[index]}
-                          tagName={props.article[index].articleCategoryId}
-                          index={index}
-                          changeIndex={num => {
-                            changeIndexOfLastArtical(num)
-                          }}
-                        />
-                      )
+                      // console.log('index', index)
+                      if (index < 10) {
+                        return (
+                          <ForumLatestLeftBox
+                            key={index}
+                            data={props.article[index]}
+                            tagName={props.article[index].articleCategoryId}
+                            index={index}
+                            changeIndex={num => {
+                              changeIndexOfLastArtical(num)
+                            }}
+                          />
+                        )
+                      }
                     }
                   })}
 
@@ -393,6 +460,13 @@ function Forum(props) {
                   onClick={() => changeClassName('5')}
                 >
                   輕鬆閒聊
+                </a>
+              </li>
+              <li class="nav-item f-index-nav-list">
+                <a className="" onClick={mayIShow}>
+                  <Link className="articlepost">
+                    {fill ? fillIcon : outlineIcon}
+                  </Link>
                 </a>
               </li>
             </ul>

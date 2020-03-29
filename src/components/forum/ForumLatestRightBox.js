@@ -12,7 +12,7 @@ import $ from 'jquery'
 import '../../css/forum.scss'
 
 function ForumLatestRightBox(props) {
-  console.log('right', props)
+  // console.log('right', props)
 
   $(function() {
     var len = 250 // 超過250個字以"..."取代
@@ -37,7 +37,7 @@ function ForumLatestRightBox(props) {
               <img
                 src={`../../images/forum/article${props.data.articleId}.jpg`}
                 // src="./images/forum/post-1.jpg"
-                alt="Smell magic in the air. Or maybe barbecue"
+                alt={props.data.articleName}
               />
               <ArticleTag tagName={props.data.articleCategoryId} />
               {/* <span class=" f-latest-left-box-article-category">
@@ -47,8 +47,11 @@ function ForumLatestRightBox(props) {
             <div class=" f-latest-right-box-article-title">
               <p>{props.data.articleName}</p>
             </div>
-            <div class=" f-latest-right-box-article-text">
-              <p>{props.data.articleContent}</p>
+            <div
+              class=" f-latest-right-box-article-text"
+              dangerouslySetInnerHTML={{ __html: props.data.articleContent }}
+            >
+              {/* <p>{props.data.articleContent}</p> */}
             </div>
             <div class="f-gap"></div>
             <div class="d-flex justify-content-between f-right-side">
