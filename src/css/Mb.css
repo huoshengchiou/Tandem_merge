@@ -838,7 +838,7 @@ border: 1px solid black;
 .M-Likeproducthead {
   width: 100%;
   height: 3rem;
-  background: #adb6bd;
+  background: #43341b;
   margin-bottom: 2rem;
   text-align: center;
 
@@ -848,7 +848,7 @@ border: 1px solid black;
   /* margin-top: 1rem; */
   /* margin-left: 0.8rem;
   margin-bottom: 1rem; */
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.4rem;
   color: #fcfaf2;
   font-size: 1.2rem;
   line-height: 3rem;
@@ -942,7 +942,8 @@ border: 1px solid black;
 }
 
 .M-markpdDes p {
-  margin: 5px 5px;
+  color: black;
+  margin: 5px 10px;
   font-size: 0.8rem;
   line-height: 25px;
   text-align: left;
@@ -966,16 +967,17 @@ border: 1px solid black;
   font-size: 2.5rem;
   line-height: 2.5rem;
   display: inline-block;
-  color: #707070;
+  color: black;
   text-decoration: none;
   float: right;
-  filter: opacity(50%);
+  filter: opacity(100%);
+
   /* position: absolute;
   right: 0; */
 }
 
 .M-markpdTrans:hover {
-  filter: opacity(100%);
+  filter: opacity(50%);
 }
 
 .clearfix::after {

@@ -28,8 +28,8 @@ nav {
 .footer {
   min-height: 300px;
 }
-
-.footer img {
+/* //下到global */
+img {
   max-width: 100%;
 }
 
