@@ -29,7 +29,7 @@ nav {
   min-height: 300px;
 }
 
-img {
+.footer img {
   max-width: 100%;
 }
 
@@ -43,12 +43,15 @@ ul {
   list-style: none;
 }
 
-nav,
+/* nav,
 footer {
   background-color: #f0f0ee;
+} */
+footer {
+  background: white;
 }
 
-a {
+/* a {
   text-decoration: none;
   color: #007bff;
 }
@@ -57,7 +60,7 @@ a:hover,
 a:active {
   text-decoration: underline;
   color: #005caf;
-}
+} */
 
 footer {
   min-height: 0%;
