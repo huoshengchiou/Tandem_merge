@@ -78,7 +78,27 @@ export default function AddPost(props) {
             {/* 發布和取消按鈕 */}
 
             <div className="m-3 d-flex justify-content-end">
-              <AiOutlineCloseCircle style={iconStyle} className="d-block" />
+              <AiOutlineCloseCircle
+                style={iconStyle}
+                className="d-block"
+                onClick={() => {
+                  Swal.fire({
+                    title: '确定離開畫面吗？',
+                    // text: '确定離開畫面吗？',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#79cee2',
+                    cancelButtonColor: '#F9A451',
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                  }).then(result => {
+                    if (result.value) {
+                      window.location.href = `/Communityprofile/${loginUserId}`
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    }
+                  })
+                }}
+              />
             </div>
 
             {/* 上傳區塊                 */}
