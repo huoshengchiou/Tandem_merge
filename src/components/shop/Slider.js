@@ -57,32 +57,32 @@ function Slider(props) {
   return (
     <>
       <div className="s-slider-box d-flex h5">
-        <div className="p-0 col col-lg-4 col-sm-6 flex-grow-1">
+        <div className="p-0 col col-lg-4 col-6 flex-grow-1">
           <div className="sbox-s position-relative">
             <Link onClick={() => props.handletype(5)}>運動</Link>
           </div>
         </div>
-        <div className="p-0 col col-lg-4 col-sm-6 flex-grow-1">
+        <div className="p-0 col col-lg-4 col-6 flex-grow-1">
           <div className="sbox-s position-relative">
             <Link onClick={() => props.handletype(1)}>休閒</Link>
           </div>
         </div>
-        <div className="p-0 col col-lg-4 col-sm-6 flex-grow-1">
+        <div className="p-0 col col-lg-4 col-6 flex-grow-1">
           <div className="sbox-s position-relative">
             <Link onClick={() => props.handletype(3)}>血腥</Link>
           </div>
         </div>
-        <div className="p-0 col col-lg-4 col-sm-6 flex-grow-1">
+        <div className="p-0 col col-lg-4 col-6 flex-grow-1">
           <div className="sbox-s position-relative">
             <Link onClick={() => props.handletype(4)}>冒險</Link>
           </div>
         </div>
-        <div className="p-0 col col-lg-4 col-sm-6 flex-grow-1">
+        <div className="p-0 col col-lg-4 col-6 flex-grow-1">
           <div className="sbox-s position-relative">
             <Link onClick={() => props.handletype(2)}>動作</Link>
           </div>
         </div>
-        <div className="p-0 col col-lg-4 col-sm-6 flex-grow-1">
+        <div className="p-0 col col-lg-4 col-6 flex-grow-1">
           <div className="sbox-s position-relative">
             <Link onClick={() => props.handletype(6)}>競速</Link>
           </div>

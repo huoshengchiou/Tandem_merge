@@ -245,7 +245,7 @@ function Activity(props) {
           </Link>
         </Col>
         {/* 新增活動入口 */}
-        <Link class="aAddActivity" onClick={mayIShow}>
+        <Link className="aAddActivity" onClick={mayIShow}>
           {fill ? fillIcon : outlineIcon}
         </Link>
       </Col>

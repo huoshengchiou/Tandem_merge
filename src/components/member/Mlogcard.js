@@ -344,7 +344,9 @@ function Mlogcard() {
             >
               忘記密碼
             </button>
-            <h4>{`${lginfail ? '登入失敗: ' + lginfailmsg : ''}`}</h4>
+            <h4 className="M-lgfailmsg">{`${
+              lginfail ? '登入失敗 : ' + lginfailmsg : ''
+            }`}</h4>
             <button
               className="M-loginBtn"
               style={{ display: 'inline-block' }}
@@ -418,7 +420,9 @@ function Mlogcard() {
               />
             </div>
             <br />
-            <h4>{`${rgfail ? '註冊失敗: ' + refailmsg : ''}`}</h4>
+            <h4 className="M-rgfailmsg">{`${
+              rgfail ? '註冊失敗 : ' + refailmsg : ''
+            }`}</h4>
             <button
               className="M-regBtn"
               style={{ display: 'inline-block' }}

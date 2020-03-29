@@ -250,22 +250,24 @@ body {
 }
 .M-FgpwdCardpic {
   width: 10rem;
-  height: 19rem;
+  height: 18rem;
   margin: 0 auto;
+
   /* border: 1px solid black; */
-  margin-bottom: 0.2rem;
+  margin-bottom: 2rem;
   /* border: 1px solid teal; */
 }
 .M-FgpwdCardpic img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .M-FgpwdCardinput {
   border: 1px solid #79cee2;
 }
 .M-sendMail {
   margin-top: 0.8rem;
+  margin-left: 0.2rem;
   padding: 0.2rem 0.5rem;
   color: #ec8824;
   font-weight: 400;
@@ -362,6 +364,17 @@ body {
 .M-inputwrapper {
   position: relative;
 }
+.M-rgfailmsg {
+  transform: scale(0.8) translateY(-1rem);
+  font-weight: 600;
+  color: #4691f6;
+}
+.M-lgfailmsg {
+  transform: scale(0.8) translateY(-1rem);
+  font-weight: 600;
+  color: #4691f6;
+}
+
 .M-lginputalert {
   margin: 0;
   position: absolute;
@@ -374,11 +387,16 @@ body {
   color: green;
 }
 .M-forgetpwd {
-  margin-top: 1rem;
   padding: 5px 5px;
-  margin-left: 9rem;
+  position: absolute;
+  bottom: -5rem;
+  left: 2rem;
   border: 1px solid #f9a451;
   color: #f9a451;
+}
+.M-forgetpwd:hover {
+  color: white;
+  background: #f9a451;
 }
 .M-rginputalertEmail {
   margin: 0;
@@ -414,6 +432,10 @@ body {
   top: 15rem;
   left: 8.5rem;
 }
+.M-loginBtn:hover {
+  background: #79cee2;
+  color: white;
+}
 
 .M-loginSwitch {
   width: 5rem;
@@ -435,6 +457,10 @@ body {
   position: absolute;
   top: 15rem;
   left: 8.5rem;
+}
+.M-regBtn:hover {
+  color: white;
+  background: #79cee2;
 }
 
 .M-regSwitch {
@@ -459,6 +485,7 @@ body {
   /* height: 50rem; */
   height: 12.5rem;
   /* background: lightblue; */
+  margin: 0 auto;
   position: relative;
   transition: 2s;
   overflow: hidden;
@@ -470,7 +497,7 @@ body {
 /* } */
 
 .M-avatarTop {
-  border-bottom: 3px solid #79cee2;
+  /* border-bottom: 3px solid #79cee2; */
   /* box-shadow: 0px 3px 6px #707070; */
   padding-bottom: 1rem;
   /* border-top: 10px solid #43341b; */
@@ -484,6 +511,7 @@ body {
   height: 8rem;
   margin-top: 1.5rem;
   margin-left: 1rem;
+  background: white;
   border: 0.5px solid #adb6bd;
   overflow: hidden;
   /* box-shadow: 2px 3px 0px black; */
@@ -507,7 +535,9 @@ body {
 }
 .M-avatarTop h3 {
   margin-top: 1rem;
-  font-size: 1.4rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .M-avatarDes h6 {
@@ -558,6 +588,26 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+.M-avatarsecondgear {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  text-align: center;
+  line-height: 2rem;
+  color: #f9a451;
+  font-size: 2rem;
+  animation: reverRotate 6s infinite linear;
+  top: 5.2rem;
+  left: -0.1rem;
+}
+@keyframes reverRotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 
@@ -662,8 +712,8 @@ border: 1px solid black;
 }
 .M-mbdesformIpt h6 {
   display: inline-block;
-  height: 1.5rem;
-  line-height: 2.5rem;
+  height: 1.7rem;
+  line-height: 3.2rem;
 }
 
 .M-mbdesformIpt input {
@@ -701,7 +751,7 @@ border: 1px solid black;
 /* 會員頁左邊選鈕     fix------- */
 .M-subbtnGroup {
   /* border-top: 5px solid #43341b; */
-  margin: 10px 0;
+  margin: 10px auto;
   width: 23.2rem;
   height: 7.9rem;
   /* background: pink; */
@@ -722,8 +772,9 @@ border: 1px solid black;
 }
 .M-subbtnGroupbrick {
   width: 100%;
-  height: 3px;
-  background: #adb6bd;
+  height: 20px;
+  background: #43341b;
+  margin-bottom: 2rem;
 }
 .M-subbtnwrapper {
   margin-top: 0.5rem;
@@ -741,7 +792,7 @@ border: 1px solid black;
   font-size: 1.15rem;
   font-weight: 500;
   border: 0;
-  margin-top: 0.2rem;
+  /* margin-top: 0.2rem; */
   margin: 0 0.5rem 0.2rem;
   /* border: 0.5px solid #79cee2; */
   color: #79cee2;
@@ -761,15 +812,16 @@ border: 1px solid black;
   width: 6rem;
   height: 3.5rem;
   font-size: 1.5rem;
-  box-shadow: 0px 3px 2px #707070;
+  /* box-shadow: 0px 3px 2px #707070; */
   /* transform: scale(0.95); */
 }
 
 .M-subbtnGroup button:focus {
   outline: none;
+  border: 1px solid #f9a451;
   color: #f9a451;
   z-index: 2;
-  box-shadow: 0px 3px 12px #707070;
+  /* box-shadow: 0px 3px 12px #707070; */
 }
 .M-subbtnGroup button:hover {
   background: #79cee2;
@@ -779,23 +831,25 @@ border: 1px solid black;
 
 /* 關注商品列表 */
 .M-LikeproductWrapper {
+  margin: 0 auto;
   width: 23.2rem;
-  border: 0.5px solid #adb6bd;
+  /* border: 0.5px solid #adb6bd; */
   text-align: center;
 }
 .M-Likeproducthead {
   width: 100%;
   height: 3rem;
-  background: #adb6bd;
+  background: #43341b;
   margin-bottom: 2rem;
   text-align: center;
-  box-shadow: 0px 3px 2px #707070;
+
+  /* box-shadow: 0px 3px 2px #707070; */
 }
 .M-Likeproducthead h3 {
   /* margin-top: 1rem; */
   /* margin-left: 0.8rem;
   margin-bottom: 1rem; */
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.4rem;
   color: #fcfaf2;
   font-size: 1.2rem;
   line-height: 3rem;
@@ -870,7 +924,7 @@ border: 1px solid black;
 }
 
 .M-markpdBody.active {
-  height: 51%;
+  height: 49%;
   border: 2px solid #707070;
   border-top: 0;
 }
@@ -889,7 +943,8 @@ border: 1px solid black;
 }
 
 .M-markpdDes p {
-  margin: 5px 5px;
+  color: black;
+  margin: 5px 10px;
   font-size: 0.8rem;
   line-height: 25px;
   text-align: left;
@@ -913,16 +968,17 @@ border: 1px solid black;
   font-size: 2.5rem;
   line-height: 2.5rem;
   display: inline-block;
-  color: #707070;
+  color: black;
   text-decoration: none;
   float: right;
-  filter: opacity(50%);
+  filter: opacity(100%);
+
   /* position: absolute;
   right: 0; */
 }
 
 .M-markpdTrans:hover {
-  filter: opacity(100%);
+  filter: opacity(50%);
 }
 
 .clearfix::after {
@@ -943,6 +999,8 @@ border: 1px solid black;
   margin: 0;
   transition: 0.75s;
   line-height: 150px;
+  font-weight: 600;
+
   /* white-space: normal; */
 }
 
@@ -1398,16 +1456,22 @@ border: 1px solid black;
 }
 
 .M-friendcollectClear {
-  margin-top: 0.8rem;
+  margin-top: 0.5rem;
   border: 1px solid #f9a451;
   color: #f9a451;
   font-size: 1.2rem;
+  margin-left: 0.2rem;
   text-decoration: none;
+}
+.M-friendcollectClear:hover {
+  color: white;
+  background: #f9a451;
 }
 
 .M-friendcollectCardright {
   width: 11rem;
   height: 9rem;
+  position: relative;
   /* border: 1px solid black; */
 }
 
@@ -1415,7 +1479,7 @@ border: 1px solid black;
   font-weight: 600;
   font-size: 1.2rem;
   margin-top: 0.2rem;
-  line-height: 4rem;
+  line-height: 2rem;
 }
 
 .M-friendcollectCardright p {
@@ -1430,18 +1494,23 @@ border: 1px solid black;
   -webkit-box-orient: vertical;
 }
 
+.M-friendlistsate {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .M-friendcollectDot {
   width: 1rem;
   height: 1rem;
   background: green;
   border-radius: 50%;
   display: inline-block;
-  margin-left: 7.5rem;
 }
 
 .M-friendcollectCardright span {
+  display: inline-block;
   margin-left: 0.4rem;
-  margin-bottom: 0.8rem;
   font-weight: 900;
 }
 
@@ -1623,7 +1692,7 @@ border: 1px solid black;
   position: absolute;
   z-index: 1;
   transition: 0.75s;
-  left: 0.05rem;
+  left: 0.1rem;
   top: -1rem;
 }
 /* 功能取代 */
@@ -1638,7 +1707,7 @@ border: 1px solid black;
   background: white;
   position: relative;
   box-shadow: 0px 3px 12px #707070;
-  border: 0.5px solid #adb6bd;
+  /* border: 0.5px solid #adb6bd; */
 }
 
 /* canvas容器 */
@@ -1784,7 +1853,7 @@ border: 1px solid black;
   /* height: 10.75rem; */
   padding: 0.3rem;
   margin: 0 auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -1926,16 +1995,15 @@ border: 1px solid black;
 .M-leftcuponwrapper {
   background: white;
   position: absolute;
-  right: -19.9rem;
-  bottom: -1.3rem;
+  right: -20rem;
+  top: -50rem;
+  z-index: 1;
   box-shadow: 0px 3px 2px #707070;
   transition: 0.75s;
-  z-index: -1;
-  opacity: 0;
 }
 .M-leftcuponwrapper.active {
   z-index: 1;
-  opacity: 1;
+  top: -0.25rem;
 }
 .M-mycupontopbtn {
   width: 3rem;
@@ -1958,11 +2026,11 @@ border: 1px solid black;
 .M-mycupontopbtn:hover {
   color: #4691f6;
 }
-.M-mycupontopbtn.active {
+/* .M-mycupontopbtn.active {
   z-index: 2;
   right: -3rem;
   top: 9.2rem;
-}
+} */
 /* --------------- */
 .M-mycuponlistwrapper {
   width: 20rem;
@@ -2019,6 +2087,7 @@ border: 1px solid black;
   height: 28rem;
   /* padding: 0 5rem; */
   margin: 0 auto;
+  margin-top: 2rem;
   /* border: 1px solid white; */
   display: flex;
 }
@@ -2081,8 +2150,8 @@ border: 1px solid black;
 }
 
 .M-comuHead_des h5 {
-  font-weight: 500;
-  font-size: 1.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
   line-height: 10px;
 }
 
@@ -2107,6 +2176,23 @@ border: 1px solid black;
   border-top: 0;
   position: relative;
 }
+.M-comuFootlink {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  /* background: teal; */
+  color: black;
+  position: absolute;
+  bottom: 3rem;
+  right: 0.5rem;
+  z-index: 1;
+  cursor: pointer;
+}
+.M-comuFootlink:hover {
+  color: #adb6bd;
+}
 
 .M-comuFoot svg {
   fill: #79cee2;
@@ -2116,12 +2202,12 @@ border: 1px solid black;
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  border: 0.5px solid #adb6bd;
+  border: 0.5px solid black;
   /* border: 0.5px solid black; */
   overflow: hidden;
   position: absolute;
-  bottom: 33%;
-  left: 8.8%;
+  bottom: 1.86rem;
+  left: 1.23rem;
 }
 
 .M-comuPoster img {
@@ -2158,6 +2244,7 @@ border: 1px solid black;
 }
 .M-indexLeftContainer {
   width: 23.4375rem;
+  border: 0.5px solid #adb6bd;
   /* height: 50rem; */
   /* background: lightblue; */
 }
@@ -2222,9 +2309,9 @@ border: 1px solid black;
   content: '';
   display: block;
   flex: 100;
-  border-bottom: 4px solid;
+  border-bottom: 2px solid;
   transform: translateY(-10px);
-  border-bottom-color: #79cee2;
+  border-bottom-color: #adb6bd;
   /* border-bottom-color: #adb6bd; */
 }
 
