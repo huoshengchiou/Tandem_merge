@@ -96,11 +96,13 @@ function Mfriendlistcard() {
               <div className="M-friendcollectCardright">
                 <h5>{val.mbNick}</h5>
                 <p>{val.mbDes}</p>
-                <div
-                  className="M-friendcollectDot"
-                  style={{ backgroundColor: `${val.mbOn ? 'green' : 'red'}` }}
-                ></div>
-                <span>{val.mbOn ? 'on' : 'off'}</span>
+                <div className="M-friendlistsate">
+                  <div
+                    className="M-friendcollectDot"
+                    style={{ backgroundColor: `${val.mbOn ? 'green' : 'red'}` }}
+                  ></div>
+                  <span>{val.mbOn ? 'on' : 'off'}</span>
+                </div>
               </div>
             </div>
             {/* <!-- 朋友列表小卡 終--> */}

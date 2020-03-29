@@ -296,6 +296,7 @@ function MindexProfile() {
               <a
                 href={`http://localhost:3000/product/${val.itemId}`}
                 className="M-markpdTrans clearfix"
+                style={{ color: 'black' }}
               >
                 <IoIosMore />
               </a>
