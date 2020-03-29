@@ -54,36 +54,36 @@ function MindexProfile() {
   }, [])
   // 暫時關閉
   // -----------------------------------
-  // function useInterval(callback, delay) {
-  //   const savedCallback = useRef()
+  function useInterval(callback, delay) {
+    const savedCallback = useRef()
 
-  //   // Remember the latest callback.
-  //   useEffect(() => {
-  //     savedCallback.current = callback
-  //   }, [callback])
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback
+    }, [callback])
 
-  //   // Set up the interval.
-  //   useEffect(() => {
-  //     function tick() {
-  //       savedCallback.current()
-  //     }
-  //     if (delay !== null) {
-  //       let id = setInterval(tick, delay)
-  //       return () => clearInterval(id)
-  //     }
-  //   }, [delay])
-  // }
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current()
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay)
+        return () => clearInterval(id)
+      }
+    }, [delay])
+  }
 
   // // 用在非同步的計算，值需要先寄存在state進行保留
-  // useInterval(() => {
-  //   startPos = recordpos
-  //   startPos -= walkingDis
-  //   setRecordpos(startPos)
-  //   if (startPos < -((azenpdlength - 2) * 23.2)) setRecordpos(23.2)
-  //   // finalPos = startPos + 'rem'
-  //   // console.log(startPos)
-  //   setAzenpdPos(startPos)
-  // }, 5000)
+  useInterval(() => {
+    startPos = recordpos
+    startPos -= walkingDis
+    setRecordpos(startPos)
+    if (startPos < -((azenpdlength - 2) * 23.2)) setRecordpos(23.2)
+    // finalPos = startPos + 'rem'
+    // console.log(startPos)
+    setAzenpdPos(startPos)
+  }, 5000)
   // -----------------------------------
 
   // 在setInterval裡都是會抓到useeffect
