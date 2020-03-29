@@ -352,6 +352,11 @@ footer {
     color: white !important;
     background: #79cee2;
   }
+  .T-linkicon {
+    margin-right: 0.4rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
   .T-personicon {
     width: 15rem;
   }
