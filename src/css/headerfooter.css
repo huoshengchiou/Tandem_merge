@@ -185,22 +185,23 @@ footer {
   width: 10rem;
   height: 5rem;
   text-align: center;
-  /* font-size: 1.3rem; */
-  font: 16px;
-  line-height: 4rem;
-  /* border: 1px solid black; */
   margin: 0 auto;
-  transition: 0.5s;
-  transform: scale(1.4);
 }
-.T-linkpart:hover {
-  transform: scale(1.6);
+
+.T-linkpart h5 {
+  font-size: 1.2rem;
+  line-height: 5rem;
+  color: #79cee2;
+  transition: 0.3s;
+}
+.T-linkpart h5:hover {
+  transform: scale(1.2);
+  color: #005caf;
 }
 .T-personicon {
   width: 15rem;
   height: 5rem;
-  /* background: lightpink; */
-  /* border: 1px solid black; */
+
   position: relative;
 }
 /* 會員登錄後頭像 */
@@ -208,7 +209,6 @@ footer {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  /* background: blueviolet; */
   /* border: 0.2px solid black; */
 }
 .T-personavatar img {
@@ -292,7 +292,8 @@ footer {
     text-align: center;
     line-height: 2.8rem;
     /* background: lightpink; */
-    z-index: 1;
+    color: #f9a451;
+    z-index: 5;
     cursor: pointer;
     margin: auto;
     margin-top: 1rem;
@@ -322,8 +323,8 @@ footer {
     /* background: lightgreen; */
     position: absolute;
     transition: 0.5s;
-    left: 15rem;
-    z-index: 3;
+    left: 12rem;
+    z-index: 4;
   }
   .T-rwdmenucbtn:hover {
     color: #e4872a;
@@ -334,11 +335,11 @@ footer {
     height: 20rem; */
     /* background: pink; */
     position: absolute;
-    z-index: 3;
+    z-index: 6;
     bottom: -18.7rem;
     left: -6rem;
   }
-  .T-rwdlinkpart {
+  .T-rwdlinkpart h5 {
     width: 15rem;
     height: 3rem;
     margin: 0.3rem;
@@ -347,8 +348,8 @@ footer {
     border: 0.2px solid #79cee2;
     /* transition: 0.75s; */
   }
-  .T-rwdlinkpart:hover {
-    /* color: white; */
+  .T-rwdlinkpart h5:hover {
+    color: white !important;
     background: #79cee2;
   }
   .T-personicon {
