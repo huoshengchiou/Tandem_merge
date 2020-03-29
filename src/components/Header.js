@@ -207,7 +207,15 @@ function Header() {
             }}
           >
             <AiOutlineMenu />
-            {/* rwdmenu*/}
+            {/* -------------rwdmenu--------------------------------------------*/}
+            {/* //背景圓 */}
+            <div className={`T-circlebg ${rwdmenuopen ? 'active' : ''}`}></div>
+            <div
+              className="T-rwdmenucbtn"
+              style={{ display: `${rwdmenuopen ? '' : 'none'}` }}
+            >
+              <AiOutlineCloseCircle />
+            </div>
             <div
               style={{ display: `${rwdmenuopen ? '' : 'none'}` }}
               className="T-clickmenuwrapper"
@@ -218,16 +226,16 @@ function Header() {
                   <Link to="/productlist">遊戲庫</Link>
                 </li>
                 <li className="T-rwdlinkpart">
-                  <NavLink href="/community">社群探索</NavLink>
+                  <Link to="/community">社群探索</Link>
                 </li>
                 <li className="T-rwdlinkpart">
-                  <NavLink href="/activity">活動揪團</NavLink>
+                  <Link to="/activity">活動揪團</Link>
                 </li>
                 <li className="T-rwdlinkpart">
-                  <NavLink href="/forum">開發論壇</NavLink>
+                  <Link to="/forum">開發論壇</Link>
                 </li>
                 <li className="T-rwdlinkpart">
-                  <NavLink href="/bulletin">新聞公告</NavLink>
+                  <Link to="/bulletin">新聞公告</Link>
                 </li>
               </ul>
             </div>

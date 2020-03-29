@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { displayChange, myazenproductlist } from '../../actions/Maction'
-import { AiFillHeart } from 'react-icons/ai'
+import {
+  AiFillHeart,
+  AiOutlineSolution,
+  AiOutlineTeam,
+  AiOutlineEye,
+} from 'react-icons/ai'
 import { IoIosMore } from 'react-icons/io'
+import { FaGamepad, FaRegEye } from 'react-icons/fa'
 
 //引入icon
 import {
@@ -373,6 +379,7 @@ function MindexProfile() {
               setEditListOpen(true)
             }}
           >
+            <AiOutlineSolution />
             修改個人資料
           </button>
           {/* 外連個人貼文按鈕 */}
@@ -527,6 +534,7 @@ function MindexProfile() {
                 dispatch(displayChange(2))
               }}
             >
+              <AiOutlineTeam />
               好友管理
             </button>
             <button
@@ -535,6 +543,7 @@ function MindexProfile() {
                 dispatch(displayChange(3))
               }}
             >
+              <FaGamepad className="M-subicon1" />
               遊戲倉庫
             </button>
             <button
@@ -543,7 +552,8 @@ function MindexProfile() {
                 dispatch(displayChange(4))
               }}
             >
-              購買管理
+              <FaRegEye className="M-subicon2" />
+              關注遊戲
             </button>
           </div>
         </div>

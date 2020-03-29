@@ -658,7 +658,7 @@ border: 1px solid black;
 
 .M-mbdesForm {
   border: 0.5px solid #adb6bd;
-  border-top: 5px solid #adb6bd;
+  border-top: 2px solid #adb6bd;
   text-align: center;
   padding-bottom: 0.4rem;
   box-shadow: 0px 3px 6px #707070;
@@ -773,7 +773,7 @@ border: 1px solid black;
 }
 .M-subbtnGroupbrick {
   width: 100%;
-  height: 20px;
+  height: 2px;
   background: #adb6bd;
   margin-bottom: 2rem;
 }
@@ -785,7 +785,7 @@ border: 1px solid black;
 }
 .M-sublayerbtn {
   width: 7.8125rem;
-  width: 6rem;
+  width: 6.58rem;
   height: 7.8125rem;
   height: 3.5rem;
   /* margin-top: 3.8125rem; */
@@ -800,7 +800,7 @@ border: 1px solid black;
   text-align: center;
   border: 1px solid #79cee2;
   background: white;
-  padding: 10px;
+  /* padding: 10px; */
   text-decoration: none;
   transition: 0.5s;
   /* box-shadow: 0px 3px 2px #707070; */
@@ -815,6 +815,13 @@ border: 1px solid black;
   font-size: 1.5rem;
   /* box-shadow: 0px 3px 2px #707070; */
   /* transform: scale(0.95); */
+}
+
+.M-subicon1 {
+  margin-right: 0.2rem;
+}
+.M-subicon2 {
+  margin-right: 0.2rem;
 }
 
 .M-subbtnGroup button:focus {
@@ -858,7 +865,7 @@ border: 1px solid black;
 
 .M-azenproductListWindow {
   width: 16.3rem;
-  height: 22.2rem;
+  height: 22rem;
   margin: 0 auto;
   /* background: blueviolet; */
   overflow: hidden;
@@ -1425,7 +1432,7 @@ border: 1px solid black;
   width: 54rem;
   /* height: 10.75rem; */
   padding: 0.3rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -1440,6 +1447,7 @@ border: 1px solid black;
   padding: 0.6rem;
   margin: 2rem;
   /* position: relative; */
+  box-shadow: 0px 3px 6px #707070;
   display: flex;
 }
 

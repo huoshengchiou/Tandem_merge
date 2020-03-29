@@ -292,29 +292,64 @@ footer {
     text-align: center;
     line-height: 2.8rem;
     /* background: lightpink; */
-    z-index: 3;
+    z-index: 1;
     cursor: pointer;
     margin: auto;
     margin-top: 1rem;
     position: relative;
   }
+  .T-circlebg {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    top: -3rem;
+    left: 22rem;
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    transition: 1s;
+  }
+  .T-circlebg.active {
+    transform: scale(50);
+    z-index: 2;
+  }
+  .T-rwdmenucbtn {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    color: #f9a451;
+    /* background: lightgreen; */
+    position: absolute;
+    transition: 0.5s;
+    left: 15rem;
+    z-index: 3;
+  }
+  .T-rwdmenucbtn:hover {
+    color: #e4872a;
+  }
 
   .T-rwdlinklist {
-    width: 10rem;
-    background: white;
+    /* width: 10rem;
+    height: 20rem; */
+    /* background: pink; */
     position: absolute;
-    z-index: 1;
-    bottom: -22.1rem;
-    left: 0.5rem;
+    z-index: 3;
+    bottom: -18.7rem;
+    left: -6rem;
   }
   .T-rwdlinkpart {
-    width: 10rem;
-    height: 4rem;
-    border: 0.2px solid black;
+    width: 15rem;
+    height: 3rem;
+    margin: 0.3rem;
+    line-height: 3rem;
+    background: white;
+    border: 0.2px solid #79cee2;
     /* transition: 0.75s; */
   }
   .T-rwdlinkpart:hover {
-    background: cornflowerblue;
+    /* color: white; */
+    background: #79cee2;
   }
   .T-personicon {
     width: 15rem;
