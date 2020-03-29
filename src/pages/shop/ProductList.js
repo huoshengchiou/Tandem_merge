@@ -255,15 +255,35 @@ function ProductList(props) {
     default:
   }
   //處理按讚顯示，點按讚愛心變色，但重新整理會失效，除非更新LOCALSTORAGE的登入資訊
-  function azen() {
-    let mbAzen_str = JSON.parse(localStorage.getItem('LoginUserData')).mbAzen
-    mbAzen_str = mbAzen_str.replace('[', '').replace(']', '')
-    let mbAzen_arr = mbAzen_str.split(',')
-    setMbAzen_arr_state(mbAzen_arr)
-    console.log('mbAzen_arr', mbAzen_arr)
+  function azen(ID) {
+    // let mbAzen_str = JSON.parse(localStorage.getItem('LoginUserData')).mbAzen
+    // mbAzen_str = mbAzen_str.replace('[', '').replace(']', '')
+    // let mbAzen_arr = mbAzen_str.split(',')
+    const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
+    let newMbAzen_arr = [...currentLocalAzen]
+    newMbAzen_arr.push(`${ID}`)
+    setMbAzen_arr_state(newMbAzen_arr)
+    localStorage.setItem('Azen', JSON.stringify(newMbAzen_arr))
+    // console.log('mbAzen_arr', mbAzen_arr)
   }
+  //一開始複製一份LoginUserData的Azen，set到Local的Azen值、setMbAzen_arr_state
   useEffect(() => {
-    azen()
+    if (JSON.parse(localStorage.getItem('LoginUserData')) !== null) {
+      if (localStorage.getItem('Azen') == null) {
+        let mbAzen_str = JSON.parse(localStorage.getItem('LoginUserData'))
+          .mbAzen
+        mbAzen_str = mbAzen_str.replace('[', '').replace(']', '')
+        let mbAzen_arr = mbAzen_str.split(',')
+        // const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
+        localStorage.setItem('Azen', JSON.stringify(mbAzen_arr))
+        setMbAzen_arr_state(mbAzen_arr)
+      } else {
+        const currentLocalAzen = JSON.parse(localStorage.getItem('Azen'))
+        setMbAzen_arr_state(currentLocalAzen)
+      }
+    } else {
+      localStorage.removeItem('Azen') //如果登出就刪掉localstorage Azen
+    }
   }, [])
   const loading = (
     <>
@@ -308,6 +328,7 @@ function ProductList(props) {
                             name: value.itemName,
                             amount: 1,
                             price: value.itemPrice,
+                            img: value.itemImg,
                           })
                         }
                       >
@@ -330,10 +351,7 @@ function ProductList(props) {
                               ).mbId,
                               likeproductId: value.itemId,
                             })
-                            let newMbAzen_arr = [...mbAzen_arr_state]
-                            newMbAzen_arr.push(`${value.itemId}`)
-                            console.log('newMbAzen_arr', newMbAzen_arr)
-                            setMbAzen_arr_state(newMbAzen_arr)
+                            azen(value.itemId)
                           } else {
                             Swal.fire('請先登入')
                           }
