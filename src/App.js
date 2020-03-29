@@ -7,6 +7,7 @@ import ScrollToTop from './components/ScrollToTop'
 
 import Home from './pages/Home'
 import Bulletin from './pages/bulletin/Bulletin'
+//---------------------------------------------------------------//
 
 //                    community pages                          //
 import Community from './pages/community/Community'
@@ -15,6 +16,7 @@ import Posts from './pages/community/Posts'
 import PostDetail from './pages/community/PostDetail'
 import PostDetailProfile from './pages/community/PostDetailProfile'
 import PostProfile from './pages/community/PostProfile'
+// import PostCollectionProfile from './components/community/PostCollectionProfile'
 //---------------------------------------------------------------//
 //                            bulletin                           //
 import News from './pages/bulletin/News'
@@ -64,7 +66,6 @@ function App() {
             <Route path="/activityAddNew">
               <ActivityAddNew />
             </Route>
-
             <Route path="/bulletin">
               <Bulletin />
             </Route>
@@ -75,6 +76,7 @@ function App() {
               <Sales />
             </Route>
             {/* //community */}
+
             <Route path={`/addpost`}>
               <AddPost />
             </Route>
