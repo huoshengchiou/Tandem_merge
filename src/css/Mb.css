@@ -600,7 +600,7 @@ body {
   font-size: 2rem;
   animation: reverRotate 6s infinite linear;
   top: 5.2rem;
-  left: -0.1rem;
+  left: -0.17rem;
 }
 @keyframes reverRotate {
   from {
