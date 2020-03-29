@@ -76,7 +76,6 @@ function App() {
               <Sales />
             </Route>
             {/* //community */}
-
             <Route path={`/addpost`}>
               <AddPost />
             </Route>
