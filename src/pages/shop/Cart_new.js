@@ -12,6 +12,7 @@ import {
 } from 'react-icons/ai'
 import Swal from 'sweetalert2' //sweetalert2
 import PayProgressbar from '../../components/shop/PayProgessbar'
+import unazen from './unazen' //取消按讚
 
 function Cart_new(props) {
   const [mycart, setMycart] = useState([])
@@ -126,8 +127,10 @@ function Cart_new(props) {
   useEffect(() => {
     // console.log('coupon.sMethod',coupon.sMethod)
     let money
-    if (selectCoupon) {
+    if (selectCoupon && couponNo == 'S001') {
       money = sum(mycartDisplay) - discount
+    } else if (selectCoupon && couponNo == 'S002') {
+      money = (sum(mycartDisplay) * parseFloat(discount)) / 100
     } else {
       money = sum(mycartDisplay)
     }
@@ -250,9 +253,15 @@ function Cart_new(props) {
   function azen(ID) {
     const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
     let newMbAzen_arr = [...currentLocalAzen]
-    newMbAzen_arr.push(`${ID}`)
-    setMbAzen_arr_state(newMbAzen_arr)
-    localStorage.setItem('Azen', JSON.stringify(newMbAzen_arr))
+    if (newMbAzen_arr.indexOf(`${ID}`) !== -1) {
+      let remove_arr = newMbAzen_arr.filter(id => id !== `${ID}`)
+      setMbAzen_arr_state(remove_arr)
+      localStorage.setItem('Azen', JSON.stringify(remove_arr))
+    } else {
+      newMbAzen_arr.push(`${ID}`)
+      setMbAzen_arr_state(newMbAzen_arr)
+      localStorage.setItem('Azen', JSON.stringify(newMbAzen_arr))
+    }
     // console.log('mbAzen_arr', mbAzen_arr)
   }
   //一開始複製一份LoginUserData的Azen，set到Local的Azen值、setMbAzen_arr_state
@@ -496,35 +505,57 @@ function Cart_new(props) {
                         </td>
                         <td className="h5">NT${value.price}</td>
                         <td>
-                          <button
-                            type="button"
-                            className="btn mx-2 my-2 s-btn-common-cart"
-                            onClick={() => {
-                              if (
-                                JSON.parse(
-                                  localStorage.getItem('LoginUserData')
-                                ) !== null
-                              ) {
-                                addToLike(value.id)
-                                azen(value.id)
-                              } else {
-                                Swal.fire('請先登入!')
-                              }
-                            }}
-                          >
-                            {JSON.parse(
-                              localStorage.getItem('LoginUserData')
-                            ) !== null &&
-                            mbAzen_arr_state.indexOf(`${value.id}`) !== -1 ? (
+                          {JSON.parse(localStorage.getItem('LoginUserData')) !==
+                            null &&
+                          mbAzen_arr_state.indexOf(`${value.id}`) !== -1 ? (
+                            <button
+                              type="button"
+                              className="btn mx-2 my-2 s-btn-common-cart"
+                              onClick={() => {
+                                if (
+                                  JSON.parse(
+                                    localStorage.getItem('LoginUserData')
+                                  ) !== null
+                                ) {
+                                  azen(value.id)
+                                  unazen({
+                                    userId: JSON.parse(
+                                      localStorage.getItem('LoginUserData')
+                                    ).mbId,
+                                    unlikeproductId: value.id,
+                                  })
+                                } else {
+                                  Swal.fire('請先登入!')
+                                }
+                              }}
+                            >
                               <AiFillHeart
                                 style={{ color: '#F9A451', fontSize: '24px' }}
                               />
-                            ) : (
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              className="btn mx-2 my-2 s-btn-common-cart"
+                              onClick={() => {
+                                if (
+                                  JSON.parse(
+                                    localStorage.getItem('LoginUserData')
+                                  ) !== null
+                                ) {
+                                  addToLike(value.id)
+                                  azen(value.id)
+                                } else {
+                                  Swal.fire('請先登入!')
+                                }
+                              }}
+                            >
                               <AiOutlineHeart
                                 style={{ color: '#F9A451', fontSize: '24px' }}
                               />
-                            )}
-                          </button>
+                            </button>
+                          )}
+
                           <button
                             type="button"
                             className="btn  mx-2 s-btn-common-cart"
@@ -583,7 +614,9 @@ function Cart_new(props) {
                     >
                       $
                       {selectCoupon
-                        ? sum(mycartDisplay) - discount
+                        ? couponNo == 'S001'
+                          ? sum(mycartDisplay) - discount
+                          : (sum(mycartDisplay) * parseFloat(discount)) / 100
                         : sum(mycartDisplay)}
                     </span>
                   </div>
