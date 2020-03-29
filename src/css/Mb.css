@@ -618,13 +618,13 @@ body {
   position: absolute;
   left: 14rem;
   top: 9.4rem;
-  color: #79cee2;
+  color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
   cursor: pointer;
 }
 .M-comLink:hover {
-  color: #4691f6;
+  color: #eb8f34;
 }
 .M-MajorLink {
   width: 3rem;
@@ -633,13 +633,13 @@ body {
   position: absolute;
   left: 17rem;
   top: 9.3rem;
-  color: #79cee2;
+  color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
   cursor: pointer;
 }
 .M-MajorLink:hover {
-  color: #4691f6;
+  color: #eb8f34;
 }
 
 /* .M-avatarDes > h6 {
@@ -684,6 +684,7 @@ border: 1px solid black;
   text-align: center;
   line-height: 2.5rem;
   color: #f9a451;
+  cursor: pointer;
 }
 .M-editLeavebtn:hover {
   color: #df8d3c;
@@ -773,7 +774,7 @@ border: 1px solid black;
 .M-subbtnGroupbrick {
   width: 100%;
   height: 20px;
-  background: #43341b;
+  background: #adb6bd;
   margin-bottom: 2rem;
 }
 .M-subbtnwrapper {
@@ -839,7 +840,7 @@ border: 1px solid black;
 .M-Likeproducthead {
   width: 100%;
   height: 3rem;
-  background: #43341b;
+  background: #adb6bd;
   margin-bottom: 2rem;
   text-align: center;
 
@@ -1742,7 +1743,13 @@ border: 1px solid black;
   font-size: 2rem;
   text-align: center;
   line-height: 2.5rem;
+  cursor: pointer;
   /* background: greenyellow; */
+}
+.M-dollhSelect:hover {
+  border-radius: 50%;
+  color: white;
+  background: #79cee2;
 }
 
 .M-dollhimgOuter {
@@ -2013,7 +2020,7 @@ border: 1px solid black;
   margin-top: 0.15rem;
   text-align: center;
   background: white;
-  color: #79cee2;
+  color: #f9a451;
   z-index: 1;
   /* border: 0.5px solid black; */
   /* background: rgb(160, 160, 44); */
@@ -2024,7 +2031,7 @@ border: 1px solid black;
   cursor: pointer;
 }
 .M-mycupontopbtn:hover {
-  color: #4691f6;
+  color: #eb8f34;
 }
 /* .M-mycupontopbtn.active {
   z-index: 2;
@@ -2244,7 +2251,10 @@ border: 1px solid black;
 }
 .M-indexLeftContainer {
   width: 23.4375rem;
-  border: 0.5px solid #adb6bd;
+  /* border: 0.5px solid #adb6bd; */
+  /* border: 0.5px solid #79cee2; */
+  margin-right: 0.5rem;
+
   /* height: 50rem; */
   /* background: lightblue; */
 }
