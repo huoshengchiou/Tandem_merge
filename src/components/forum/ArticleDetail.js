@@ -14,6 +14,8 @@ import {
   AiOutlineTwitter,
   AiOutlineLinkedin,
 } from 'react-icons/ai'
+import CKEditor from '@ckeditor/ckeditor5-react'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import ArticleTag from '../../components/forum/ArticleTag'
 import '../../css/forum.scss'
 
@@ -44,6 +46,12 @@ function ArticleDetail(props) {
     getDetailFromServer(articleId)
   }, [])
 
+  // var oldDiv = '<div id="articleContent></div>'
+  // var htmlObject = document.createElement('div')
+  // document.getElementById('articleContent').innerHTML = articleContent
+  // htmlObject.innerHTML = oldDiv
+  // document.body.appendChild(htmlObject)
+
   console.log('內容2', article)
   return (
     <>
@@ -67,7 +75,7 @@ function ArticleDetail(props) {
             class="rounded-circle"
             width="35"
           />{' '}
-          by <a href="#">{article.articleAuthor}</a> in Sep 5, 2018
+          by <a href="#">{article.mbNick}</a> in Sep 5, 2018
           <span class="f-hot-post-category">
             {/* {props.article &&
               props.article.map((value, index) => {
@@ -95,8 +103,11 @@ function ArticleDetail(props) {
         </div>
 
         <div class="f-gap-1"></div>
-        <div class="f-single-article-content">
-          {article.articleContent}
+        <div
+          class="f-single-article-content"
+          id="articleContent"
+          dangerouslySetInnerHTML={{ __html: article.articleContent }}
+        >
           {/* {props.article &&
   props.article.map((value, index) => {
     return <div key={index} data={props.data.articleContent} />
