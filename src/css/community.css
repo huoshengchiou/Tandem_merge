@@ -139,6 +139,16 @@ textarea:focus {
   cursor: pointer;
   display: none;
 }
+/* postdetail add collection */
+/* -------------------------------------------------------------------------------------------- */
+.C-postCollectionStar{
+    font-size: 28px;
+    margin-right: 10px;
+    position: absolute;
+    top: 15%;
+    left: 0;
+    display: none;
+}
 
 /* -------------------------------------------------------------------------------------------- */
 /* postdetail comment div scroll  */

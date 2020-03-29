@@ -6,6 +6,7 @@ import { LikeToggle } from '../../actions/index'
 import PostComment from '../../components/community/PostComment'
 import PostDetailMore from '../../components/community/PostDetailMore'
 // import { NavLink } from 'react-router-dom'
+import PostCollection from '../../components/community/PostCollection'
 
 import {
   AiOutlineStar,
@@ -20,13 +21,22 @@ function PostDetail(props) {
 
   const [dataHasLoaded, setDataHasLoaded] = useState(false)
   // let postid = props.match.params.id
-  const [PostLike, setPostLike] = useState(0)
   const [likeHeart, setLikeHeart] = useState(false)
   const like = useSelector(state => state.communityLike)
+  const [loginUserId, setLoginUserId] = useState('')
+
   const dispatch = useDispatch()
 
-  //////
+  useEffect(() => {
+    const getDatafromlocal = JSON.parse(localStorage.getItem('LoginUserData'))
+    const input = { mbId: getDatafromlocal.mbId }
 
+    // const jsonInput = JSON.stringify(input)
+
+    setLoginUserId(input.mbId)
+
+    // console.log(input.mbId)
+  }, [])
   ////////
   //連資料庫 fetch API
   async function fetchPost() {
@@ -39,7 +49,6 @@ function PostDetail(props) {
       // console.log('response', props.match.params.id)
       if (response[i].post_id === +props.match.params.id) {
         let likes = response[i].postLikes
-        console.log('likes', likes)
         dispatch(LikeToggle(1, likes))
       }
     }
@@ -203,9 +212,7 @@ function PostDetail(props) {
                 <div
                   className="mx-2 d-flex"
                   onClick={() => {
-                    setPostLike(1)
                     setLikeHeart(!likeHeart)
-                    // dispatch(LikeToggle(!like.clicked))
                   }}
                 >
                   <div>
@@ -222,17 +229,17 @@ function PostDetail(props) {
                     }}
                   >
                     <span style={{ fontWeight: 'bold', paddingRight: ' 4px' }}>
-                      {/* {postDetail.postLikes} */}
-                      {like.payload}
-                      {/* {postDetail.postLikes} */}
+                      {likeHeart ? `${like.payload + 1}` : `${like.payload}`}
                     </span>
                     人都說讚
                   </p>
                 </div>
 
                 <div className="m-2">
-                  <AiOutlineStar
-                    style={{ fontSize: '28px', marginRight: '10px' }}
+                  <PostCollection
+                    postId={postDetail.post_id}
+                    postMemberId={postDetail.mbId}
+                    loginMemberId={loginUserId}
                   />
                 </div>
               </div>

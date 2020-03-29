@@ -90,11 +90,11 @@ function Mbcenterindex() {
           >
             <h3 className="M-f-latest-title">
               <span>
-                <span className="M-f-category-text">購買管理</span>
+                <span className="M-f-category-text">關注遊戲列表</span>
               </span>
             </h3>
             {/* <h4>購買管理</h4> */}
-            <h5>關注商品列表</h5>
+            {/* <h5>關注商品列表</h5> */}
             <MazenpListcard />
             {/* <h5>我的折價券</h5>
             <MmyCoupon /> */}

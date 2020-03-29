@@ -204,6 +204,7 @@ function Payment(props) {
                       maxLength="4"
                     />
                   </div>
+                  <span style={{ lineHeight: '38px' }}>-</span>
                   <div className="col">
                     <input
                       type="password"
@@ -213,6 +214,7 @@ function Payment(props) {
                       maxLength="4"
                     />
                   </div>
+                  <span style={{ lineHeight: '38px' }}>-</span>
                   <div className="col">
                     <input
                       type="password"
@@ -222,6 +224,7 @@ function Payment(props) {
                       maxLength="4"
                     />
                   </div>
+                  <span style={{ lineHeight: '38px' }}>-</span>
                   <div className="col">
                     <input
                       type="text"
@@ -336,6 +339,7 @@ function Payment(props) {
         <Link
           type="button"
           className="btn btn-outline-info s-btn-common mx-2"
+          style={{ fontWeight: '400' }}
           to="/cart_new"
         >
           上一頁
