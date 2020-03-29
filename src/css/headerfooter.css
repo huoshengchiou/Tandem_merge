@@ -160,11 +160,13 @@ footer {
 .T-logoWrapper {
   width: 10rem;
   height: 5rem;
+  /* background: lightblue; */
 }
 .T-logo {
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   margin: 0 auto;
+  margin-top: 0.5rem;
 }
 
 .T-linkWrapper {
@@ -186,9 +188,10 @@ footer {
   /* border: 1px solid black; */
   margin: 0 auto;
   transition: 0.5s;
+  transform: scale(1.4);
 }
 .T-linkpart:hover {
-  transform: scale(1.2);
+  transform: scale(1.6);
 }
 .T-personicon {
   width: 15rem;
@@ -286,6 +289,8 @@ footer {
     text-align: center;
     line-height: 2.8rem;
     /* background: lightpink; */
+    z-index: 3;
+    cursor: pointer;
     margin: auto;
     margin-top: 1rem;
     position: relative;
