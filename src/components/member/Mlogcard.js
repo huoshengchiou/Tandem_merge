@@ -6,6 +6,9 @@ import { mlogcontroll } from '../../actions/Maction'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { IoIosLock, IoIosUnlock } from 'react-icons/io'
 
+// 引入sweet alert
+import Swal from 'sweetalert2'
+
 function Mlogcard() {
   const dispatch = useDispatch()
   // 卡片切換
@@ -262,6 +265,14 @@ function Mlogcard() {
             className="M-sendMail"
             onClick={() => {
               resetEmail()
+              Swal.fire({
+                icon: 'info',
+                title: '請到信箱檢查重設信',
+                showConfirmButton: false,
+                timer: 1000,
+              }).then(r => {
+                window.location.href = 'http://localhost:3000/'
+              })
             }}
           >
             寄送驗證信
