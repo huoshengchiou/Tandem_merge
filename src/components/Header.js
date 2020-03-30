@@ -121,6 +121,7 @@ function Header() {
         if (payload.success) {
           localStorage.removeItem('LoginUserData')
           localStorage.removeItem('LoginAut')
+          localStorage.removeItem('cart')
           setLoginAut(false)
           window.location.href = 'http://localhost:3000/'
         } else {

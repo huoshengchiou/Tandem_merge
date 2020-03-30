@@ -400,17 +400,17 @@ textarea:focus {
 
 @media screen and (max-width: 576px) {
   .C-searchDiv {
-    width: 400px;
+    width: 500px;
   }
   .C-searchButtonGroup {
-    width: 280px;
-    margin: 0 auto;
+    width: 400px;
+    margin: 0 45px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
   .C-searchButton {
-    min-width: 80px;
+    min-width: 100px;
     text-align: center;
     border: solid 1.5px #79cee2;
     color: var(--mainColor);
@@ -418,16 +418,16 @@ textarea:focus {
     border-radius: 25px;
     margin: 10px 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     /* font-weight: bold; */
   }
   .C-searchBar {
     display: block;
     border-radius: 25px;
     border: 2px solid #79cee2;
-    width: 260px;
+    width: 310px;
     padding: 4px 40px;
-    margin: 10px auto;
+    margin: 10px 85px;
     color: var(--mainColor);
     transition: 0.5s;
     font-size: 16px;
@@ -435,10 +435,18 @@ textarea:focus {
 
   .C-searchbarIcon {
     top: 20%;
-    left: 21%;
+    left: 19.5%;
   }
   /* postdetail add collection */
   /* -------------------------------------------------------------------------------------------- */
+  .C-InfiniteLoadFigure {
+    cursor: pointer;
+    transition: 0.5s;
+    height: 240px;
+    max-width: 400px;
+    object-fit: cover;
+    margin: 10px auto;
+  }
   .C-postdetailDiv {
     max-width: 450px;
     box-shadow: 0px 0px 10px white;
@@ -499,7 +507,7 @@ textarea:focus {
   /* 貼文留言 */
   .C-postcommentXS {
     display: block;
-    min-width: 320px;
+    min-width: 420px;
     padding: 0 5px;
     font-size: 14px;
   }
