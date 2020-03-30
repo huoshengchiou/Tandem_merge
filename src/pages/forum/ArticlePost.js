@@ -21,7 +21,7 @@ import '../../css/forum.scss'
 
 //表單資訊
 
-// 圖檔上傳設定
+//圖檔上傳設定
 // const thumbsContainer = {
 //   display: 'flex',
 //   flexDirection: 'row',
@@ -125,21 +125,20 @@ function ArticlePost(props) {
       }),
       body: JSON.stringify(articleInfo),
     })
-    Swal.fire(
-      {
-        icon: 'success',
-        title: '發文成功',
-      },
-      function() {
-        window.location.href = '/forum'
-      }
-    )
+
     const res = await fetch(req)
     const order = await res.json()
-    await console.log('order', order)
+    console.log('order', order)
+    if (order.result.affectedRows == 1) {
+      Swal.fire({
+        icon: 'success',
+        title: '留言成功',
+        timer: 2500,
+      })
+    }
   }
 
-  //文章類型 , 主題類型 , 文章標題 , 文章內容 , 文章圖檔
+  //文章類型, 主題類型, 文章標題, 文章內容, 文章圖檔
   // const [articleCategory, setArticleCategory] = useState('')
   // const [articleClass, setArticleClass] = useState('')
   // const [articleName, setArticleName] = useState('')
@@ -151,12 +150,11 @@ function ArticlePost(props) {
   // const { getRootProps, getInputProps } = useDropzone({
   //   accept: 'image/*',
   //   onDrop: acceptedFiles => {
-  //     setFiles(
-  //       acceptedFiles.map(file =>
-  //         Object.assign(file, {
-  //           preview: URL.createObjectURL(file),
-  //         })
-  //       )
+  //     setFiles()
+  //     acceptedFiles.map(file =>
+  //       Object.assign(file, {
+  //         preview: URL.createObjectURL(file),
+  //       })
   //     )
   //   },
   // })

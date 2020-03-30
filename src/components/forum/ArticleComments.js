@@ -26,6 +26,7 @@ import ArticleTag from '../../components/forum/ArticleTag'
 import '../../css/forum.scss'
 // ES6 Modules or TypeScript
 import Swal from 'sweetalert2'
+import { Result } from 'antd'
 
 function ArticleComments(props) {
   const history = useHistory()
@@ -117,12 +118,8 @@ function ArticleComments(props) {
     }
   }
 
-  //建立文章
+  //建立留言
   async function postComment() {
-    Swal.fire({
-      icon: 'success',
-      title: '留言成功',
-    })
     const req = new Request('http://localhost:6001/articles/article_comments', {
       method: 'POST',
       credentials: 'include',
@@ -135,7 +132,14 @@ function ArticleComments(props) {
 
     const res = await fetch(req)
     const order = await res.json()
-    await console.log('order', order)
+    console.log('order', order)
+    // if (order.result.affectedRows == 1) {
+    Swal.fire({
+      icon: 'success',
+      title: '留言成功',
+      timer: 1500,
+    })
+    // }
   }
 
   // const handleSubmit = () => {

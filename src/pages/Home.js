@@ -4,6 +4,7 @@ import { NavLink } from 'react-bootstrap'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import { Parallax } from 'react-parallax'
+import $ from 'jquery'
 
 // import Header from '../components/Header'
 // import Footer from '../components/Footer'
@@ -30,8 +31,30 @@ const image1 = 'images/home1.jpg'
 const image2 = 'images/home2.jpg'
 const image3 = 'images/home3.jpg'
 const image4 = 'images/home4.jpg'
+const hfore2 = 'images/home_side_1.jpg'
+const hfore3 = 'images/home_side_2.jpg'
+const hfore4 = 'images/home_side_3.jpg'
+const hfore5 = 'images/home_side_4.jpg'
+const hfore6 = 'images/home_side_5.jpg'
+const hfore7 = 'images/home_side_6.jpg'
+const hback1 = 'images/hback1.png'
 
 function Home() {
+  useEffect(() => {
+    $(function() {
+      /* 按下GoTop按鈕時的事件 */
+      $('#gotop').click(function() {
+        // window.scrollTo(0, 0)
+        // document.querySelector('.parallax').scrollTo(0, 0)
+        $('window,.parallax').animate(
+          { scrollTop: 0 },
+          'slow'
+        ) /* 返回到最頂上 */
+        return false
+      })
+    })
+  }, [])
+
   useEffect(() => {
     var body = document.querySelector('.parallax'),
       scrollTop = 0,
@@ -146,29 +169,41 @@ function Home() {
             {/* <div class="full-screen" style={{ backgroundColor: `#79cee2` }}>
               <div class="title">FIRST PAGE</div>
             </div> */}
-            <div class="fore fade1" style={{ opacity: 0.958333 }}>
-              <div class="title">FIRST FORE</div>
+            <div class="fore fade1" style={{ opacity: 0 }}>
+              <div class="title"></div>
             </div>
             <div class="fore right">
-              <div class="title">FORE2</div>
+              <div class="title f-fore2">
+                熱門遊戲 <img src={hfore2} />
+              </div>
             </div>
             <div class="fore center">
-              <div class="title">FORE3</div>
+              <div class="title f-fore3">
+                活躍會員 <img src={hfore3} />
+              </div>
             </div>
             <div class="fore center">
-              <div class="title">FORE4</div>
+              <div class="title f-fore4">
+                熱門活動 <img src={hfore4} />
+              </div>
             </div>
-            <div class="fore right cycle1" style={{ opacity: 0.977975 }}>
-              <div class="title">FORE5</div>
+            <div class="fore right ">
+              <div class="title f-fore5">
+                熱門文章 <img src={hfore5} />
+              </div>
             </div>
             <div class="fore center">
-              <div class="title">FORE6</div>
+              <div class="title f-fore6">
+                年度最佳遊戲 <img src={hfore6} />
+              </div>
             </div>
             <div class="fore">
-              <div class="title">FORE7</div>
+              <div class="title f-fore7">
+                一起協作開發遊戲~ <img src={hfore7} />
+              </div>
             </div>
             <div class="fore right">
-              <div class="title">FORE8</div>
+              <div class="title"></div>
             </div>
           </div>
 
@@ -177,19 +212,28 @@ function Home() {
             style={{ top: -9994 }}
           >
             <div class="shot" style={{ marginTop: 300 }}>
-              <div class="title">FIRST BASE</div>
+              <div class="title h-base1">
+                這裡是基以程式技術與原畫創作交流為初衷的遊戲平台
+                <br />
+                <p />
+                讓會員能在玩遊戲之餘，也能一同
+                <p>
+                  T<span>Δ</span>NDEM
+                </p>
+                開發者和設計師的自由創作
+              </div>
             </div>
             <div class="shot fade2" style={{ opacity: 0.970588 }}>
-              <div class="title">BASE2</div>
+              <div class="title"></div>
             </div>
             <div class="shot cycle2" style={{ opacity: 0.1 }}>
-              <div class="title">BASE3</div>
+              <div class="title"></div>
             </div>
             <div class="shot">
-              <div class="title">BASE4</div>
+              <div class="title"></div>
             </div>
             <div class="shot">
-              <div class="title">BASE5</div>
+              <div class="title"></div>
             </div>
             {/* <div class="shot">
               <div class="title">BASE6</div>
@@ -204,19 +248,43 @@ function Home() {
             style={{ top: -2498 }}
           >
             <div class="card" style={{ marginTop: 100 }}>
-              <div class="title">BACK1</div>
+              <div class="title h-back1">
+                <img src={hback1} />
+              </div>
             </div>
-            <div class="card">
-              <div class="title">BACK2</div>
+            <div class="card" style={{ opacity: 0.8 }}>
+              <div class="title h-back2">
+                這裡有眾多活躍會員與你一起分享遊戲大小事
+                <br />
+                <p />
+                還有許多新奇有趣的活動等著你一同參與~
+              </div>
             </div>
             <div class="card fade3" style={{ opacity: 0.03 }}>
-              <div class="title">BACK3</div>
+              <div class="title h-back3">
+                全新的遊戲社群體驗
+                <br />
+                <p />
+                讓你一起沉浸在遊戲協作開發的樂趣中~
+              </div>
             </div>
-            <div class="card">
-              <div class="title">BACK4</div>
+            <div class="card" style={{ opacity: 0.7 }}>
+              <div class="title h-back4">
+                即時更新、一起串聯
+                <br />
+                <p />
+                在這裡
+                <br />
+                <p />
+                讓你不錯過遊戲任何相關的訊息~
+              </div>
             </div>
             <div class="card" style={{ background: `rgba(0,0,0,0.6)` }}>
-              <div class="title">BACK5</div>
+              <div class="title h-back5">
+                <a href="" id="gotop">
+                  <p>Let's</p> T<p>Δ</p>NDEM！
+                </a>
+              </div>
             </div>
             {/* <div class="card">
               <div class="title">BACK6</div>

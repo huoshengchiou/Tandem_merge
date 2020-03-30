@@ -159,7 +159,7 @@
 .fore {
   width: 50%;
   height: 25vh;
-  background-color: blue;
+  // background-color: blue;
   margin-top: 100vh;
   position: relative;
   opacity: 0.9;
@@ -184,7 +184,8 @@
   font-size: 200%;
   width: 100%;
   height: 30vh;
-  background-color: green;
+  // background-image: url('../logotitle.png');
+  // background-repeat: no-repeat;
   margin-top: 150vh;
   position: relative;
   opacity: 0.8;
@@ -228,12 +229,157 @@
   transition: transform 0.5s;
 }
 
-// body {
-//   overflow-y: scroll;
-// }
-// .parallax {
-//   overflow-y: scroll;
-// }
+// 視差移動小區塊
+.f-fore2 {
+  width: 600px;
+  height: 220px;
+  color: #f9a451;
+  font-size: 30px;
+  text-align: center;
+  margin-left: 100px;
+  background: white;
+  border-radius: 25px;
+  opacity: 0.9;
+}
+.f-fore2 img {
+  width: 700px;
+  height: 150px;
+}
+.f-fore3 {
+  width: 600px;
+  height: 350px;
+  color: #f9a451;
+  font-size: 30px;
+  text-align: center;
+  margin-left: -300px;
+  background: white;
+  border-radius: 25px;
+  opacity: 0.9;
+}
+.f-fore3 img {
+  width: 700px;
+  height: 250px;
+}
+.f-fore4 {
+  width: 600px;
+  height: 520px;
+  color: #f9a451;
+  font-size: 30px;
+  text-align: center;
+  margin-left: 300px;
+  background: white;
+  border-radius: 25px;
+  opacity: 0.9;
+}
+.f-fore4 img {
+  width: 700px;
+  height: 450px;
+}
+.f-fore5 {
+  width: 600px;
+  height: 580px;
+  color: #f9a451;
+  font-size: 30px;
+  text-align: center;
+  margin-left: -100px;
+  background: white;
+  border-radius: 25px;
+  opacity: 0.9;
+}
+.f-fore5 img {
+  width: 700px;
+  height: 500px;
+}
+.f-fore6 {
+  width: 950px;
+  height: 400px;
+  color: #f9a451;
+  font-size: 30px;
+  text-align: center;
+  margin-left: -20px;
+  background: white;
+  border-radius: 25px;
+  opacity: 0.9;
+}
+.f-fore6 img {
+  width: 950px;
+  height: 300px;
+}
+.f-fore7 {
+  width: 500px;
+  height: 390px;
+  color: #f9a451;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 300px;
+  margin-left: -20px;
+  background: white;
+  border-radius: 25px;
+  opacity: 0.9;
+}
+.f-fore7 img {
+  width: 500px;
+  height: 330px;
+}
+.h-base1 {
+  color: #79cee2;
+  font-size: 30px;
+  text-align: center;
+}
+.h-base1 p {
+  font-size: 30px;
+  color: #f9a451;
+  display: inline;
+}
+.h-base1 p span {
+  font-size: 30px;
+  color: #79cee2;
+}
+.h-back1 {
+  // margin-top: -30px;
+  background-image: url('../logotitle.png');
+  background-repeat: no-repeat;
+  z-index: 3;
+}
+.h-back2 {
+  font-size: 35px;
+  color: #f9a451;
+  text-align: left;
+  margin-left: -500px;
+}
+.h-back3 {
+  font-size: 35px;
+  color: #f9a451;
+  text-align: right;
+  margin-left: 330px;
+}
+.h-back4 {
+  font-size: 35px;
+  color: #f9a451;
+  text-align: center;
+}
+
+.h-back5 {
+  font-size: 50px;
+  color: #f9a451;
+}
+.h-back5 p {
+  color: #79cee2;
+  font-size: 50px;
+  display: inline;
+}
+.h-back5 a {
+  color: #f9a451;
+  background: none;
+  border: none;
+}
+.h-back5 a:hover {
+  color: #f9a451;
+}
+.h-back5 a:active {
+  background: none;
+  border: none;
+}
 
 /* left */
 .la {
