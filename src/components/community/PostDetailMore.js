@@ -30,7 +30,8 @@ export default function PostDetailMore(props) {
         let propData = props
         delCommentDataFromServer(
           propData,
-          () => (window.location.href = `/Communityprofile/${props.memberID}`)
+          () =>
+            (window.location.href = `/Communityprofile/${propData.memberID}`)
         )
 
         console.log('propsId:', props.memberID)
@@ -47,7 +48,9 @@ export default function PostDetailMore(props) {
           // console.log(JSON.stringify(commentId))
           const response = await fetch(request)
           const data = await response.json()
-          // window.location.href = `/Communityprofile/${props.memberID}`
+          setTimeout(() => {
+            window.location.href = `/Communityprofile/${props.memberID}`
+          }, 1000)
         }
       } else if (willDelete.dismiss === Swal.DismissReason.cancel) {
         // Swal.fire('取消', '你成功保留此貼文', 'error')

@@ -42,7 +42,12 @@ function Product(props) {
   //  加入購物車,與Productlist.js共用
   async function updateCartToLocalStorage(value) {
     // setDataLoading(true)
-    Swal.fire({ html: `商品名稱:${myproduct.itemName}成功加入購物車` })
+    // Swal.fire({
+    //   html: `商品名稱:${myproduct.itemName}成功加入購物車`,
+    //   timer: 2000,
+    // }).then(r => {
+    //   window.location.reload()
+    // })
     const currentCart = JSON.parse(localStorage.getItem('cart')) || []
     let arr = []
     currentCart.forEach(element => {
@@ -53,7 +58,12 @@ function Product(props) {
       localStorage.setItem('cart', JSON.stringify(newCart))
       setMycart(newCart)
     }
-
+    Swal.fire({
+      html: `商品名稱:${myproduct.itemName}成功加入購物車`,
+      timer: 2000,
+    }).then(r => {
+      window.location.reload()
+    })
     //設定資料
     // setMycart(newCart)
   }
@@ -80,6 +90,10 @@ function Product(props) {
   useEffect(() => {
     getDataFromServer()
   }, [])
+
+  useEffect(() => {
+    getDataFromServer()
+  }, [productId])
 
   console.log('myproduct資訊=', myproduct)
   const url = props.match.url
@@ -262,7 +276,7 @@ function Product(props) {
         )}
       </div>
       <div className="d-flex flex-wrap container">
-        <div className="col col-sm-12 col-md-6 my-5">
+        <div className="col col-12 col-md-6 my-5">
           <div
             className="text-center s-bigImg"
             style={{ position: 'relative' }}
@@ -479,7 +493,15 @@ function Product(props) {
       <div className="">
         {configORcomment === 1 ? <Config /> : <Comment2 props={myproduct} />}
       </div>
-      <div className="container">{<Recommend />}</div>
+      <div className="container">
+        {
+          <Recommend
+            changeurl={url => {
+              props.history.push(`/product/${url}`)
+            }}
+          />
+        }
+      </div>
       {/* <Switch>
         <Route path={`${path}/:id?/config/12`}>
           <Config />

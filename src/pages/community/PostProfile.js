@@ -193,7 +193,7 @@ function PostProfile(props) {
             <div className={`M-popUpDiv ${pop ? 'active' : ''}`}></div>
             <div className="container my-5">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <div
                     className="d-flex align-items-center"
                     style={{
@@ -296,7 +296,7 @@ function PostProfile(props) {
                     </div>
                   )}
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                   <div
                     style={{
                       height: '1px',
@@ -482,7 +482,7 @@ function PostProfile(props) {
                   color: '#F9A451',
                   position: 'fixed',
                   zIndex: '10',
-                  right: '10%',
+                  right: '18%',
                   top: '50%',
                 }}
               >
@@ -521,7 +521,7 @@ function PostProfile(props) {
               position: 'fixed',
               zIndex: '40',
               top: '50%',
-              right: '6%',
+              right: '16%',
             }}
           >
             <AiOutlinePlusCircle />
@@ -532,7 +532,7 @@ function PostProfile(props) {
         {/* </div> */}
         <div className="container my-5">
           <div className="row">
-            <div className="col-9 position-relative">
+            <div className="col-md-9 position-relative">
               <div
                 className="d-flex align-items-center"
                 style={{

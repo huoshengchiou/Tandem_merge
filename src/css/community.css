@@ -82,7 +82,7 @@ textarea:focus {
 .C-InfiniteLoadFigure {
   cursor: pointer;
   transition: 0.5s;
-  height: 300px;
+  height: 250px;
   max-width: 500px;
   object-fit: cover;
 }
@@ -93,7 +93,22 @@ textarea:focus {
   /* filter: opacity(0.5); */
   transform: scale(0.9);
 }
+/* postdetail  */
 
+.C-postDetailXS > figure,
+.C-postDetailXS p,
+.C-postDetailXS span {
+  display: none;
+}
+.C-postContentXS p,
+.C-postContentXS span {
+  display: none;
+}
+
+/* postdetail  按讚收藏*/
+.C-postLikeCollectionXS .C-postlikeXS {
+  display: none;
+}
 /* postdetail add friend button */
 .C-addFriendbt {
   transition: 0.5s;
@@ -141,18 +156,27 @@ textarea:focus {
 }
 /* postdetail add collection */
 /* -------------------------------------------------------------------------------------------- */
-.C-postCollectionStar{
-    font-size: 28px;
-    margin-right: 10px;
-    position: absolute;
-    top: 15%;
-    left: 0;
-    display: none;
+.C-detailPic {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.C-postCollectionStar {
+  font-size: 28px;
+  margin-right: 10px;
+  position: absolute;
+  top: 15%;
+  left: 0;
+  display: none;
 }
 
 /* -------------------------------------------------------------------------------------------- */
 /* postdetail comment div scroll  */
-
+.C-postcommentXS {
+  display: none;
+}
 /* postdetail comment delete button  */
 .C-commentbar {
   height: 180px;
@@ -227,6 +251,9 @@ textarea:focus {
 
 /* -------------------------------------------------------------------------------------------- */
 /* postdetail content  */
+.C-postdetailDiv {
+  box-shadow: 0px 0px 10px #adb6bd;
+}
 
 .C-postContent {
   font-size: 14px;
@@ -350,8 +377,6 @@ textarea:focus {
   color: white;
 }
 
-
-
 /* -------------------------------------------------------------------------------------------- */
 /* back to top*/
 .go-top {
@@ -360,40 +385,122 @@ textarea:focus {
   bottom: 30px;
   right: 0;
   color: #ffffff;
-  background-color:var(--mainColor);
+  background-color: var(--mainColor);
   z-index: 100;
-  width: 90px;
+  width: 70px;
   text-align: center;
   height: 45px;
   border-radius: 10px 0 0 10px;
   line-height: 46px;
   font-size: 16px;
+  /* padding-bottom: 5px; */
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 
-
-@media screen and (max-width: 576px){
-  .C-searchDiv{
+@media screen and (max-width: 576px) {
+  .C-searchDiv {
     width: 400px;
   }
-  .C-searchButtonGroup{
-    width: 180px;
-    margin: 0;
+  .C-searchButtonGroup {
+    width: 280px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: nowrap;
-    
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .C-searchButton {
-    min-width: 60px;
+    min-width: 80px;
     text-align: center;
     border: solid 1.5px #79cee2;
     color: var(--mainColor);
     background: transparent;
     border-radius: 25px;
-    margin: 2px 4px;
+    margin: 10px 4px;
     cursor: pointer;
     font-size: 14px;
     /* font-weight: bold; */
+  }
+  .C-searchBar {
+    display: block;
+    border-radius: 25px;
+    border: 2px solid #79cee2;
+    width: 260px;
+    padding: 4px 40px;
+    margin: 10px auto;
+    color: var(--mainColor);
+    transition: 0.5s;
+    font-size: 16px;
+  }
+
+  .C-searchbarIcon {
+    top: 20%;
+    left: 21%;
+  }
+  /* postdetail add collection */
+  /* -------------------------------------------------------------------------------------------- */
+  .C-postdetailDiv {
+    max-width: 450px;
+    box-shadow: 0px 0px 10px white;
+    margin: -40px 0 0 5px;
+    border: 1px solid rgb(236, 234, 234);
+    min-height: 400px;
+  }
+  .C-detailPic {
+    height: 250px;
+  }
+
+  .C-postdetailright {
+    display: none;
+  }
+  /* postdetail  */
+
+  .C-postDetailXS {
+    display: block;
+  }
+  .C-postDetailXS figure {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid black;
+    overflow: hidden;
+    margin: 10px 10px;
+    display: block;
+  }
+  .C-postDetailXS span {
+    display: inline;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .C-postDetailXS p {
+    display: block;
+  }
+
+  /* post detail content */
+  .C-postContentXS {
+    display: block;
+    font-size: 16px;
+    margin: 8px;
+    display: -webkit-box;
+    opacity: 1;
+  }
+
+  .C-postContentXS p {
+    display: block;
+  }
+  .C-postContentXS span {
+    display: inline;
+  }
+  /* 貼文案讚收藏 */
+  .C-postLikeCollectionXS .C-postlikeXS {
+    display: block;
+  }
+
+  /* 貼文留言 */
+  .C-postcommentXS {
+    display: block;
+    min-width: 320px;
+    padding: 0 5px;
+    font-size: 14px;
   }
 }
