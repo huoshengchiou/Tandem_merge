@@ -235,7 +235,7 @@ function Header() {
               <ul className="T-rwdlinklist">
                 <Link to="/productlist">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>
+                    <h5 style={{ color: 'white', fontSize: '25px' }}>
                       <GiSpartanHelmet className="T-linkicon" />
                       遊戲庫
                     </h5>
@@ -243,7 +243,7 @@ function Header() {
                 </Link>
                 <Link to="/community">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>
+                    <h5 style={{ color: 'white', fontSize: '25px' }}>
                       <GiPhotoCamera className="T-linkicon" />
                       社群探索
                     </h5>
@@ -251,7 +251,7 @@ function Header() {
                 </Link>
                 <Link to="/activity">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>
+                    <h5 style={{ color: 'white', fontSize: '25px' }}>
                       <GiThreeFriends className="T-linkicon" />
                       活動揪團
                     </h5>
@@ -259,7 +259,7 @@ function Header() {
                 </Link>
                 <Link to="/forum">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>
+                    <h5 style={{ color: 'white', fontSize: '25px' }}>
                       <GiAtom className="T-linkicon" />
                       開發論壇
                     </h5>
@@ -267,7 +267,7 @@ function Header() {
                 </Link>
                 <Link to="/bulletin">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>
+                    <h5 style={{ color: 'white', fontSize: '25px' }}>
                       <GiTrumpetFlag className="T-linkicon" />
                       新聞公告
                     </h5>

@@ -45,6 +45,7 @@ export default function UploadText(props) {
             margin: '40px 0 20px 0',
             width: '300px',
             padding: '5px 0',
+            fontSize: '16px',
           }}
         />
         <textarea
@@ -57,7 +58,7 @@ export default function UploadText(props) {
         ></textarea>
 
         <Select
-          style={{ width: 280, margin: '10px 0' }}
+          style={{ width: 280, margin: '10px 0', fontSize: '16px' }}
           placeholder="主題標籤 #"
           optionFilterProp="children"
           onChange={value => setUploadCategory(value)}

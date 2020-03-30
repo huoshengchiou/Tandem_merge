@@ -23,71 +23,35 @@ export default function AddPost(props) {
 
   const handleSubmit = () => {
     if (!imagefromchild) {
-      return Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請選擇圖片！',
       })
 
       // aNameInput.current.focus()
+    } else if (!titlefromchild) {
+      Swal.fire({
+        icon: 'error',
+        title: '錯誤',
+        text: '請輸入貼文標題！',
+      })
+      //   aLimitInput.current.focus()
+    } else if (!contentfromchild) {
+      Swal.fire({
+        icon: 'error',
+        title: '錯誤',
+        text: '請輸入貼文內容',
+      })
+      //   aBudgetInput.current.focus()
+    } else if (!categoryfromchild) {
+      Swal.fire({
+        icon: 'error',
+        title: '錯誤',
+        text: '請選擇貼文分類',
+      })
     }
-    // } else if (!aLimit) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '至少兩人才能舉辦活動喲！',
-    //   })
-    //   aLimitInput.current.focus()
-    // } else if (!aBudget) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '若無預算請填寫0元',
-    //   })
-    //   aBudgetInput.current.focus()
-    // } else if (!aCostTime) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '最低時數是半小時喲！',
-    //   })
-    //   aCostTimeInput.current.focus()
-    // } else if (!aCategoryId) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '請選擇活動類別！',
-    //   })
-    //   aCategoryIdInput.current.focus()
-    // } else if (!aDate) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '別忘了活動日期！',
-    //   })
-    //   aDateInput.current.focus()
-    // } else if (!aStartDate || !aEndDate) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '報名時間要設定喲！！',
-    //   })
-    //   aStartDateInput.current.focus()
-    // } else if (!aContent) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '請描述一下這次要辦的活動是怎樣的活動～',
-    //   })
-    //   aContentInput.current.focus()
-    // } else if (!aLocation) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '錯誤',
-    //     text: '地址記得填喲！',
-    //   })
-    //   aLocationInput.current.focus()
-    // }
+
     // async function sendDatatoServer(postData, callback) {
     // 注意資料格式要設定，伺服器才知道是json格式
 
@@ -98,17 +62,7 @@ export default function AddPost(props) {
     formdata.append('category', categoryfromchild)
     formdata.append('memberId', loginUserId)
     console.log(imagefromchild)
-    addNewPosttoServer(
-      formdata,
-      Swal.fire({
-        icon: 'success',
-        title: '貼文新增成功',
-        showConfirmButton: false,
-        timer: 2000,
-      }).then(r => {
-        window.location.href = `/Communityprofile/${loginUserId}`
-      })
-    )
+    addNewPosttoServer(formdata)
 
     async function addNewPosttoServer(formdata) {
       // 注意資料格式要設定，伺服器才知道是json格式
@@ -126,6 +80,14 @@ export default function AddPost(props) {
       const data = await response.json()
       console.log('from addpost :', data)
       // callback()
+      Swal.fire({
+        icon: 'success',
+        title: '貼文新增成功',
+        showConfirmButton: false,
+        timer: 2000,
+      }).then(r => {
+        window.location.href = `/Communityprofile/${loginUserId}`
+      })
     }
   }
 

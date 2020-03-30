@@ -85,8 +85,7 @@ export default function UploadFile(props) {
             <span
               className="d-block my-2"
               style={{
-                fontSize: '14px',
-                fontWeight: 'bold',
+                fontSize: '18px',
               }}
             >
               點擊或拖拉圖片到虛線框內上傳
