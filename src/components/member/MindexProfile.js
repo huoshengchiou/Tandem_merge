@@ -357,7 +357,7 @@ function MindexProfile() {
           className="M-avatarWrapper"
           style={{ height: `${editlistopen ? '52rem' : ''}` }}
         >
-          {/* //讓提示同時control紙娃娃選單 */}
+          {/* 按鈕提示文字，讓提示同時control紙娃娃選單 */}
           <div
             className="M-avatarmsg1"
             onClick={() => {
@@ -365,6 +365,30 @@ function MindexProfile() {
             }}
           >
             <p>紙娃娃</p>
+          </div>
+          {/* 個人發文提示文字 */}
+          <div
+            className="M-postmsg"
+            onClick={() => {
+              window.location.href = `/Communityprofile/${localUserData.mbId}`
+            }}
+          >
+            <p>發文</p>
+          </div>
+          {/* 返回會員中心上層提示文字 */}
+          <div
+            className="M-returnmsg"
+            onClick={() => dispatch(displayChange(1))}
+          >
+            <p>回上層</p>
+          </div>
+          <div
+            className="M-cpmsg"
+            onClick={() => {
+              setCuponOpen(!cuponopen)
+            }}
+          >
+            <p>優惠券</p>
           </div>
           <section className="M-avatarTop">
             {/* fix */}
