@@ -428,9 +428,9 @@ function ProductList(props) {
       {/* {myproduct.length}
       {totalpage} */}
       <div className="row my-3">
-        <div className="col">
+        <div className="col-12 d-flex">
           {/* 新的頁數bar開始 */}
-          <ul className="d-flex">
+          <ul className="d-flex flex-wrap">
             <li className="s-pageItem">
               <Link className="" onClick={() => paginate(currentpage - 1)}>
                 <AiOutlineCaretLeft />
