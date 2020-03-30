@@ -311,7 +311,15 @@ function Header() {
         {/* 右邊個人ICON區 */}
         <div className="T-personicon">
           {/* 購物車數量計量符號 */}
-          <div className="T-cartcount">1</div>
+          {localStorage.getItem('cart') !== null ? (
+            <div className="T-cartcount">
+              {localStorage.getItem('cart') !== null
+                ? JSON.parse(localStorage.getItem('cart')).length
+                : 0}
+            </div>
+          ) : (
+            ''
+          )}
           {/* //登入卡掛入 */}
           <div
             className={`T-Mlogcardwrapper ${

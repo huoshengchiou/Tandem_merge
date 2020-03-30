@@ -81,6 +81,10 @@ function Product(props) {
     getDataFromServer()
   }, [])
 
+  useEffect(() => {
+    getDataFromServer()
+  }, [productId])
+
   console.log('myproduct資訊=', myproduct)
   const url = props.match.url
   const path = props.match.path

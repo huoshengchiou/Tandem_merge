@@ -66,7 +66,7 @@ function Recommend(props) {
               style={{ transition: '.5s' }}
             >
               <div className="s-recommend-pic">
-                <Link to="/product/1" target="_blank">
+                <Link to="/product/1">
                   <img
                     className="img-fluid"
                     src="/images/shop/small_Img/1_Shadowverse CCG.jpg"
@@ -76,7 +76,7 @@ function Recommend(props) {
                 </Link>
               </div>
               <div className="s-recommend-pic">
-                <Link to="/product/6" target="_blank">
+                <Link to="/product/6">
                   <img
                     className="img-fluid"
                     src="/images/shop/small_Img/6_MOBIUS FINAL FANTASY.jpg"
@@ -85,7 +85,7 @@ function Recommend(props) {
                 </Link>
               </div>
               <div className="s-recommend-pic">
-                <Link to="/product/218" target="_blank">
+                <Link to="/product/218">
                   <img
                     className="img-fluid"
                     src="/images/shop/small_Img/2_NBA 2K20.jpg"
@@ -94,7 +94,7 @@ function Recommend(props) {
                 </Link>
               </div>
               <div className="s-recommend-pic">
-                <Link to="/product/76" target="_blank">
+                <Link to="/product/76">
                   <img
                     className="img-fluid"
                     src="/images/shop/small_Img/26_DOOM.jpg"
