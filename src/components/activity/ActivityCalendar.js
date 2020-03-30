@@ -37,6 +37,7 @@ function ActivityCalendar(props) {
     }
   }
 
+  //判斷登入狀況
   useEffect(() => {
     if (localStorage.getItem('LoginUserData')) {
       setLoginStatus(true)

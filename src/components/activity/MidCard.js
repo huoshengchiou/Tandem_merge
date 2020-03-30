@@ -33,7 +33,7 @@ function LeftCard(props) {
   const OK = (
     <>
       <Link
-        className="position-absolute"
+        className="position-absolute aCarousel"
         to={'/activitycontentpage/' + topId}
         style={{
           right: props.data[0],
@@ -55,9 +55,9 @@ function LeftCard(props) {
 
         <div
           style={{ marginLeft: props.data[6], transition: '2s' }}
-          className="aSideCarouselInfo position-absolute"
+          className="aCarouselInfo position-absolute"
         >
-          <Card.Title className="m-0">{topName}</Card.Title>
+          <Card.Title className="m-1">{topName}</Card.Title>
         </div>
       </Link>
     </>

@@ -152,7 +152,6 @@ function Header() {
   )
 
   // activity calender 基本設定
-  const history = useHistory()
   const [modalShow, setModalShow] = React.useState(false)
   const [loginStatus, setLoginStatus] = useState(false)
 
@@ -181,7 +180,8 @@ function Header() {
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          history.push('/login')
+          setLogcardOn(true)
+          // history.push('/login')
         }
       })
     }
@@ -266,14 +266,14 @@ function Header() {
           <div
             className={`T-detectgoodfriendwrapper ${
               comfirmfcardon ? 'active' : ''
-            }`}
+              }`}
           >
             <div
               className={`M-popUpDivheader ${
                 comfirmfcardon && addFevent.addfriendsignal && pop
                   ? 'active'
                   : ''
-              }`}
+                }`}
               style={{
                 display: `${addFevent.addfriendsignal && pop ? '' : 'none'}`,
               }}
@@ -287,7 +287,7 @@ function Header() {
                   comfirmfcardon && loginAut && addFevent.addfriendsignal
                     ? ''
                     : 'none'
-                }`,
+                  }`,
               }}
               onClick={() => {
                 setPop(false)
@@ -334,11 +334,11 @@ function Header() {
                 <IoMdNotificationsOutline
                   className={`T-notification ${
                     addFevent.addfriendsignal && loginAut ? 'active' : ''
-                  }`}
+                    }`}
                   style={{
                     color: `${
                       addFevent.addfriendsignal && loginAut ? '#F9A451' : ''
-                    }`,
+                      }`,
                   }}
                   onClick={() => {
                     setPop(true)

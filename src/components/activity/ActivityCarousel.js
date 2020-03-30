@@ -45,9 +45,9 @@ function AcitvityHomeCarousel() {
   }, 3500)
 
   const leftStyleArray = [
-    ['calc(100vw - 600px - 60px)', '400px', '600px', '99', '3s', '90%', '60px'],
-    ['60px', '400px', '600px', '100', '3s', '90%', '451px'],
-    ['calc(50vw - 450px)', '600px', '900px', '101', '3s', '0', '60px'],
+    ['calc(100vw - 600px - 60px)', '400px', '600px', '1', '3s', '90%', '60px'],
+    ['60px', '400px', '600px', '2', '3s', '90%', '451px'],
+    ['calc(50vw - 450px)', '600px', '900px', '3', '3s', '0', '60px'],
   ]
 
   return (

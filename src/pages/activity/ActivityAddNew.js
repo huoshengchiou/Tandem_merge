@@ -331,8 +331,6 @@ function ActivityAddNew(props) {
                 <option value="ACG02">專題講座</option>
                 <option value="ACG03">技能競賽</option>
                 <option value="ACG04">運動休閒</option>
-                <option value="ACG05">地圖探索</option>
-                <option value="ACG06">活動管理</option>
               </select>
               {/* <input className="form-control" type="text" /> */}
             </Col>

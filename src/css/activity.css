@@ -1,8 +1,8 @@
 /* ------------------------
 可用的顏色:
-藍色：#79CEE2
-橘色：#F9A451
-灰色：#ADB6BD
+藍色：#79CEE2、rgb(121, 206, 226)
+橘色：#F9A451、rgb(249, 164, 81)
+灰色：#ADB6BD、rgb(173, 182, 189)
 深藍 - 瑠璃 rgb(0, 92, 175)、#005CAF
 綠 - 木賊 rgb(45, 109, 75)、#2D6D4B
 黃 - 黄蘗 rgb(251, 226, 81)、#FBE251
@@ -10,7 +10,7 @@
 白 - 白練 rgb(252, 250, 242)、#FCFAF2
  ------------------------ */
 
-/* 套用至所有版面連結的基本設定 */
+/* 套用至所有版面btn的基本設定 */
 .aBtn.aAgree{
   border: 1px solid #79CEE2;
   background: white;
@@ -43,17 +43,22 @@ ActivityCarousel */
   align-items: center;
   margin: 20px 0;
 }
-.aSideCarouselInfo{
+.aCarouselInfo{
   bottom: 10px;
   background: rgba(67, 52, 27 , .7);
   padding: 10px;
+  color: #79cee2;
+}
+.aCarousel:hover .aCarouselInfo{
+  background: white;
+  color: #005CAF;
 }
 
 /* component
 ActivityCategorySearchbar */
 .aSearchbar{
   margin: auto;
-  max-width: 1140px;
+  max-width: 600px;
   min-height: 45px;
   border: solid 2.5px #79cee2;
   border-radius: 25px;
@@ -61,7 +66,7 @@ ActivityCategorySearchbar */
 .aSearchIcon{
   font-size: 32px;
   top: -4px;
-  left: 30px;
+  left: 300px;
   color: #79cee2;
   z-index: 20;
 }
@@ -86,13 +91,17 @@ ActivityListCard */
   max-width: 530px;
 }
 .aListCardWrap .aListCard ,
-.aListCardWrap Img {
+.aListCardWrap Img ,
+.aListCardWrap a{
   transition: 1s;
+  color: #79cee2;
 }
 .aListCardWrap:hover .aListCard ,
-.aListCardWrap:hover Img {
+.aListCardWrap:hover Img ,
+.aListCardWrap:hover a{
   border-radius: 25px;
   transform: scale(.9);
+  color: #005CAF;
 }
 .aListCard{
   border: solid 1px #adb6bd;
@@ -163,7 +172,6 @@ ActivityContentKV */
 }
 .aContentCatgory{
   padding: 5px;
-  color: white;
   background:#79cee2 ;
   border: #79cee2 5px solid;
   top: 20px;
@@ -177,8 +185,12 @@ ActivityContentKV */
   left: 32px;
   padding: 10px;
 }
-.aContentCatgory h3 , .aContentPageName h1{
+.aContentCatgory h3 ,
+.aContentPageName h1{
   margin: auto;
+}
+.aContentCatgory h3 {
+  color: white;
 }
 
 /* component
@@ -187,7 +199,6 @@ ActivityContentInfo */
   font-size: 22px;
   margin-top: 60px;
   line-height: 46px;
-  /* margin: 10px; */
 }
 .aCreatTime{
   font-size: 18px;
@@ -258,11 +269,9 @@ pages - ActivityAddNew
   transform: translateY(-10px);
   border-bottom-color: #adb6bd;
 }
-
 .f-latest-title::before {
   flex: 20px;
 }
-
 .swiper-container {
   width: 100%;
   height: auto;
