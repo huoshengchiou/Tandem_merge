@@ -42,7 +42,12 @@ function Product(props) {
   //  加入購物車,與Productlist.js共用
   async function updateCartToLocalStorage(value) {
     // setDataLoading(true)
-    Swal.fire({ html: `商品名稱:${myproduct.itemName}成功加入購物車` })
+    // Swal.fire({
+    //   html: `商品名稱:${myproduct.itemName}成功加入購物車`,
+    //   timer: 2000,
+    // }).then(r => {
+    //   window.location.reload()
+    // })
     const currentCart = JSON.parse(localStorage.getItem('cart')) || []
     let arr = []
     currentCart.forEach(element => {
@@ -53,7 +58,12 @@ function Product(props) {
       localStorage.setItem('cart', JSON.stringify(newCart))
       setMycart(newCart)
     }
-
+    Swal.fire({
+      html: `商品名稱:${myproduct.itemName}成功加入購物車`,
+      timer: 2000,
+    }).then(r => {
+      window.location.reload()
+    })
     //設定資料
     // setMycart(newCart)
   }

@@ -140,8 +140,11 @@ function Comment2(props) {
                         type="text"
                         // placeholder="請輸入暱稱"
                         value={
-                          JSON.parse(localStorage.getItem('LoginUserData'))
-                            .mbNick
+                          JSON.parse(localStorage.getItem('LoginUserData')) !==
+                          null
+                            ? JSON.parse(localStorage.getItem('LoginUserData'))
+                                .mbNick
+                            : ''
                         }
                         // onChange={e => setUsername(e.target.value)}
                       ></input>
@@ -406,7 +409,11 @@ function Comment2(props) {
                                 value={
                                   JSON.parse(
                                     localStorage.getItem('LoginUserData')
-                                  ).mbNick
+                                  ) !== null
+                                    ? JSON.parse(
+                                        localStorage.getItem('LoginUserData')
+                                      ).mbNick
+                                    : ''
                                 }
                               ></input>
                             </strong>
