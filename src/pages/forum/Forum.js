@@ -510,7 +510,7 @@ function Forum(props) {
                       }
                     } else {
                       if (tagName === props.article[index].articleCategoryId) {
-                        if (index < 10) {
+                        if (index < 20) {
                           return (
                             <ForumArticleListBox
                               key={index}

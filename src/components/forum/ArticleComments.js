@@ -135,7 +135,7 @@ function ArticleComments(props) {
     console.log('order', order)
     // if (order.result.affectedRows == 1) {
     Swal.fire({
-      icon: 'success',
+      // icon: 'success',
       title: '留言成功',
       timer: 1500,
     })
