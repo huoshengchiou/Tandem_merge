@@ -107,26 +107,113 @@ function PostDetail(props) {
     return (
       <>
         <div className="container my-5">
-          <div className="row" style={{ boxShadow: '0px 0px 10px #adb6bd' }}>
+          <div className="row C-postdetailDiv">
             {/* 貼文圖片 */}
 
-            <div className="col-8" style={{ paddingTop: '10px' }}>
-              <figure
-                style={{
-                  width: '100%',
-                  height: '500px',
-                  objectFit: 'cover',
-                  overflow: 'hidden',
+            <div className="col-md-8 " style={{ paddingTop: '10px' }}>
+              {/* RWD 手機版本 */}
+              <div
+                className="d-flex C-postDetailXS"
+                onClick={() => {
+                  window.location.href = `/Communityprofile/${postDetail.mbId}`
                 }}
               >
+                <figure>
+                  <img
+                    src={postDetail.mbAva}
+                    style={{ width: '100%', height: '100%' }}
+                  />
+                </figure>
+                <div style={{ fontSize: '14px', marginTop: '10px' }}>
+                  {' '}
+                  <span>{postDetail.mbNick}</span>
+                  <p
+                    style={{
+                      color: '#F9A451',
+                      fontWeight: 'bold',
+                      letterSpacing: '2px',
+                    }}
+                  >
+                    <AiFillEnvironment />{' '}
+                    <span style={{ fontSize: '12px', paddingLeft: '10px' }}>
+                      {postDetail.mbCountry}
+                    </span>
+                  </p>
+                </div>
+              </div>
+              {/* RWD 手機版本 */}
+              {/* -------------------------------------------------------------------- */}
+              <figure className="C-detailPic">
                 <img
                   src={`http://localhost:6001/img/${postDetail.postImg}`}
                   style={{ display: 'block', width: '100%', height: '100%' }}
                 />
               </figure>
+              {/* RWD 手機版本 */}
+              {/* -------------------------------------------------------------------- */}
+              <div className="C-postContentXS">
+                <p>
+                  <span
+                    style={{
+                      fontWeight: 'bold',
+                      paddingRight: '10px',
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => {
+                      window.location.href = `/Communityprofile/${postDetail.mbId}`
+                    }}
+                  >
+                    {postDetail.mbNick}
+                  </span>{' '}
+                  {postDetail.postContent}
+                </p>
+              </div>
+              {/* 收藏按讚留言 */}
+              <div className="d-flex justify-content-between C-posticon C-postLikeCollectionXS ">
+                <div
+                  className="mx-2 d-flex C-postlikeXS"
+                  onClick={() => {
+                    setLikeHeart(!likeHeart)
+                  }}
+                >
+                  <div className="C-postlikeXS">
+                    {likeHeart ? <AiFillHeart /> : <AiOutlineHeart />}
+                    {/* 按讚人數 */}
+                  </div>
+
+                  <p
+                    className="C-postlikeXS"
+                    style={{
+                      fontSize: '14px',
+                      margin: '8px 10px',
+                      color: 'black',
+                      opacity: '0.7',
+                    }}
+                  >
+                    <span style={{ fontWeight: 'bold', paddingRight: ' 4px' }}>
+                      {likeHeart ? `${like.payload + 1}` : `${like.payload}`}
+                    </span>
+                    人都說讚
+                  </p>
+                </div>
+
+                <div className="C-postlikeXS">
+                  <PostCollection
+                    postId={postDetail.post_id}
+                    postMemberId={postDetail.mbId}
+                    loginMemberId={loginUserId}
+                  />
+                </div>
+              </div>
             </div>
+            <div className="C-postcommentXS">
+              <PostComment postId={props.match.params.id} />
+            </div>
+
+            {/* ---------------------------------------------------------------------------- */}
+
             {/* 貼文內容 */}
-            <div className="col-4">
+            <div className="col-md-4 C-postdetailright">
               <PostDetailMore
                 postId={props.match.params.id}
                 postImg={postDetail.postImg}

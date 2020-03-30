@@ -193,7 +193,7 @@ function PostProfile(props) {
             <div className={`M-popUpDiv ${pop ? 'active' : ''}`}></div>
             <div className="container my-5">
               <div className="row">
-                <div className="col-8">
+                <div className="col-md-8">
                   <div
                     className="d-flex align-items-center"
                     style={{
@@ -296,7 +296,7 @@ function PostProfile(props) {
                     </div>
                   )}
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                   <div
                     style={{
                       height: '1px',
@@ -532,7 +532,7 @@ function PostProfile(props) {
         {/* </div> */}
         <div className="container my-5">
           <div className="row">
-            <div className="col-9 position-relative">
+            <div className="col-md-9 position-relative">
               <div
                 className="d-flex align-items-center"
                 style={{
@@ -636,7 +636,7 @@ function PostProfile(props) {
                 </div>
               )}
             </div>
-            <div className="col-3">
+            <div className="col-md-3">
               <div
                 style={{
                   height: '1px',

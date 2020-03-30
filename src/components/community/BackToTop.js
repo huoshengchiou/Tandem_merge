@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../../css/community.css'
+import { AiFillUpCircle } from 'react-icons/ai'
 
 export default class BackToTop extends React.Component {
   state = {
@@ -9,7 +10,7 @@ export default class BackToTop extends React.Component {
 
   componentDidMount() {
     document.addEventListener('scroll', () => {
-      if (window.scrollY > 170) {
+      if (window.scrollY > 200) {
         this.setState({ thePosition: true })
       } else {
         this.setState({ thePosition: false })
@@ -34,7 +35,8 @@ export default class BackToTop extends React.Component {
     if (this.state.thePosition) {
       return (
         <div className="go-top" onClick={this.scrollToTop}>
-          回到頁首
+          <AiFillUpCircle style={{ fontSize: '30px', paddingBottom: '5px' }} />
+          {/* 回到頁首 */}
         </div>
       )
     }
