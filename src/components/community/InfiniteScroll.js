@@ -48,7 +48,7 @@ class Infinitescroll extends React.Component {
         >
           {this.state.breweries.map(brewery => (
             <div
-              className="col-md-4 my-2"
+              className="col-md-4 my-2 "
               key={brewery.post_id}
               onClick={() => {
                 const getDatafromlocal = JSON.parse(
