@@ -25,6 +25,7 @@ import '../css/home.scss'
 const imageh1 = 'images/home-caro1.jpg'
 const imageh2 = 'images/home-caro2.jpg'
 const imageh3 = 'images/home-caro3.jpg'
+const imageh4 = 'images/home-caro4.jpg'
 const image1 = 'images/home1.jpg'
 const image2 = 'images/home2.jpg'
 const image3 = 'images/home3.jpg'
@@ -123,6 +124,15 @@ function Home() {
             <p className="legend">
               <a href="https://www.playstation.com/en-us/explore/ps5/">
                 PlayStation5 即將上市
+              </a>
+            </p>
+          </div>
+          <div>
+            <img src={imageh4} />
+            <p className="legend">
+              <a href="https://www.nintendo.co.jp/">
+                無料アップデートで広がる島ぐらし。『あつまれ
+                どうぶつの森』で季節のイベント「イースター」開催！
               </a>
             </p>
           </div>

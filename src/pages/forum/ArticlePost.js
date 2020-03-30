@@ -125,6 +125,15 @@ function ArticlePost(props) {
       }),
       body: JSON.stringify(articleInfo),
     })
+    Swal.fire(
+      {
+        icon: 'success',
+        title: '發文成功',
+      },
+      function() {
+        window.location.href = '/forum'
+      }
+    )
     const res = await fetch(req)
     const order = await res.json()
     await console.log('order', order)
@@ -343,7 +352,7 @@ function ArticlePost(props) {
                       onClick={postArticle}
                       // onSubmit={postArticle}
                     >
-                      留言
+                      發文
                     </button>
                     {/* <button class="f-index-btn f-index-btn-rounded f-index-btn-color">留言</button> */}
                   </div>

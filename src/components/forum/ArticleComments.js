@@ -40,10 +40,8 @@ function ArticleComments(props) {
   console.log('留言ID', articleId)
   function post() {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong!',
-      footer: '<a href>Why do I have this issue?</a>',
+      icon: 'success',
+      title: '留言成功',
     })
   }
 
@@ -121,6 +119,10 @@ function ArticleComments(props) {
 
   //建立文章
   async function postComment() {
+    Swal.fire({
+      icon: 'success',
+      title: '留言成功',
+    })
     const req = new Request('http://localhost:6001/articles/article_comments', {
       method: 'POST',
       credentials: 'include',
@@ -130,6 +132,7 @@ function ArticleComments(props) {
       }),
       body: JSON.stringify(commentInfo),
     })
+
     const res = await fetch(req)
     const order = await res.json()
     await console.log('order', order)
@@ -175,7 +178,7 @@ function ArticleComments(props) {
       <div id="comments"></div>
       <h3 class="f-latest-title">
         <span>
-          <span class="f-category-text-1">3則</span> 評論
+          <span class="f-category-text-1"></span> 評論
         </span>
       </h3>
 

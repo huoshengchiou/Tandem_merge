@@ -510,14 +510,16 @@ function Forum(props) {
                       }
                     } else {
                       if (tagName === props.article[index].articleCategoryId) {
-                        return (
-                          <ForumArticleListBox
-                            key={index}
-                            data={props.article[index]}
-                            tagName={tagName}
-                            className={props.article[index].articleClassId}
-                          />
-                        )
+                        if (index < 10) {
+                          return (
+                            <ForumArticleListBox
+                              key={index}
+                              data={props.article[index]}
+                              tagName={tagName}
+                              className={props.article[index].articleClassId}
+                            />
+                          )
+                        }
                       }
                     }
                   } else {
@@ -533,14 +535,16 @@ function Forum(props) {
                         )
                       }
                     } else {
-                      return (
-                        <ForumArticleListBox
-                          key={index}
-                          data={props.article[index]}
-                          tagName={props.article[index].articleCategoryId}
-                          className={props.article[index].articleClassId}
-                        />
-                      )
+                      if (index < 10) {
+                        return (
+                          <ForumArticleListBox
+                            key={index}
+                            data={props.article[index]}
+                            tagName={props.article[index].articleCategoryId}
+                            className={props.article[index].articleClassId}
+                          />
+                        )
+                      }
                     }
                   }
                 })}

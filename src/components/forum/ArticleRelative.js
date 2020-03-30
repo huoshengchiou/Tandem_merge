@@ -61,7 +61,7 @@ function ArticleRelative(props) {
           <div class="f-hot-post">
             <a href="#" class="f-hot-post-img">
               <img
-                src={`../../images/forum/article${article.articleId + 1}.jpg`}
+                src={`../../images/forum/article${article.articleId - 30}.jpg`}
                 // src="./images/forum/post-3-mid.jpg"
                 alt="We found a witch! May we burn her?"
               />
@@ -74,7 +74,8 @@ function ArticleRelative(props) {
 
             <div class="f-gap"></div>
             <h2 class="f-relative-post-title h4">
-              <a href="#">{article.articleName}</a>
+              <p>【教學】PhotoShop－放射狀的速度感效果教學</p>
+              {/* <a href="#">{article.articleName}</a> */}
               {/* <a href="#">We found a witch! May we burn her?</a> */}
             </h2>
           </div>
@@ -84,7 +85,7 @@ function ArticleRelative(props) {
           <div class="f-hot-post">
             <a href="#" class="f-hot-post-img">
               <img
-                src={`../../images/forum/article${article.articleId + 2}.jpg`}
+                src={`../../images/forum/article${article.articleId - 40}.jpg`}
                 // src="./images/forum/post-4-mid.jpg"
                 alt="For good, too though, in consequence"
               />
@@ -108,7 +109,7 @@ function ArticleRelative(props) {
           <div class="f-hot-post">
             <a href="#" class="f-hot-post-img">
               <img
-                src={`../../images/forum/article${article.articleId + 3}.jpg`}
+                src={`../../images/forum/article${article.articleId - 50}.jpg`}
                 // src="./images/forum/post-3-mid.jpg"
                 alt="We found a witch! May we burn her?"
               />
