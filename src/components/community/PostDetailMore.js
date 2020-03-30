@@ -16,13 +16,13 @@ export default function PostDetailMore(props) {
   console.log('props', props.postContent)
   const deletePost = () => {
     Swal.fire({
-      title: '确定删除貼文吗？',
+      title: '確定删除貼文吗？',
       text: '你将无法恢复它！',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#79cee2',
       cancelButtonColor: '#F9A451',
-      confirmButtonText: '确定删除',
+      confirmButtonText: '確定',
       cancelButtonText: '取消',
     }).then(willDelete => {
       if (willDelete.value) {
@@ -66,11 +66,11 @@ export default function PostDetailMore(props) {
       showCancelButton: true,
       confirmButtonColor: '#79cee2',
       cancelButtonColor: '#F9A451',
-      confirmButtonText: '确定',
+      confirmButtonText: '確定',
       cancelButtonText: '取消',
     }).then(text => {
       if (text.value) {
-        // Swal.fire('編輯成功!', '留言已成功編輯', 'success')
+        Swal.fire('編輯成功!', '留言已成功編輯', 'success')
         let postId = props.postId
         let postContent = text.value
         let postData = { postId, postContent }
@@ -88,7 +88,6 @@ export default function PostDetailMore(props) {
               'Content-Type': 'application/json',
             }),
           })
-          // console.log(JSON.stringify(commentId))
           const response = await fetch(request)
           const data = await response.json()
         }

@@ -218,6 +218,7 @@ function PostDetail(props) {
                 postId={props.match.params.id}
                 postImg={postDetail.postImg}
                 memberID={postDetail.mbId}
+                postContent={postDetail.postContent}
               />
 
               <div
