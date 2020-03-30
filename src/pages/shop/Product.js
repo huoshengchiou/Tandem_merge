@@ -262,7 +262,7 @@ function Product(props) {
         )}
       </div>
       <div className="d-flex flex-wrap container">
-        <div className="col col-sm-12 col-md-6 my-5">
+        <div className="col col-12 col-md-6 my-5">
           <div
             className="text-center s-bigImg"
             style={{ position: 'relative' }}
@@ -479,7 +479,15 @@ function Product(props) {
       <div className="">
         {configORcomment === 1 ? <Config /> : <Comment2 props={myproduct} />}
       </div>
-      <div className="container">{<Recommend />}</div>
+      <div className="container">
+        {
+          <Recommend
+            changeurl={url => {
+              props.history.push(`/product/${url}`)
+            }}
+          />
+        }
+      </div>
       {/* <Switch>
         <Route path={`${path}/:id?/config/12`}>
           <Config />
