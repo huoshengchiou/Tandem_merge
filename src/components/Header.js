@@ -310,6 +310,8 @@ function Header() {
         </div>
         {/* 右邊個人ICON區 */}
         <div className="T-personicon">
+          {/* 購物車數量計量符號 */}
+          <div className="T-cartcount">1</div>
           {/* //登入卡掛入 */}
           <div
             className={`T-Mlogcardwrapper ${
@@ -324,14 +326,14 @@ function Header() {
           <div
             className={`T-detectgoodfriendwrapper ${
               comfirmfcardon ? 'active' : ''
-              }`}
+            }`}
           >
             <div
               className={`M-popUpDivheader ${
                 comfirmfcardon && addFevent.addfriendsignal && pop
                   ? 'active'
                   : ''
-                }`}
+              }`}
               style={{
                 display: `${addFevent.addfriendsignal && pop ? '' : 'none'}`,
               }}
@@ -345,7 +347,7 @@ function Header() {
                   comfirmfcardon && loginAut && addFevent.addfriendsignal
                     ? ''
                     : 'none'
-                  }`,
+                }`,
               }}
               onClick={() => {
                 setPop(false)
@@ -392,11 +394,11 @@ function Header() {
                 <IoMdNotificationsOutline
                   className={`T-notification ${
                     addFevent.addfriendsignal && loginAut ? 'active' : ''
-                    }`}
+                  }`}
                   style={{
                     color: `${
                       addFevent.addfriendsignal && loginAut ? '#F9A451' : ''
-                      }`,
+                    }`,
                   }}
                   onClick={() => {
                     setPop(true)

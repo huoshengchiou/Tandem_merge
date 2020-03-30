@@ -30,7 +30,7 @@ function MazenpListcard() {
                 <p>{val.itemIntro}</p>
                 <div className="M-azenproductDesbtn">
                   <a href={`http://localhost:3000/product/${val.itemId}`}>
-                    more
+                    <h5>more</h5>
                   </a>
                 </div>
               </div>
