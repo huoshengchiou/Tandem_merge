@@ -305,10 +305,25 @@ footer {
     border-radius: 50%;
     top: -3rem;
     left: 22rem;
-    background: black;
-    opacity: 0.5;
+    background: #79cee2;
+    opacity: 0.9;
     position: absolute;
     transition: 1s;
+    animation: backgroundTransition 10s infinite;
+  }
+  @keyframes backgroundTransition {
+    0% {
+      background-color: #79cee2;
+    }
+    25% {
+      background-color: #005caf;
+    }
+    50% {
+      background-color: #adb6bd;
+    }
+    100% {
+      background-color: #79cee2;
+    }
   }
   .T-circlebg.active {
     transform: scale(50);
@@ -323,7 +338,8 @@ footer {
     /* background: lightgreen; */
     position: absolute;
     transition: 0.5s;
-    left: 12rem;
+    top: 0;
+    left: 14.5rem;
     z-index: 4;
   }
   .T-rwdmenucbtn:hover {
@@ -336,25 +352,27 @@ footer {
     /* background: pink; */
     position: absolute;
     z-index: 6;
-    bottom: -18.7rem;
-    left: -6rem;
+    bottom: -20.7rem;
+    left: -1rem;
   }
+
   .T-rwdlinkpart h5 {
     width: 15rem;
     height: 3rem;
     margin: 0.3rem;
-    line-height: 3rem;
-    background: white;
-    border: 0.2px solid #79cee2;
+    line-height: 6rem;
+    /* background: white; */
+    color: white;
+    /* border: 0.2px solid #79cee2; */
     /* transition: 0.75s; */
   }
   .T-rwdlinkpart h5:hover {
-    color: white !important;
-    background: #79cee2;
+    /* color: white !important;
+    background: #79cee2; */
   }
   .T-linkicon {
-    margin-right: 0.4rem;
-    font-size: 1.5rem;
+    margin-right: 1.2rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
   }
   .T-personicon {

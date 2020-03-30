@@ -482,7 +482,7 @@ function PostProfile(props) {
                   color: '#F9A451',
                   position: 'fixed',
                   zIndex: '10',
-                  right: '10%',
+                  right: '18%',
                   top: '50%',
                 }}
               >
@@ -521,7 +521,7 @@ function PostProfile(props) {
               position: 'fixed',
               zIndex: '40',
               top: '50%',
-              right: '6%',
+              right: '16%',
             }}
           >
             <AiOutlinePlusCircle />
@@ -636,7 +636,7 @@ function PostProfile(props) {
                 </div>
               )}
             </div>
-            <div className="col-md-3">
+            <div className="col-3">
               <div
                 style={{
                   height: '1px',
