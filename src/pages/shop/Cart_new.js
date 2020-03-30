@@ -95,6 +95,7 @@ function Cart_new(props) {
     setMycart(updateCart)
     getProductId(mycartDisplay) //重新抓購物車內商品id
     // getImgFromServer(mycartDisplay) //發fetch重抓圖片
+    window.location.reload()
   }
   const handleCouponSelect = element => {
     console.log(element)
