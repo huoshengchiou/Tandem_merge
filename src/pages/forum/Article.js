@@ -16,7 +16,7 @@ import $ from 'jquery'
 import Swal from 'sweetalert2'
 
 function Article(props) {
-  console.log('細節1', props)
+  // console.log('細節1', props)
 
   const [article, setArticle] = useState([])
   const [tagName, setTagname] = useState('')
@@ -37,39 +37,38 @@ function Article(props) {
   // console.log('ID', articleId)
   const Swal = require('sweetalert2')
 
-  //文章
-  async function getDetailFromServer(articleId) {
-    const request = new Request('http://localhost:6001/articles/' + articleId, {
-      method: 'GET',
-      credentials: 'include',
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('文章1', data)
-    setArticle(data[0])
+  async function getDetailFromServer() {
+    const request = await fetch(
+      'http://localhost:6001/articles' + props.location.pathname
+    )
+    const data = await request.json()
+    console.log('文章細節data', data.articleId)
+
+    setArticle(data)
   }
 
+  // console.log('article', article)
   useEffect(() => {
-    console.log('文章2', props)
-    getDetailFromServer(articleId)
+    console.log('文章2')
+    getDetailFromServer()
   }, [])
 
   //留言
-  async function getCommentData() {
-    const request = new Request('http://localhost:6001/article_comments/', {
-      method: 'GET',
-      credentials: 'include',
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('留言', data)
-    setComment(data[0])
-  }
+  // async function getCommentData() {
+  //   const request = new Request('http://localhost:6001/article_comments/', {
+  //     method: 'GET',
+  //     credentials: 'include',
+  //   })
+  //   const response = await fetch(request)
+  //   const data = await response.json()
+  //   console.log('留言', data)
+  //   setComment(data[0])
+  // }
 
-  useEffect(() => {
-    console.log('dddd', props)
-    getCommentData()
-  }, [])
+  // useEffect(() => {
+  //   console.log('dddd', props)
+  //   getCommentData()
+  // }, [])
 
   // useEffect(() => {
   //   console.log('dddd', props)
@@ -109,7 +108,7 @@ function Article(props) {
         <div class="f-gap-2"></div>
         <ul class="f-breadcrumbs">
           <li>
-            <a href="./home">首頁</a>
+            <a href="/home">首頁</a>
           </li>
           <li>
             <AiOutlineRight />

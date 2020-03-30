@@ -11,6 +11,56 @@ import ArticleTag from '../../components/forum/ArticleTag'
 import '../../css/forum.scss'
 
 function ForumArticleListBox(props) {
+  // const [articleData, setArticleData] = useState([])
+
+  // const [search, setSearch] = useState('')
+  // const [pageNum, setPagenum] = useState(1)
+  // const [totalPages, setTotalPages] = useState(1)
+
+  // function gotoPage(value) {
+  //   setPagenum(value)
+  // }
+
+  // async function getArticleData() {
+  //   let currentPage = pageNum
+  //   const page = window.location.pathname.split('forum/')[1]
+  //   if (page) {
+  //     currentPage = page
+  //   }
+  //   const req = new Request(
+  //     `http://localhost:6001/articles/${currentPage}?search=${search}`,
+  //     {
+  //       method: 'GET',
+  //       headers: new Headers({
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //       }),
+  //     }
+  //   )
+  //   const res = await fetch(req)
+  //   const data = await res.json()
+  //   console.log(data)
+  //   setArticleData(data.articles)
+  //   setTotalPages(parseInt(data.totalPages))
+  //   // setLatest(data.newBulletin)
+  //   console.log(data.articles)
+  // }
+  // useEffect(() => {
+  //   getArticleData()
+  // }, [])
+  // useEffect(() => {
+  //   getArticleData()
+  // }, [pageNum, search])
+
+  // const arrPage = []
+  // for (let i = 1; i <= totalPages; i++) {
+  //   arrPage.push(i)
+  // }
+  // let page = arrPage.map((page, i) => (
+  //   <Link onClick={() => gotoPage(page)} to={`/forum/${page}`}>
+  //     <li>{page}</li>
+  //   </Link>
+  // ))
   return (
     <>
       <div class="f-hot-post">
@@ -20,7 +70,7 @@ function ForumArticleListBox(props) {
               <img
                 src={`./images/forum/article${props.data.articleId}.jpg`}
                 // src="./images/forum/post-7-mid-square.jpg"
-                alt="At length one of them called out in a clear"
+                alt={props.data.articleName}
               />
               <ArticleTag tagName={props.tagName} />
             </a>
@@ -36,7 +86,7 @@ function ForumArticleListBox(props) {
               {/* <div class="f-gap"></div> */}
               <div class="f-hot-post-date mt-10 mb-10 d-flex">
                 <AiOutlineUser />
-                <a href="#">{props.data.articleAuthor}</a>
+                <a href="#">{props.data.mbNick}</a>
                 <div class="f-gap-article-list"></div>
                 <AiOutlineFile />
                 <span>{props.data.created_at}</span>
@@ -46,7 +96,11 @@ function ForumArticleListBox(props) {
               </div>
               <div class="f-gap"></div>
               <div class="f-hot-post-text">
-                <p>{props.data.articleContent}</p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: props.data.articleContent,
+                  }}
+                ></p>
               </div>
             </div>
           </div>

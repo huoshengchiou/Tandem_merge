@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter, Switch, Route } from 'react-router-dom'
+import { withRouter, Switch, Route, useHistory } from 'react-router-dom'
 // import { NavLink } from 'react-bootstrap'
 //redux
 // import { connect } from 'react-redux'
@@ -26,44 +26,155 @@ import ArticleTag from '../../components/forum/ArticleTag'
 import '../../css/forum.scss'
 // ES6 Modules or TypeScript
 import Swal from 'sweetalert2'
+import { Result } from 'antd'
 
 function ArticleComments(props) {
+  const history = useHistory()
   const [comment, setComment] = useState([])
+  const [addcomment, setAddComment] = useState('')
+  const [loginStatus, setLoginStatus] = useState(false)
+  const [mbId, setmbId] = useState('')
+
   const articleId = props.match.params.articleId
     ? props.match.params.articleId
     : ''
+  console.log('留言ID', articleId)
   function post() {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong!',
-      footer: '<a href>Why do I have this issue?</a>',
+      icon: 'success',
+      title: '留言成功',
     })
   }
 
-  async function getCommentData(articleId) {
-    const request = new Request(
-      'http://localhost:6001/article_comments' + articleId,
-      {
-        method: 'GET',
-        credentials: 'include',
-      }
+  // 進入即判斷localStorage裡面的登入Data(沒有表示尚未登入或已經登出)
+  // 為避免被使用者以輸入網址的方式跳轉過來
+  useEffect(() => {
+    if (localStorage.getItem('LoginUserData')) {
+      const localUserData = JSON.parse(localStorage.getItem('LoginUserData'))
+      setmbId(localUserData.mbId)
+      // console.log('ID', mbId)
+
+      // setMinDate(rightNow)
+      setLoginStatus(true)
+      console.log('OK')
+    } else {
+      setLoginStatus(false)
+      console.log('NO')
+      Swal.fire({ title: '請先登入喲！', icon: 'warning' }).then(function(r) {
+        history.push('/forum')
+      })
+    }
+  }, [])
+
+  //取得留言資訊
+  // 讀取資料庫留言內容
+  async function getCommentData() {
+    let data = await fetch(
+      `http://localhost:6001/articles/article_comments/${articleId}`
     )
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('留言', data)
-    setComment(data[0])
+    let getCommentInfo = await data.json()
+    if (getCommentInfo) {
+      setComment(getCommentInfo)
+    }
   }
+  // async function getCommentData(articleId) {
+  //   const request = new Request(
+  //     'http://localhost:6001/articles/article_comments/' + articleId,
+  //     {
+  //       method: 'GET',
+  //       credentials: 'include',
+  //     }
+  //   )
+  //   const response = await fetch(request)
+  //   const data = await response.json()
+  //   console.log('留言data', data)
+  //   setComment(data[0])
+  // }
 
   useEffect(() => {
     // console.log('dddd', props)
     getCommentData(articleId)
   }, [])
+
+  //發表留言
+  const commentInfo = {
+    content: '',
+    articleId: articleId,
+    mbId: mbId,
+  }
+  console.log('info', commentInfo)
+
+  //寫入文章資訊
+  function commentFormInfo(e, info) {
+    switch (info) {
+      case 'content':
+        commentInfo.content = e.currentTarget.value
+        break
+      // case 'articleContent':
+      //   articleInfo.articleContent = e.currentTarget.value
+      //   break
+      default:
+        break
+    }
+  }
+
+  //建立留言
+  async function postComment() {
+    const req = new Request('http://localhost:6001/articles/article_comments', {
+      method: 'POST',
+      credentials: 'include',
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify(commentInfo),
+    })
+
+    const res = await fetch(req)
+    const order = await res.json()
+    console.log('order', order)
+    // if (order.result.affectedRows == 1) {
+    Swal.fire({
+      icon: 'success',
+      title: '留言成功',
+      timer: 1500,
+    })
+    // }
+  }
+
+  // const handleSubmit = () => {
+  //   const commentData = { addcomment }
+  //   console.log('commentData', commentData)
+  //   sendCommentDataToServer(commentData, () => post('成功發文'))
+  // }
+
+  // async function sendCommentDataToServer(commentData, callback) {
+  //   // 注意資料格式要設定，伺服器才知道是json格式
+  //   const request = new Request(
+  //     'http://localhost:6001/articles/article_comments/',
+  //     {
+  //       method: 'POST',
+  //       body: JSON.stringify(commentData),
+  //       headers: new Headers({
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //       }),
+  //     }
+  //   )
+
+  //   console.log(JSON.stringify(commentData))
+
+  //   const response = await fetch(request)
+  //   const data = await response.json()
+  //   console.log('sendData', data)
+  //   callback()
+  // }
+
   //   useEffect(() => {
   //     console.log('comment', props)
   //     props.getCommentData()
   //   }, [])
-  console.log('comment', props)
+  // console.log('comment', props)
   return (
     <>
       {/* 留言內容 */}
@@ -71,88 +182,28 @@ function ArticleComments(props) {
       <div id="comments"></div>
       <h3 class="f-latest-title">
         <span>
-          <span class="f-category-text-1">3則</span> 評論
+          <span class="f-category-text-1"></span> 評論
         </span>
       </h3>
 
       <div class="f-gap"></div>
       <div class="f-comments">
-        <div class="f-comment">
-          <div class="f-comment-meta">
-            <img
-              src="../../images/forum/avatar-2.jpg"
-              alt="Witch Murder"
-              class="rounded-circle"
-              width="35"
-            />{' '}
-            by <a href="#">Witch Murder</a> in 20 September, 2018
-            <button
-              href="#"
-              class="f-index-btn f-index-btn-rounded f-index-btn-color float-right"
-            >
-              Reply
-            </button>
-          </div>
-          <div class="f-comment-text">
-            <p>
-              {comment.content}
-              {/* This sounded nonsense to Alice, so she said nothing, but set off
-              at once toward the Red Queen. To her surprise, she lost sight of
-              her in a moment, and found herself walking in at the front-door
-              again. */}
-            </p>
-          </div>
-
-          <div class="f-comment">
+        {comment.map((value, ind) => (
+          <div class="f-comment" key={ind}>
             <div class="f-comment-meta">
               <img
-                src="../../images/forum/avatar-1.jpg"
-                alt="Hitman"
+                src={value.mbAva}
+                alt="Witch Murder"
                 class="rounded-circle"
                 width="35"
               />{' '}
-              by <a href="#">Hitman</a> in 20 September, 2018
-              <button
-                href="#"
-                class="f-index-btn f-index-btn-rounded f-index-btn-color float-right"
-              >
-                Reply
-              </button>
+              by <a href="#">{value.mbNick}</a> in {value.created_at}
             </div>
             <div class="f-comment-text">
-              <p>
-                To her surprise, she lost sight of her in a moment, and found
-                herself walking in at the front-door again.
-              </p>
+              <p>{value.content}</p>
             </div>
           </div>
-        </div>
-
-        <div class="f-comment">
-          <div class="f-comment-meta">
-            <img
-              src="../../images/forum/avatar-3.jpg"
-              alt="Wolfenstein"
-              class="rounded-circle"
-              width="35"
-            />{' '}
-            by <a href="#">Wolfenstein</a> in 21 September, 2018
-            <button
-              href="#"
-              class="f-index-btn f-index-btn-rounded f-index-btn-color float-right"
-            >
-              Reply
-            </button>
-          </div>
-          <div class="f-comment-text">
-            <p>
-              The sight of the tumblers restored Bob Sawyer to a degree of
-              equanimity which he had not possessed since his interview with his
-              landlady. His face brightened up, and he began to feel quite
-              convivial.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
 
       {/* 留言回應 */}
@@ -166,33 +217,6 @@ function ArticleComments(props) {
       <div class="f-gap"></div>
       <div class="f-reply">
         <form action="#" class="f-form" novalidate="novalidate">
-          <div class="row f-sm-gap f-vertical-gap">
-            <div class="col-md-4">
-              <input
-                type="email"
-                class="form-control required"
-                name="email"
-                placeholder="Email *"
-              />
-            </div>
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control required"
-                name="name"
-                placeholder="Name *"
-              />
-            </div>
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control"
-                name="name"
-                placeholder="Website"
-              />
-            </div>
-          </div>
-
           <div class="f-gap-1"></div>
           <textarea
             class="form-control required"
@@ -200,13 +224,15 @@ function ArticleComments(props) {
             rows="5"
             placeholder="Message *"
             aria-required="true"
+            onChange={e => commentFormInfo(e, 'content')}
+            // onChange={e => setAddComment(e.target.value)}
           ></textarea>
 
           <div class="f-gap-1"></div>
           <div class="f-form-response-success"></div>
           <div class="f-form-response-error"></div>
           <button
-            onClick={() => post()}
+            onClick={postComment}
             class="f-index-btn f-index-btn-rounded f-index-btn-color"
             id="post"
           >

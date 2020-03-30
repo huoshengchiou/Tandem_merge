@@ -14,37 +14,45 @@ import {
   AiOutlineTwitter,
   AiOutlineLinkedin,
 } from 'react-icons/ai'
+import CKEditor from '@ckeditor/ckeditor5-react'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import ArticleTag from '../../components/forum/ArticleTag'
 import '../../css/forum.scss'
 
 function ArticleDetail(props) {
-  //   console.log('細節2', props)
-  console.log('component內容', props)
+  // console.log('細節2', props.location.pathname)
+  // console.log('component內容', props.data)
 
   const [article, setArticle] = useState([])
+  const [comment, setComment] = useState([])
   const [tagName, setTagname] = useState('')
-  const articleId = props.match.params.articleId
-    ? props.match.params.articleId
-    : ''
-  console.log('ID', articleId)
+  // const articleId = props.match.params.articleId
+  //   ? props.match.params.articleId
+  //   : ''
 
-  async function getDetailFromServer(articleId) {
-    const request = new Request('http://localhost:6001/articles/' + articleId, {
-      method: 'GET',
-      credentials: 'include',
-    })
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('文章1', data)
-    setArticle(data[0])
+  async function getDetailFromServer() {
+    const request = await fetch(
+      'http://localhost:6001/articles' + props.location.pathname
+    )
+    const data = await request.json()
+    // console.log('文章細節data', data.articleId)
+
+    setArticle(data)
   }
 
+  // console.log('article', article)
   useEffect(() => {
-    console.log('文章2', props)
-    getDetailFromServer(articleId)
+    // console.log('文章2')
+    getDetailFromServer()
   }, [])
 
-  console.log('內容2', article)
+  // var oldDiv = '<div id="articleContent></div>'
+  // var htmlObject = document.createElement('div')
+  // document.getElementById('articleContent').innerHTML = articleContent
+  // htmlObject.innerHTML = oldDiv
+  // document.body.appendChild(htmlObject)
+
+  // console.log('props', props)
   return (
     <>
       <div class="f-hot-post-text mt-0">
@@ -58,17 +66,12 @@ function ArticleDetail(props) {
         </div>
 
         <div class="f-gap-1"></div>
-        <h1 class="f-hot-post-title h4">{article.articleName}</h1>
+        <h1 class="f-hot-post-title h4 f-detail-name">{article.articleName}</h1>
         <div class="f-gap"></div>
         <div class="f-hot-post-by">
-          <img
-            src="./images/forum/avatar-2.jpg"
-            alt=""
-            class="rounded-circle"
-            width="35"
-          />{' '}
-          by <a href="#">{article.articleAuthor}</a> in Sep 5, 2018
-          <span class="f-hot-post-category">
+          <img src={article.mbAva} alt="" class="rounded-circle" width="35" />{' '}
+          by <a href="#">{article.mbNick}</a> in {article.updated_at}
+          <span class=" f-hot-post-category">
             {/* {props.article &&
               props.article.map((value, index) => {
                   if (props.articleId.articleCategoryId === tagName) {
@@ -84,8 +87,10 @@ function ArticleDetail(props) {
               }   */}
             {/* <span class="f-index-bg-5">程式設計</span>
             <span class="f-index-bg-6">原畫創作</span> */}
-            <span>
+            <span className="f-detail-tag">
               <ArticleTag tagName={article.articleCategoryId} />
+            </span>
+            <span>
               <AiOutlineEdit />
             </span>
             <span>
@@ -95,8 +100,11 @@ function ArticleDetail(props) {
         </div>
 
         <div class="f-gap-1"></div>
-        <div class="f-single-article-content">
-          {article.articleContent}
+        <div
+          class="f-single-article-content"
+          id="articleContent"
+          dangerouslySetInnerHTML={{ __html: article.articleContent }}
+        >
           {/* {props.article &&
   props.article.map((value, index) => {
     return <div key={index} data={props.data.articleContent} />
@@ -104,7 +112,7 @@ function ArticleDetail(props) {
         </div>
         <img
           class="float-left mt-0"
-          // src={`./images/forum/article${article.articleId}.jpg`}
+          src={`./images/forum/article${article.articleId}.jpg`}
           // src="./images/forum/post-inner-img.jpg"
           alt=""
         />

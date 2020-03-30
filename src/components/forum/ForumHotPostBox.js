@@ -23,7 +23,9 @@ function ForumHotPostBox(props) {
                 // src="./images/forum/post-5-mid.jpg"
                 alt="He made his passenger captain of one"
               />
-              <span class="f-hot-post-comments-count">94</span>
+              <span class="f-hot-post-comments-count">
+                {props.data.articleId}
+              </span>
               <ArticleTag tagName={props.tagName} />
             </a>
             <div class="f-gap"></div>

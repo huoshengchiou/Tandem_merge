@@ -12,12 +12,12 @@ import $ from 'jquery'
 import '../../css/forum.scss'
 
 function ForumLatestLeftBox(props) {
-  console.log('left', props)
+  // console.log('left', props)
   const [article, setArticle] = useState([])
 
   function handleOnClick() {
     props.changeIndex(props.index)
-    console.log('props.index', props.index)
+    // console.log('props.index', props.index)
   }
 
   return (
@@ -28,7 +28,7 @@ function ForumLatestLeftBox(props) {
           <img
             src={`../../images/forum/article${props.data.articleId}.jpg`}
             // src="./images/forum/post-1-sm.jpg"
-            alt="Smell magic in the air. Or maybe barbecue"
+            alt={props.data.articleName}
           />
         </div>
         <img
@@ -40,8 +40,11 @@ function ForumLatestLeftBox(props) {
           <span>{props.data.articleName}</span>
         </h3>
 
-        <div class="f-latest-left-box-article-text">
-          <p>{props.data.articleContent}</p>
+        <div
+          class="f-latest-left-box-article-text"
+          dangerouslySetInnerHTML={{ __html: props.data.articleContent }}
+        >
+          {/* <p>{props.data.articleContent}</p> */}
         </div>
         <a href="#" class="f-latest-left-box-article-url">
           Read More
