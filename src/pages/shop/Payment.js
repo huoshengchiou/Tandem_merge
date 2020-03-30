@@ -105,7 +105,7 @@ function Payment(props) {
 
   //驗證安全碼輸入
   function testpattern(input) {
-    let re = /\d{3}/
+    let re = /^\d{3}$/
     let ok = re.test(input.value)
     // console.log('安全碼驗證',ok)
     //如果小於3位數就顯示錯誤訊息
@@ -195,7 +195,7 @@ function Payment(props) {
                 style={{ marginLeft: '-5px', marginRight: '10px' }}
               /> */}
                 <div className="form-group form-row mx-2">
-                  <div className="col">
+                  <div className="col d-flex">
                     <input
                       type="password"
                       className="form-control card-input"
@@ -203,9 +203,10 @@ function Payment(props) {
                       placeholder=""
                       maxLength="4"
                     />
+                    <span style={{ lineHeight: '38px' }}> -</span>
                   </div>
-                  <span style={{ lineHeight: '38px' }}>-</span>
-                  <div className="col">
+
+                  <div className="col d-flex">
                     <input
                       type="password"
                       className="form-control card-input"
@@ -213,9 +214,10 @@ function Payment(props) {
                       placeholder=""
                       maxLength="4"
                     />
+                    <span style={{ lineHeight: '38px' }}> -</span>
                   </div>
-                  <span style={{ lineHeight: '38px' }}>-</span>
-                  <div className="col">
+
+                  <div className="col d-flex">
                     <input
                       type="password"
                       className="form-control card-input"
@@ -223,8 +225,9 @@ function Payment(props) {
                       placeholder=""
                       maxLength="4"
                     />
+                    <span style={{ lineHeight: '38px' }}> -</span>
                   </div>
-                  <span style={{ lineHeight: '38px' }}>-</span>
+
                   <div className="col">
                     <input
                       type="text"
