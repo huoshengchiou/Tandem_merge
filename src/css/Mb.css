@@ -250,22 +250,24 @@ body {
 }
 .M-FgpwdCardpic {
   width: 10rem;
-  height: 19rem;
+  height: 18rem;
   margin: 0 auto;
+
   /* border: 1px solid black; */
-  margin-bottom: 0.2rem;
+  margin-bottom: 2rem;
   /* border: 1px solid teal; */
 }
 .M-FgpwdCardpic img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .M-FgpwdCardinput {
   border: 1px solid #79cee2;
 }
 .M-sendMail {
   margin-top: 0.8rem;
+  margin-left: 0.2rem;
   padding: 0.2rem 0.5rem;
   color: #ec8824;
   font-weight: 400;
@@ -362,6 +364,17 @@ body {
 .M-inputwrapper {
   position: relative;
 }
+.M-rgfailmsg {
+  transform: scale(0.8) translateY(-1rem);
+  font-weight: 600;
+  color: #4691f6;
+}
+.M-lgfailmsg {
+  transform: scale(0.8) translateY(-1rem);
+  font-weight: 600;
+  color: #4691f6;
+}
+
 .M-lginputalert {
   margin: 0;
   position: absolute;
@@ -374,11 +387,16 @@ body {
   color: green;
 }
 .M-forgetpwd {
-  margin-top: 1rem;
   padding: 5px 5px;
-  margin-left: 9rem;
+  position: absolute;
+  bottom: -5rem;
+  left: 2rem;
   border: 1px solid #f9a451;
   color: #f9a451;
+}
+.M-forgetpwd:hover {
+  color: white;
+  background: #f9a451;
 }
 .M-rginputalertEmail {
   margin: 0;
@@ -414,6 +432,10 @@ body {
   top: 15rem;
   left: 8.5rem;
 }
+.M-loginBtn:hover {
+  background: #79cee2;
+  color: white;
+}
 
 .M-loginSwitch {
   width: 5rem;
@@ -435,6 +457,10 @@ body {
   position: absolute;
   top: 15rem;
   left: 8.5rem;
+}
+.M-regBtn:hover {
+  color: white;
+  background: #79cee2;
 }
 
 .M-regSwitch {
@@ -464,11 +490,6 @@ body {
   transition: 2s;
   overflow: hidden;
 }
-/* 以調整成功能 */
-/* .active  */
-/* .M-avatarWrapper { */
-/* height: 52rem; */
-/* } */
 
 .M-avatarTop {
   /* border-bottom: 3px solid #79cee2; */
@@ -485,6 +506,7 @@ body {
   height: 8rem;
   margin-top: 1.5rem;
   margin-left: 1rem;
+  background: white;
   border: 0.5px solid #adb6bd;
   overflow: hidden;
   /* box-shadow: 2px 3px 0px black; */
@@ -508,7 +530,9 @@ body {
 }
 .M-avatarTop h3 {
   margin-top: 1rem;
-  font-size: 1.4rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .M-avatarDes h6 {
@@ -519,17 +543,18 @@ body {
   width: 8rem;
   height: 2rem;
   font-size: 1rem;
-  /* font-weight: 700; */
   border: 1px solid #79cee2;
   color: #79cee2;
   text-align: center;
   background: white;
   position: absolute;
-  /* font-weight: 600; */
-  left: 5rem;
-  top: 10rem;
+  left: 3rem;
+  top: 10.5rem;
   transition: 0.75s;
-  /* margin-left: 5rem; */
+}
+.M-Deschagebtnicon {
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
 }
 .M-mbDeschagebtn:focus {
   outline: none;
@@ -542,7 +567,6 @@ body {
 .M-avatarChange {
   width: 3rem;
   height: 3rem;
-  /* border: 1px dotted green; */
   position: absolute;
   font-size: 3rem;
   line-height: 1rem;
@@ -551,6 +575,35 @@ body {
   top: 7rem;
   cursor: pointer;
   animation: Rotate 6s infinite linear;
+}
+.M-avatarmsg1:hover {
+  opacity: 1;
+}
+
+/* 紙娃娃按鈕提示 */
+.M-avatarmsg1 {
+  opacity: 0;
+  width: 4rem;
+  height: 3rem;
+  text-align: center;
+  line-height: 2rem;
+  /* background-color: lightsalmon; */
+  background: white;
+  position: absolute;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    39% 100%,
+    50% 75%,
+    0% 75%
+  );
+
+  top: 6rem;
+  left: 0.5rem;
+  z-index: 2;
+  cursor: pointer;
 }
 /* 齒輪轉動 */
 @keyframes Rotate {
@@ -561,36 +614,56 @@ body {
     transform: rotate(360deg);
   }
 }
+.M-avatarsecondgear {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  text-align: center;
+  line-height: 2rem;
+  color: #f9a451;
+  font-size: 2rem;
+  animation: reverRotate 6s infinite linear;
+  top: 5.2rem;
+  left: -0.17rem;
+}
+@keyframes reverRotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 
 .M-comLink {
   width: 3rem;
   height: 3rem;
-  background: white;
+  /* background: white; */
   position: absolute;
-  left: 14rem;
-  top: 9.4rem;
-  color: #79cee2;
+  left: 13rem;
+  top: 9.8rem;
+  color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
   cursor: pointer;
 }
 .M-comLink:hover {
-  color: #4691f6;
+  color: #eb8f34;
 }
 .M-MajorLink {
   width: 3rem;
   height: 3rem;
-  background: white;
+  /* background: white; */
   position: absolute;
-  left: 17rem;
-  top: 9.3rem;
-  color: #79cee2;
+  left: 16.5rem;
+  top: 9.7rem;
+  color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
   cursor: pointer;
 }
 .M-MajorLink:hover {
-  color: #4691f6;
+  color: #eb8f34;
 }
 
 /* .M-avatarDes > h6 {
@@ -609,7 +682,7 @@ border: 1px solid black;
 
 .M-mbdesForm {
   border: 0.5px solid #adb6bd;
-  border-top: 5px solid #adb6bd;
+  border-top: 2px solid #adb6bd;
   text-align: center;
   padding-bottom: 0.4rem;
   box-shadow: 0px 3px 6px #707070;
@@ -635,6 +708,7 @@ border: 1px solid black;
   text-align: center;
   line-height: 2.5rem;
   color: #f9a451;
+  cursor: pointer;
 }
 .M-editLeavebtn:hover {
   color: #df8d3c;
@@ -663,8 +737,8 @@ border: 1px solid black;
 }
 .M-mbdesformIpt h6 {
   display: inline-block;
-  height: 1.5rem;
-  line-height: 2.5rem;
+  height: 1.7rem;
+  line-height: 3.2rem;
 }
 
 .M-mbdesformIpt input {
@@ -723,8 +797,9 @@ border: 1px solid black;
 }
 .M-subbtnGroupbrick {
   width: 100%;
-  height: 20px;
+  height: 2px;
   background: #adb6bd;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 .M-subbtnwrapper {
@@ -735,9 +810,9 @@ border: 1px solid black;
 }
 .M-sublayerbtn {
   width: 7.8125rem;
-  width: 6rem;
+  width: 6.7rem;
   height: 7.8125rem;
-  height: 3.5rem;
+  height: 3rem;
   /* margin-top: 3.8125rem; */
   line-height: 2rem;
   font-size: 1.15rem;
@@ -750,7 +825,7 @@ border: 1px solid black;
   text-align: center;
   border: 1px solid #79cee2;
   background: white;
-  padding: 10px;
+  /* padding: 10px; */
   text-decoration: none;
   transition: 0.5s;
   /* box-shadow: 0px 3px 2px #707070; */
@@ -767,13 +842,29 @@ border: 1px solid black;
   /* transform: scale(0.95); */
 }
 
+.M-subicon1 {
+  font-size: 1.2rem;
+  margin-right: 0.2rem;
+}
+.M-subicon2 {
+  font-size: 1.2rem;
+
+  margin-right: 0.2rem;
+}
+.M-subicon3 {
+  font-size: 1.2rem;
+  margin-right: 0.2rem;
+}
+
 .M-subbtnGroup button:focus {
   outline: none;
+  border: 1px solid #f9a451;
   color: #f9a451;
   z-index: 2;
   /* box-shadow: 0px 3px 12px #707070; */
 }
 .M-subbtnGroup button:hover {
+  border: 0;
   background: #79cee2;
   color: white;
   /* transform: scale(1.2); */
@@ -799,7 +890,7 @@ border: 1px solid black;
   /* margin-top: 1rem; */
   /* margin-left: 0.8rem;
   margin-bottom: 1rem; */
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.4rem;
   color: #fcfaf2;
   font-size: 1.2rem;
   line-height: 3rem;
@@ -807,7 +898,7 @@ border: 1px solid black;
 
 .M-azenproductListWindow {
   width: 16.3rem;
-  height: 22.4rem;
+  height: 22rem;
   margin: 0 auto;
   /* background: blueviolet; */
   overflow: hidden;
@@ -874,7 +965,7 @@ border: 1px solid black;
 }
 
 .M-markpdBody.active {
-  height: 51%;
+  height: 49%;
   border: 2px solid #707070;
   border-top: 0;
 }
@@ -893,7 +984,8 @@ border: 1px solid black;
 }
 
 .M-markpdDes p {
-  margin: 5px 5px;
+  color: black;
+  margin: 5px 10px;
   font-size: 0.8rem;
   line-height: 25px;
   text-align: left;
@@ -917,16 +1009,17 @@ border: 1px solid black;
   font-size: 2.5rem;
   line-height: 2.5rem;
   display: inline-block;
-  color: #707070;
+  color: black;
   text-decoration: none;
   float: right;
-  filter: opacity(50%);
+  filter: opacity(100%);
+
   /* position: absolute;
   right: 0; */
 }
 
 .M-markpdTrans:hover {
-  filter: opacity(100%);
+  filter: opacity(50%);
 }
 
 .clearfix::after {
@@ -947,6 +1040,8 @@ border: 1px solid black;
   margin: 0;
   transition: 0.75s;
   line-height: 150px;
+  font-weight: 600;
+
   /* white-space: normal; */
 }
 
@@ -1370,7 +1465,7 @@ border: 1px solid black;
   width: 54rem;
   /* height: 10.75rem; */
   padding: 0.3rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -1385,6 +1480,7 @@ border: 1px solid black;
   padding: 0.6rem;
   margin: 2rem;
   /* position: relative; */
+  box-shadow: 0px 3px 6px #707070;
   display: flex;
 }
 
@@ -1402,16 +1498,22 @@ border: 1px solid black;
 }
 
 .M-friendcollectClear {
-  margin-top: 0.8rem;
+  margin-top: 0.5rem;
   border: 1px solid #f9a451;
   color: #f9a451;
   font-size: 1.2rem;
+  margin-left: 0.2rem;
   text-decoration: none;
+}
+.M-friendcollectClear:hover {
+  color: white;
+  background: #f9a451;
 }
 
 .M-friendcollectCardright {
   width: 11rem;
   height: 9rem;
+  position: relative;
   /* border: 1px solid black; */
 }
 
@@ -1434,18 +1536,23 @@ border: 1px solid black;
   -webkit-box-orient: vertical;
 }
 
+.M-friendlistsate {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .M-friendcollectDot {
   width: 1rem;
   height: 1rem;
   background: green;
   border-radius: 50%;
   display: inline-block;
-  margin-left: 7.5rem;
 }
 
 .M-friendcollectCardright span {
+  display: inline-block;
   margin-left: 0.4rem;
-  margin-bottom: 0.8rem;
   font-weight: 900;
 }
 
@@ -1568,6 +1675,7 @@ border: 1px solid black;
   /* overflow: hidden; */
   position: relative;
   /* box-shadow: 0px 0px 10px #adb6bd; */
+  cursor: pointer;
 }
 .M-mygameImgwrapper {
   width: 16rem;
@@ -1625,7 +1733,7 @@ border: 1px solid black;
 
 .M-dollMoveWrapper {
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   transition: 0.75s;
   left: 0.1rem;
   top: -1rem;
@@ -1677,7 +1785,13 @@ border: 1px solid black;
   font-size: 2rem;
   text-align: center;
   line-height: 2.5rem;
+  cursor: pointer;
   /* background: greenyellow; */
+}
+.M-dollhSelect:hover {
+  border-radius: 50%;
+  color: white;
+  background: #79cee2;
 }
 
 .M-dollhimgOuter {
@@ -1788,7 +1902,7 @@ border: 1px solid black;
   /* height: 10.75rem; */
   padding: 0.3rem;
   margin: 0 auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -1930,16 +2044,15 @@ border: 1px solid black;
 .M-leftcuponwrapper {
   background: white;
   position: absolute;
-  right: -19.9rem;
-  bottom: -1.3rem;
+  right: -20rem;
+  top: -50rem;
+  z-index: 1;
   box-shadow: 0px 3px 2px #707070;
   transition: 0.75s;
-  z-index: -1;
-  opacity: 0;
 }
 .M-leftcuponwrapper.active {
   z-index: 1;
-  opacity: 1;
+  top: -0.25rem;
 }
 .M-mycupontopbtn {
   width: 3rem;
@@ -1948,25 +2061,25 @@ border: 1px solid black;
   line-height: 2.5rem;
   margin-top: 0.15rem;
   text-align: center;
-  background: white;
-  color: #79cee2;
+  /* background: white; */
+  color: #f9a451;
   z-index: 1;
   /* border: 0.5px solid black; */
   /* background: rgb(160, 160, 44); */
   transition: 0.75s;
   position: absolute;
   right: 0.4rem;
-  top: 9.2rem;
+  top: 9.6rem;
   cursor: pointer;
 }
 .M-mycupontopbtn:hover {
-  color: #4691f6;
+  color: #eb8f34;
 }
-.M-mycupontopbtn.active {
+/* .M-mycupontopbtn.active {
   z-index: 2;
   right: -3rem;
   top: 9.2rem;
-}
+} */
 /* --------------- */
 .M-mycuponlistwrapper {
   width: 20rem;
@@ -2023,6 +2136,7 @@ border: 1px solid black;
   height: 28rem;
   /* padding: 0 5rem; */
   margin: 0 auto;
+  margin-top: 2rem;
   /* border: 1px solid white; */
   display: flex;
 }
@@ -2179,7 +2293,10 @@ border: 1px solid black;
 }
 .M-indexLeftContainer {
   width: 23.4375rem;
-  border: 0.5px solid #adb6bd;
+  /* border: 0.5px solid #adb6bd; */
+  /* border: 0.5px solid #79cee2; */
+  margin-right: 0.5rem;
+
   /* height: 50rem; */
   /* background: lightblue; */
 }

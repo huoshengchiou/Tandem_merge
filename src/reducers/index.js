@@ -8,6 +8,7 @@ import Mmygamedetail from './Mmygamedetail'
 import Mbazenproduct from './Mbazenproduct'
 import Maddfriend from './Maddfriend'
 import Mconfirmfriend from './Mconfirmfriend'
+import Mcallogcard from './Mcallogcard'
 
 //community
 import communityLike from './communityLike'
@@ -34,7 +35,7 @@ const allReducers = combineReducers({
   Mbazenproduct,
   Maddfriend,
   Mconfirmfriend,
-
+  Mcallogcard,
   getArticleData,
   getArticleDetail,
   getCommentData,

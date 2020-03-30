@@ -8,9 +8,11 @@ import {
   AiOutlineDelete,
   AiOutlineHeart,
   AiOutlineShoppingCart,
+  AiFillHeart,
 } from 'react-icons/ai'
 import Swal from 'sweetalert2' //sweetalert2
 import PayProgressbar from '../../components/shop/PayProgessbar'
+import unazen from './unazen' //取消按讚
 
 function Cart_new(props) {
   const [mycart, setMycart] = useState([])
@@ -27,6 +29,7 @@ function Cart_new(props) {
   const [browsehistory, setBrowseHistory] = useState([]) //瀏覽紀錄相關資訊
   const [couponOrhistory, setCouponOrHistory] = useState(0)
   const [windowOffset, setWindowOffset] = useState(0)
+  const [mbAzen_arr_state, setMbAzen_arr_state] = useState([])
   async function getCartFromLocalStorage() {
     setDataLoading(true)
     if (localStorage.getItem('cart') !== null) {
@@ -124,8 +127,10 @@ function Cart_new(props) {
   useEffect(() => {
     // console.log('coupon.sMethod',coupon.sMethod)
     let money
-    if (selectCoupon) {
+    if (selectCoupon && couponNo == 'S001') {
       money = sum(mycartDisplay) - discount
+    } else if (selectCoupon && couponNo == 'S002') {
+      money = (sum(mycartDisplay) * parseFloat(discount)) / 100
     } else {
       money = sum(mycartDisplay)
     }
@@ -244,6 +249,40 @@ function Cart_new(props) {
       Swal.fire('商品成功加入收藏!')
     }
   }
+  //處理按讚顯示，點按讚愛心變色，但重新整理會失效，除非更新LOCALSTORAGE的登入資訊
+  function azen(ID) {
+    const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
+    let newMbAzen_arr = [...currentLocalAzen]
+    if (newMbAzen_arr.indexOf(`${ID}`) !== -1) {
+      let remove_arr = newMbAzen_arr.filter(id => id !== `${ID}`)
+      setMbAzen_arr_state(remove_arr)
+      localStorage.setItem('Azen', JSON.stringify(remove_arr))
+    } else {
+      newMbAzen_arr.push(`${ID}`)
+      setMbAzen_arr_state(newMbAzen_arr)
+      localStorage.setItem('Azen', JSON.stringify(newMbAzen_arr))
+    }
+    // console.log('mbAzen_arr', mbAzen_arr)
+  }
+  //一開始複製一份LoginUserData的Azen，set到Local的Azen值、setMbAzen_arr_state
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('LoginUserData')) !== null) {
+      if (localStorage.getItem('Azen') == null) {
+        let mbAzen_str = JSON.parse(localStorage.getItem('LoginUserData'))
+          .mbAzen
+        mbAzen_str = mbAzen_str.replace('[', '').replace(']', '')
+        let mbAzen_arr = mbAzen_str.split(',')
+        // const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
+        localStorage.setItem('Azen', JSON.stringify(mbAzen_arr))
+        setMbAzen_arr_state(mbAzen_arr)
+      } else {
+        const currentLocalAzen = JSON.parse(localStorage.getItem('Azen'))
+        setMbAzen_arr_state(currentLocalAzen)
+      }
+    } else {
+      localStorage.removeItem('Azen') //如果登出就刪掉localstorage Azen
+    }
+  }, [])
   //抓瀏覽紀錄相關資訊
   function gethistoryfromlocalstorage() {
     let history = JSON.parse(localStorage.getItem('browse-history'))
@@ -350,6 +389,7 @@ function Cart_new(props) {
                         name: item.itemName,
                         amount: 1,
                         price: item.itemPrice,
+                        img: item.itemImg,
                       })
                     }}
                   />
@@ -448,56 +488,86 @@ function Cart_new(props) {
             </thead>
           </table>
           <table className="table">
-            <tbody>
-              {productImgUrl.length !== 0 ? (
-                productImgUrl.map((value, index) => {
+            <tbody className="s-cart-table">
+              {mycartDisplay.length !== 0 ? (
+                mycartDisplay.map((value, index) => {
                   return (
                     <>
                       <tr key={index}>
                         <td className="s-columnWidth1">
-                          <Link to={`/product/${value.itemId}`}>
+                          <Link to={`/product/${value.id}`}>
                             <img
-                              src={`/images/shop/small_img/${value.itemImg}`}
+                              src={`/images/shop/small_img/${value.img}`}
                               className="img-fluid"
                               alt="..."
                             />
                           </Link>
                         </td>
-                        <td className="h5">NT${value.itemPrice}</td>
+                        <td className="h5">NT${value.price}</td>
                         <td>
+                          {JSON.parse(localStorage.getItem('LoginUserData')) !==
+                            null &&
+                          mbAzen_arr_state.indexOf(`${value.id}`) !== -1 ? (
+                            <button
+                              type="button"
+                              className="btn mx-2 my-2 s-btn-common-cart"
+                              onClick={() => {
+                                if (
+                                  JSON.parse(
+                                    localStorage.getItem('LoginUserData')
+                                  ) !== null
+                                ) {
+                                  azen(value.id)
+                                  unazen({
+                                    userId: JSON.parse(
+                                      localStorage.getItem('LoginUserData')
+                                    ).mbId,
+                                    unlikeproductId: value.id,
+                                  })
+                                } else {
+                                  Swal.fire('請先登入!')
+                                }
+                              }}
+                            >
+                              <AiFillHeart
+                                style={{ color: '#F9A451', fontSize: '24px' }}
+                              />
+                            </button>
+                          ) : (
+                            <button
+                              type="button"
+                              className="btn mx-2 my-2 s-btn-common-cart"
+                              onClick={() => {
+                                if (
+                                  JSON.parse(
+                                    localStorage.getItem('LoginUserData')
+                                  ) !== null
+                                ) {
+                                  addToLike(value.id)
+                                  azen(value.id)
+                                } else {
+                                  Swal.fire('請先登入!')
+                                }
+                              }}
+                            >
+                              <AiOutlineHeart
+                                style={{ color: '#F9A451', fontSize: '24px' }}
+                              />
+                            </button>
+                          )}
+
                           <button
                             type="button"
-                            className="btn btn-outline-info mx-2 my-2 s-btn-common"
-                            onClick={() => {
-                              if (
-                                JSON.parse(
-                                  localStorage.getItem('LoginUserData')
-                                ) !== null
-                              ) {
-                                addToLike(value.itemId)
-                              } else {
-                                Swal.fire('請先登入!')
-                              }
-                            }}
-                          >
-                            <AiOutlineHeart
-                              style={{ color: '#F9A451', fontSize: '24px' }}
-                            />
-                            加入收藏清單
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-outline-info mx-2 s-btn-common"
+                            className="btn  mx-2 s-btn-common-cart"
                             onClick={() =>
                               updateCartToLocalStorage({
-                                id: value.itemId,
+                                id: value.id,
                               })
                             }
                           >
                             <AiOutlineDelete
                               style={{ color: '#F9A451', fontSize: '24px' }}
                             />
-                            刪除
                           </button>
                         </td>
                       </tr>
@@ -544,7 +614,9 @@ function Cart_new(props) {
                     >
                       $
                       {selectCoupon
-                        ? sum(mycartDisplay) - discount
+                        ? couponNo == 'S001'
+                          ? sum(mycartDisplay) - discount
+                          : (sum(mycartDisplay) * parseFloat(discount)) / 100
                         : sum(mycartDisplay)}
                     </span>
                   </div>
@@ -593,12 +665,14 @@ function Cart_new(props) {
           type="button"
           className="btn btn-outline-info mx-2 s-btn-common"
           to="/productlist"
+          style={{ fontWeight: '400' }}
         >
           繼續購物
         </Link>
         <Link
           type="button"
           className="btn btn-outline-info mx-2 s-btn-common"
+          style={{ fontWeight: '400' }}
           to="#"
           onClick={() => {
             JSON.parse(localStorage.getItem('LoginUserData')) == null

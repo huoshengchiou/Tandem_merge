@@ -75,7 +75,10 @@ function MindexcomCard() {
                     {/* 發文內容 */}
                     <p>{val.postContent}</p>
                     <div className="M-comuFootlink">
-                      <a href={`/postDetailProfile/${val.post_id}`}>
+                      <a
+                        href={`/postDetailProfile/${val.post_id}`}
+                        style={{ color: 'black' }}
+                      >
                         <IoIosMore />
                       </a>
                     </div>

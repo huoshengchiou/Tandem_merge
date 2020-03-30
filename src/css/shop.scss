@@ -45,6 +45,15 @@ h6 {
     border: 1px solid #79cee2;
   }
 }
+.s-btn-common-cart {
+  @extend .s-btn-common;
+  border: 0px;
+  &:hover {
+    background: none;
+    border: 0;
+  }
+}
+
 //以上是整體共用
 /* Cart */
 // 以下文字前後分隔線
@@ -130,17 +139,21 @@ h6 {
     margin-bottom: 30px;
   }
   tbody {
-    border: 1px solid lightblue;
+    border: 1px solid #adb6bd;
   }
 }
 .s-couponList {
   @extend .s-shoppingList;
-  border: 1px solid lightblue;
+
   position: relative;
   top: 10px;
+  box-shadow: 0px 0px 10px #adb6bd;
+  border: 1px solid #adb6bd;
 }
 .s-payment {
-  @extend .s-couponList;
+  @extend .s-shoppingList;
+  box-shadow: 0px 0px 10px #adb6bd;
+  border: 1px solid #adb6bd;
 }
 .s-columnWidth1 {
   width: 50%;
@@ -563,4 +576,8 @@ h6 {
 
 .s-card {
   border: 1px solid gray;
+}
+
+.s-cart-table {
+  box-shadow: 0px 0px 10px #adb6bd;
 }

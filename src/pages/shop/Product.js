@@ -19,6 +19,7 @@ import Swal from 'sweetalert2' //sweetalert2
 import $ from 'jquery'
 import Lightbox from 'react-image-lightbox' //lightbox
 import 'react-image-lightbox/style.css' //lightbox
+import unazen from './unazen' //取消按讚
 
 function Product(props) {
   const [myproduct, setMyproduct] = useState([])
@@ -34,6 +35,7 @@ function Product(props) {
   const [defaultPic, setDefaultPic] = useState('')
   const [photoIndex, setPhotoIndex] = useState(0) //lightbox
   const [isOpen, setIsOpen] = useState(false) //lightbox
+  const [mbAzen_arr_state, setMbAzen_arr_state] = useState([]) //按讚顯示
   const handleDisplay = value => {
     setCofigORcomment(value)
   }
@@ -150,7 +152,43 @@ function Product(props) {
       setHowmanylike(likedisplay2_arr.length)
     }
   }, [like])
-
+  //處理按讚顯示，點按讚愛心變色，但重新整理會失效，除非更新LOCALSTORAGE的登入資訊
+  function azen(ID) {
+    // let mbAzen_str = JSON.parse(localStorage.getItem('LoginUserData')).mbAzen
+    // mbAzen_str = mbAzen_str.replace('[', '').replace(']', '')
+    // let mbAzen_arr = mbAzen_str.split(',')
+    const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
+    let newMbAzen_arr = [...currentLocalAzen]
+    if (newMbAzen_arr.indexOf(`${ID}`) !== -1) {
+      let remove_arr = newMbAzen_arr.filter(id => id !== `${ID}`)
+      setMbAzen_arr_state(remove_arr)
+      localStorage.setItem('Azen', JSON.stringify(remove_arr))
+    } else {
+      newMbAzen_arr.push(`${ID}`)
+      setMbAzen_arr_state(newMbAzen_arr)
+      localStorage.setItem('Azen', JSON.stringify(newMbAzen_arr))
+    }
+    // console.log('mbAzen_arr', mbAzen_arr)
+  }
+  //一開始複製一份LoginUserData的Azen，set到Local的Azen值、setMbAzen_arr_state
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('LoginUserData')) !== null) {
+      if (localStorage.getItem('Azen') == null) {
+        let mbAzen_str = JSON.parse(localStorage.getItem('LoginUserData'))
+          .mbAzen
+        mbAzen_str = mbAzen_str.replace('[', '').replace(']', '')
+        let mbAzen_arr = mbAzen_str.split(',')
+        // const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
+        localStorage.setItem('Azen', JSON.stringify(mbAzen_arr))
+        setMbAzen_arr_state(mbAzen_arr)
+      } else {
+        const currentLocalAzen = JSON.parse(localStorage.getItem('Azen'))
+        setMbAzen_arr_state(currentLocalAzen)
+      }
+    } else {
+      localStorage.removeItem('Azen') //如果登出就刪掉localstorage Azen
+    }
+  }, [])
   //點商品小圖=>展示大圖
 
   function clickTochangePic(e) {
@@ -311,7 +349,7 @@ function Product(props) {
           <h3>{myproduct.itemName}</h3>
           <p style={{ minHeight: '150px' }}>{myproduct.itemIntro}</p>
           <div className="row">
-            {!mbLikeThisProduct ? (
+            {mbAzen_arr_state.indexOf(`${myproduct.itemId}`) == -1 ? (
               <button
                 type="button"
                 className="btn btn-outline-info mx-2 s-btn-common col-5 col-md-4"
@@ -321,6 +359,7 @@ function Product(props) {
                   ) {
                     addToLike()
                     setMbLikeThisProduct(true)
+                    azen(myproduct.itemId)
                   } else {
                     Swal.fire('請先登入!')
                   }
@@ -336,6 +375,15 @@ function Product(props) {
                 type="button"
                 className="btn btn-outline-info mx-2 s-btn-common col-5 col-md-4"
                 style={{ backgroundColor: '#79cee2', color: 'white' }}
+                onClick={() => {
+                  azen(myproduct.itemId)
+                  setMbLikeThisProduct(false)
+                  unazen({
+                    userId: JSON.parse(localStorage.getItem('LoginUserData'))
+                      .mbId,
+                    unlikeproductId: myproduct.itemId,
+                  })
+                }}
               >
                 <AiFillHeart style={{ color: '#F9A451', fontSize: '24px' }} />
                 已加入收藏
@@ -350,6 +398,7 @@ function Product(props) {
                   name: myproduct.itemName,
                   amount: 1,
                   price: myproduct.itemPrice,
+                  img: myproduct.itemImg,
                 })
               }
             >

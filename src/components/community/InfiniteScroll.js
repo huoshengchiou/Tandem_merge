@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import BackToTop from './BackToTop'
 
 class Infinitescroll extends React.Component {
   state = {
@@ -79,6 +80,7 @@ class Infinitescroll extends React.Component {
             </div>
           ))}
         </InfiniteScroll>
+        <BackToTop scrollStepInPx="40" delayInMs="20" />
       </>
     )
   }

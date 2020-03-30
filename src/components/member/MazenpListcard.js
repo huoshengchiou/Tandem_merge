@@ -51,7 +51,7 @@ function MazenpListcard() {
         {/* --------一個關注商品小卡-------- */}
         {zendisplaylist}
         {/* --------一個關注商品小卡-------- */}
-        <div className="M-azenproductCard">
+        {/* <div className="M-azenproductCard">
           <div className="M-azenproductImg"></div>
           <div className="M-azenproductDes">
             <p>
@@ -62,9 +62,9 @@ function MazenpListcard() {
           <div className="M-azenproductName">
             <span>Dark Souls 3</span>
           </div>
-        </div>
+        </div> */}
         {/* --------一個關注商品小卡-------- */}
-        <div className="M-azenproductCard">
+        {/* <div className="M-azenproductCard">
           <div className="M-azenproductImg" />
           <div className="M-azenproductDes">
             <p>
@@ -75,7 +75,7 @@ function MazenpListcard() {
           <div className="M-azenproductName">
             <span>Dark Souls 3</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )

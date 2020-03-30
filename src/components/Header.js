@@ -10,12 +10,19 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
   AiOutlineLogout,
-  AiOutlineWarning,
+  AiOutlineNotification,
   AiOutlineMenu,
   AiOutlinePoweroff,
   AiOutlineCloseCircle,
 } from 'react-icons/ai'
 import { IoMdNotificationsOutline } from 'react-icons/io'
+import {
+  GiPhotoCamera,
+  GiSpartanHelmet,
+  GiThreeFriends,
+  GiTrumpetFlag,
+  GiAtom,
+} from 'react-icons/gi'
 
 // 登錄卡
 import Mlogcard from '../components/member/Mlogcard'
@@ -141,6 +148,10 @@ function Header() {
     </>
   )
 
+  // 登錄卡開啟redux
+
+  const logcardopensignal = useSelector(state => state.Mcallogcard)
+
   const memberava = (
     <>
       <Link to="/member">
@@ -198,7 +209,7 @@ function Header() {
             </div>
           </Link>
         </div>
-        {/* //RWD後切換選單 */}
+        {/* -------RWD後切換選單----------------------------------------- */}
         <div className="T-rwdmenuwrapper">
           <div
             className="T-rwdmenubtn"
@@ -207,28 +218,61 @@ function Header() {
             }}
           >
             <AiOutlineMenu />
-            {/* rwdmenu*/}
+            {/* -------------RWDmenu--------------------------------------------*/}
+            {/* //背景圓 */}
+            <div className={`T-circlebg ${rwdmenuopen ? 'active' : ''}`}></div>
+            <div
+              className="T-rwdmenucbtn"
+              style={{ display: `${rwdmenuopen ? '' : 'none'}` }}
+            >
+              <AiOutlineCloseCircle />
+            </div>
             <div
               style={{ display: `${rwdmenuopen ? '' : 'none'}` }}
               className="T-clickmenuwrapper"
             >
               {/* 連結細節 */}
               <ul className="T-rwdlinklist">
-                <li className="T-rwdlinkpart">
-                  <NavLink href="/productlist">遊戲庫</NavLink>
-                </li>
-                <li className="T-rwdlinkpart">
-                  <NavLink href="/community">社群探索</NavLink>
-                </li>
-                <li className="T-rwdlinkpart">
-                  <NavLink href="/activity">活動揪團</NavLink>
-                </li>
-                <li className="T-rwdlinkpart">
-                  <NavLink href="/forum">開發論壇</NavLink>
-                </li>
-                <li className="T-rwdlinkpart">
-                  <NavLink href="/bulletin">新聞公告</NavLink>
-                </li>
+                <Link to="/productlist">
+                  <li className="T-rwdlinkpart">
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiSpartanHelmet className="T-linkicon" />
+                      遊戲庫
+                    </h5>
+                  </li>
+                </Link>
+                <Link to="/community">
+                  <li className="T-rwdlinkpart">
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiPhotoCamera className="T-linkicon" />
+                      社群探索
+                    </h5>
+                  </li>
+                </Link>
+                <Link to="/activity">
+                  <li className="T-rwdlinkpart">
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiThreeFriends className="T-linkicon" />
+                      活動揪團
+                    </h5>
+                  </li>
+                </Link>
+                <Link to="/forum">
+                  <li className="T-rwdlinkpart">
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiAtom className="T-linkicon" />
+                      開發論壇
+                    </h5>
+                  </li>
+                </Link>
+                <Link to="/bulletin">
+                  <li className="T-rwdlinkpart">
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiTrumpetFlag className="T-linkicon" />
+                      新聞公告
+                    </h5>
+                  </li>
+                </Link>
               </ul>
             </div>
           </div>
@@ -237,27 +281,41 @@ function Header() {
         <div className="T-linkWrapper">
           {/* 中央連結細項----------------- */}
           <ul className="T-linklist">
-            <li className="T-linkpart">
-              <NavLink href="/productlist">遊戲庫</NavLink>
-            </li>
-            <li className="T-linkpart">
-              <NavLink href="/community">社群探索</NavLink>
-            </li>
-            <li className="T-linkpart">
-              <NavLink href="/activity">活動揪團</NavLink>
-            </li>
-            <li className="T-linkpart">
-              <NavLink href="/forum">開發論壇</NavLink>
-            </li>
-            <li className="T-linkpart">
-              <NavLink href="/bulletin">新聞公告</NavLink>
-            </li>
+            <Link to="/productlist">
+              <li className="T-linkpart">
+                <h5>遊戲庫</h5>
+              </li>
+            </Link>
+            <Link to="/community">
+              <li className="T-linkpart">
+                <h5>社群探索</h5>
+              </li>
+            </Link>
+            <Link to="/activity">
+              <li className="T-linkpart">
+                <h5>活動揪團</h5>
+              </li>
+            </Link>
+            <Link to="/forum">
+              <li className="T-linkpart">
+                <h5>開發論壇</h5>
+              </li>
+            </Link>
+            <Link to="/bulletin">
+              <li className="T-linkpart">
+                <h5>新聞公告</h5>
+              </li>
+            </Link>
           </ul>
         </div>
         {/* 右邊個人ICON區 */}
         <div className="T-personicon">
           {/* //登入卡掛入 */}
-          <div className={`T-Mlogcardwrapper ${logcardon ? 'active' : ''}`}>
+          <div
+            className={`T-Mlogcardwrapper ${
+              logcardon || logcardopensignal ? 'active' : ''
+            }`}
+          >
             <Mlogcard />
           </div>
           {/* //好友提示卡掛入 */}

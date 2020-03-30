@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { displayChange, myazenproductlist } from '../../actions/Maction'
-import { AiFillHeart } from 'react-icons/ai'
+import {
+  AiFillHeart,
+  AiOutlineSolution,
+  AiOutlineTeam,
+  AiOutlineEye,
+} from 'react-icons/ai'
 import { IoIosMore } from 'react-icons/io'
+import { FaGamepad, FaRegEye } from 'react-icons/fa'
 
 //引入icon
 import {
@@ -54,36 +60,36 @@ function MindexProfile() {
   }, [])
   // 暫時關閉
   // -----------------------------------
-  // function useInterval(callback, delay) {
-  //   const savedCallback = useRef()
+  function useInterval(callback, delay) {
+    const savedCallback = useRef()
 
-  //   // Remember the latest callback.
-  //   useEffect(() => {
-  //     savedCallback.current = callback
-  //   }, [callback])
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback
+    }, [callback])
 
-  //   // Set up the interval.
-  //   useEffect(() => {
-  //     function tick() {
-  //       savedCallback.current()
-  //     }
-  //     if (delay !== null) {
-  //       let id = setInterval(tick, delay)
-  //       return () => clearInterval(id)
-  //     }
-  //   }, [delay])
-  // }
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current()
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay)
+        return () => clearInterval(id)
+      }
+    }, [delay])
+  }
 
   // // 用在非同步的計算，值需要先寄存在state進行保留
-  // useInterval(() => {
-  //   startPos = recordpos
-  //   startPos -= walkingDis
-  //   setRecordpos(startPos)
-  //   if (startPos < -((azenpdlength - 2) * 23.2)) setRecordpos(23.2)
-  //   // finalPos = startPos + 'rem'
-  //   // console.log(startPos)
-  //   setAzenpdPos(startPos)
-  // }, 5000)
+  useInterval(() => {
+    startPos = recordpos
+    startPos -= walkingDis
+    setRecordpos(startPos)
+    if (startPos < -((azenpdlength - 2) * 23.2)) setRecordpos(23.2)
+    // finalPos = startPos + 'rem'
+    // console.log(startPos)
+    setAzenpdPos(startPos)
+  }, 5000)
   // -----------------------------------
 
   // 在setInterval裡都是會抓到useeffect
@@ -293,7 +299,11 @@ function MindexProfile() {
               <div className="M-markpdDes">
                 <p>{val.itemIntro}</p>
               </div>
-              <a className="M-markpdTrans clearfix" href="#">
+              <a
+                href={`http://localhost:3000/product/${val.itemId}`}
+                className="M-markpdTrans clearfix"
+                style={{ color: 'black' }}
+              >
                 <IoIosMore />
               </a>
             </div>
@@ -347,6 +357,15 @@ function MindexProfile() {
           className="M-avatarWrapper"
           style={{ height: `${editlistopen ? '52rem' : ''}` }}
         >
+          {/* //讓提示同時control紙娃娃選單 */}
+          <div
+            className="M-avatarmsg1"
+            onClick={() => {
+              dispatch(dollCall(true))
+            }}
+          >
+            <p>紙娃娃</p>
+          </div>
           <section className="M-avatarTop">
             {/* fix */}
             <div className="M-avatartop-up">
@@ -369,6 +388,7 @@ function MindexProfile() {
               setEditListOpen(true)
             }}
           >
+            <AiOutlineSolution className="M-Deschagebtnicon" />
             修改個人資料
           </button>
           {/* 外連個人貼文按鈕 */}
@@ -386,7 +406,9 @@ function MindexProfile() {
           >
             <MdReplay />
           </div>
-
+          <div className="M-avatarsecondgear">
+            <AiFillSetting />
+          </div>
           {/* 呼叫紙娃娃btn redux*/}
           <div
             className="M-avatarChange"
@@ -521,6 +543,7 @@ function MindexProfile() {
                 dispatch(displayChange(2))
               }}
             >
+              <AiOutlineTeam className="M-subicon3" />
               好友管理
             </button>
             <button
@@ -529,6 +552,7 @@ function MindexProfile() {
                 dispatch(displayChange(3))
               }}
             >
+              <FaGamepad className="M-subicon1" />
               遊戲倉庫
             </button>
             <button
@@ -537,7 +561,8 @@ function MindexProfile() {
                 dispatch(displayChange(4))
               }}
             >
-              購買管理
+              <FaRegEye className="M-subicon2" />
+              關注遊戲
             </button>
           </div>
         </div>
