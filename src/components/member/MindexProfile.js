@@ -357,6 +357,15 @@ function MindexProfile() {
           className="M-avatarWrapper"
           style={{ height: `${editlistopen ? '52rem' : ''}` }}
         >
+          {/* //讓提示同時control紙娃娃選單 */}
+          <div
+            className="M-avatarmsg1"
+            onClick={() => {
+              dispatch(dollCall(true))
+            }}
+          >
+            <p>紙娃娃</p>
+          </div>
           <section className="M-avatarTop">
             {/* fix */}
             <div className="M-avatartop-up">
@@ -379,7 +388,7 @@ function MindexProfile() {
               setEditListOpen(true)
             }}
           >
-            <AiOutlineSolution />
+            <AiOutlineSolution className="M-Deschagebtnicon" />
             修改個人資料
           </button>
           {/* 外連個人貼文按鈕 */}
@@ -534,7 +543,7 @@ function MindexProfile() {
                 dispatch(displayChange(2))
               }}
             >
-              <AiOutlineTeam />
+              <AiOutlineTeam className="M-subicon3" />
               好友管理
             </button>
             <button

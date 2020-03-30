@@ -90,3 +90,10 @@ export const NameChange = newname => {
     name: newname,
   }
 }
+
+export const Callcard = callsignal => {
+  return {
+    type: 'CALL_LOG',
+    callsignal: callsignal,
+  }
+}

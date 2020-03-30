@@ -1,8 +1,10 @@
 import React from 'react'
-
+import { useSelector, useDispatch } from 'react-redux'
 import $ from 'jquery'
+import { Callcard } from '../../actions/Maction'
 
 function MMtestfetch() {
+  const dispatch = useDispatch()
   const divOneRef = React.createRef()
   // 測試get
 
@@ -76,6 +78,13 @@ function MMtestfetch() {
         style={{ width: '3rem', height: '3rem', backgroundColor: 'teal' }}
       ></div>
 
+      <button
+        onClick={() => {
+          dispatch(Callcard(true))
+        }}
+      >
+        call card
+      </button>
       {/* -------------------------------------------------------------------------- */}
       {/* 輪播測試 */}
     </>

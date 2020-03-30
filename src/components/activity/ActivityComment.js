@@ -133,9 +133,7 @@ function ActivityComment(props) {
         {aCommentInfo.map((value, ind) => (
           <Row className="aComment d-flex" key={ind}>
             <div className="aCommentAvatar">
-              {/* <Link> */}
               <img src={value.mbAva} alt="mAvatar" />
-              {/* </Link> */}
             </div>
             <Col className="aCommentMeta p-2">
               <div className="aMemberInfo d-flex justify-content-between">

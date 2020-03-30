@@ -26,7 +26,7 @@ function Comment2(props) {
     }
     console.log('click')
     const userCommentContent = {
-      name: username,
+      name: JSON.parse(localStorage.getItem('LoginUserData')).mbNick,
       content: commentContent,
       rating: rating,
       itemId: props.match.params.type,
@@ -136,10 +136,14 @@ function Comment2(props) {
                   <p className="row">
                     <strong className="col-md-8 py-2">
                       <input
-                        className="form-control col-5"
+                        className="form-control-plaintext col-5"
                         type="text"
-                        placeholder="請輸入暱稱"
-                        onChange={e => setUsername(e.target.value)}
+                        // placeholder="請輸入暱稱"
+                        value={
+                          JSON.parse(localStorage.getItem('LoginUserData'))
+                            .mbNick
+                        }
+                        // onChange={e => setUsername(e.target.value)}
                       ></input>
                     </strong>
                     <span className="float-right col-md-3 row mx-2 py-2">
@@ -296,7 +300,7 @@ function Comment2(props) {
                   </div>
                   <div className="col-7 col-md-10">
                     <p className="row">
-                      <a className="float-left col-md-8 py-2" href="#">
+                      <a className="float-left col-md-8 py-2" href="/member">
                         <strong>{msg.name}</strong>
                       </a>
 
@@ -327,7 +331,7 @@ function Comment2(props) {
                 {/* 每則留言內的inner留言，重新map找parentId ==上層id */}
                 {oldCommentContent.map((innermsg, index) => {
                   return innermsg.parentId == msg.id ? (
-                    <div className="s-card card-inner">
+                    <div className="s-card card-inner" key={index}>
                       <div className="card-body">
                         <div className="row">
                           <div className="col-5 col-md-2">
@@ -395,10 +399,15 @@ function Comment2(props) {
                           <p className="row">
                             <strong className="col-md-8 py-2">
                               <input
-                                className="form-control col-5"
+                                className="form-control-plaintext col-5"
                                 type="text"
-                                placeholder="請輸入暱稱"
-                                onChange={e => setUsername(e.target.value)}
+                                // placeholder="請輸入暱稱"
+                                // onChange={e => setUsername(e.target.value)}
+                                value={
+                                  JSON.parse(
+                                    localStorage.getItem('LoginUserData')
+                                  ).mbNick
+                                }
                               ></input>
                             </strong>
                             <span className="float-right col-md-3 row mx-2 py-2">

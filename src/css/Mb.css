@@ -490,11 +490,6 @@ body {
   transition: 2s;
   overflow: hidden;
 }
-/* 以調整成功能 */
-/* .active  */
-/* .M-avatarWrapper { */
-/* height: 52rem; */
-/* } */
 
 .M-avatarTop {
   /* border-bottom: 3px solid #79cee2; */
@@ -548,17 +543,18 @@ body {
   width: 8rem;
   height: 2rem;
   font-size: 1rem;
-  /* font-weight: 700; */
   border: 1px solid #79cee2;
   color: #79cee2;
   text-align: center;
   background: white;
   position: absolute;
-  /* font-weight: 600; */
-  left: 5rem;
-  top: 10rem;
+  left: 3rem;
+  top: 10.5rem;
   transition: 0.75s;
-  /* margin-left: 5rem; */
+}
+.M-Deschagebtnicon {
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
 }
 .M-mbDeschagebtn:focus {
   outline: none;
@@ -571,7 +567,6 @@ body {
 .M-avatarChange {
   width: 3rem;
   height: 3rem;
-  /* border: 1px dotted green; */
   position: absolute;
   font-size: 3rem;
   line-height: 1rem;
@@ -580,6 +575,35 @@ body {
   top: 7rem;
   cursor: pointer;
   animation: Rotate 6s infinite linear;
+}
+.M-avatarmsg1:hover {
+  opacity: 1;
+}
+
+/* 紙娃娃按鈕提示 */
+.M-avatarmsg1 {
+  opacity: 0;
+  width: 4rem;
+  height: 3rem;
+  text-align: center;
+  line-height: 2rem;
+  /* background-color: lightsalmon; */
+  background: white;
+  position: absolute;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    39% 100%,
+    50% 75%,
+    0% 75%
+  );
+
+  top: 6rem;
+  left: 0.5rem;
+  z-index: 2;
+  cursor: pointer;
 }
 /* 齒輪轉動 */
 @keyframes Rotate {
@@ -614,10 +638,10 @@ body {
 .M-comLink {
   width: 3rem;
   height: 3rem;
-  background: white;
+  /* background: white; */
   position: absolute;
-  left: 14rem;
-  top: 9.4rem;
+  left: 13rem;
+  top: 9.8rem;
   color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
@@ -629,10 +653,10 @@ body {
 .M-MajorLink {
   width: 3rem;
   height: 3rem;
-  background: white;
+  /* background: white; */
   position: absolute;
-  left: 17rem;
-  top: 9.3rem;
+  left: 16.5rem;
+  top: 9.7rem;
   color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
@@ -775,6 +799,7 @@ border: 1px solid black;
   width: 100%;
   height: 2px;
   background: #adb6bd;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 .M-subbtnwrapper {
@@ -785,9 +810,9 @@ border: 1px solid black;
 }
 .M-sublayerbtn {
   width: 7.8125rem;
-  width: 6.58rem;
+  width: 6.7rem;
   height: 7.8125rem;
-  height: 3.5rem;
+  height: 3rem;
   /* margin-top: 3.8125rem; */
   line-height: 2rem;
   font-size: 1.15rem;
@@ -818,9 +843,16 @@ border: 1px solid black;
 }
 
 .M-subicon1 {
+  font-size: 1.2rem;
   margin-right: 0.2rem;
 }
 .M-subicon2 {
+  font-size: 1.2rem;
+
+  margin-right: 0.2rem;
+}
+.M-subicon3 {
+  font-size: 1.2rem;
   margin-right: 0.2rem;
 }
 
@@ -832,6 +864,7 @@ border: 1px solid black;
   /* box-shadow: 0px 3px 12px #707070; */
 }
 .M-subbtnGroup button:hover {
+  border: 0;
   background: #79cee2;
   color: white;
   /* transform: scale(1.2); */
@@ -1642,6 +1675,7 @@ border: 1px solid black;
   /* overflow: hidden; */
   position: relative;
   /* box-shadow: 0px 0px 10px #adb6bd; */
+  cursor: pointer;
 }
 .M-mygameImgwrapper {
   width: 16rem;
@@ -1699,7 +1733,7 @@ border: 1px solid black;
 
 .M-dollMoveWrapper {
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   transition: 0.75s;
   left: 0.1rem;
   top: -1rem;
@@ -2027,7 +2061,7 @@ border: 1px solid black;
   line-height: 2.5rem;
   margin-top: 0.15rem;
   text-align: center;
-  background: white;
+  /* background: white; */
   color: #f9a451;
   z-index: 1;
   /* border: 0.5px solid black; */
@@ -2035,7 +2069,7 @@ border: 1px solid black;
   transition: 0.75s;
   position: absolute;
   right: 0.4rem;
-  top: 9.2rem;
+  top: 9.6rem;
   cursor: pointer;
 }
 .M-mycupontopbtn:hover {

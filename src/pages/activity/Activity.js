@@ -18,8 +18,10 @@ import {
 } from 'react-icons/ai'
 import $ from 'jquery'
 import Swal from 'sweetalert2'
+// import { Maction } from '../../actions'
 
 function Activity(props) {
+  // console.log('Maction', Maction)
   // 基本設定
   const history = useHistory()
   const [loginStatus, setLoginStatus] = useState(false)
@@ -50,7 +52,7 @@ function Activity(props) {
   useEffect(() => {
     //連接資料庫以取得列表資料
     activityData()
-    //判斷是否為登入狀態，用以確認可否點擊新增活動
+    //判斷是否為登入狀態，用以確認可否點擊新增活動及
     if (localStorage.getItem('LoginUserData')) {
       setLoginStatus(true)
     } else {
@@ -89,11 +91,11 @@ function Activity(props) {
         showCancelButton: true,
         confirmButtonColor: '#79CEE2',
         cancelButtonColor: '#F9A451',
-        confirmButtonText: '登入',
+        confirmButtonText: '確認',
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          history.push('/login')
+          history.push('/')
         }
       })
     }
@@ -152,12 +154,13 @@ function Activity(props) {
   )
   const outlineIcon = (
     <>
-      <AiOutlinePlusCircle className="animated infinite bounce" />
+      <AiOutlinePlusCircle />
     </>
   )
   const fillIcon = (
     <>
       <OverlayTrigger
+        className="animated infinite bounce"
         placement="top"
         overlay={
           <div
@@ -228,20 +231,6 @@ function Activity(props) {
             onClick={() => setACategoryId('ACG04')}
           >
             運動休閒
-          </Link>
-          <Link
-            className="aCategory"
-            to="/activity/1/ACG05"
-            onClick={() => setACategoryId('ACG05')}
-          >
-            地圖探索
-          </Link>
-          <Link
-            className="aCategory"
-            to="/activity/1/ACG06"
-            onClick={() => setACategoryId('ACG06')}
-          >
-            活動管理
           </Link>
         </Col>
         {/* 新增活動入口 */}

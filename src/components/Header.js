@@ -10,12 +10,19 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
   AiOutlineLogout,
-  AiOutlineWarning,
+  AiOutlineNotification,
   AiOutlineMenu,
   AiOutlinePoweroff,
   AiOutlineCloseCircle,
 } from 'react-icons/ai'
 import { IoMdNotificationsOutline } from 'react-icons/io'
+import {
+  GiPhotoCamera,
+  GiSpartanHelmet,
+  GiThreeFriends,
+  GiTrumpetFlag,
+  GiAtom,
+} from 'react-icons/gi'
 
 // 登錄卡
 import Mlogcard from '../components/member/Mlogcard'
@@ -141,6 +148,10 @@ function Header() {
     </>
   )
 
+  // 登錄卡開啟redux
+
+  const logcardopensignal = useSelector(state => state.Mcallogcard)
+
   const memberava = (
     <>
       <Link to="/member">
@@ -152,7 +163,6 @@ function Header() {
   )
 
   // activity calender 基本設定
-  const history = useHistory()
   const [modalShow, setModalShow] = React.useState(false)
   const [loginStatus, setLoginStatus] = useState(false)
 
@@ -181,7 +191,8 @@ function Header() {
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          history.push('/login')
+          setLogcardOn(true)
+          // history.push('/login')
         }
       })
     }
@@ -224,27 +235,42 @@ function Header() {
               <ul className="T-rwdlinklist">
                 <Link to="/productlist">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>遊戲庫</h5>
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiSpartanHelmet className="T-linkicon" />
+                      遊戲庫
+                    </h5>
                   </li>
                 </Link>
                 <Link to="/community">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>社群探索</h5>
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiPhotoCamera className="T-linkicon" />
+                      社群探索
+                    </h5>
                   </li>
                 </Link>
                 <Link to="/activity">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>活動揪團</h5>
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiThreeFriends className="T-linkicon" />
+                      活動揪團
+                    </h5>
                   </li>
                 </Link>
                 <Link to="/forum">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>開發論壇</h5>
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiAtom className="T-linkicon" />
+                      開發論壇
+                    </h5>
                   </li>
                 </Link>
                 <Link to="/bulletin">
                   <li className="T-rwdlinkpart">
-                    <h5 style={{ color: '#79cee2' }}>新聞公告</h5>
+                    <h5 style={{ color: '#79cee2' }}>
+                      <GiTrumpetFlag className="T-linkicon" />
+                      新聞公告
+                    </h5>
                   </li>
                 </Link>
               </ul>
@@ -285,7 +311,11 @@ function Header() {
         {/* 右邊個人ICON區 */}
         <div className="T-personicon">
           {/* //登入卡掛入 */}
-          <div className={`T-Mlogcardwrapper ${logcardon ? 'active' : ''}`}>
+          <div
+            className={`T-Mlogcardwrapper ${
+              logcardon || logcardopensignal ? 'active' : ''
+            }`}
+          >
             <Mlogcard />
           </div>
           {/* //好友提示卡掛入 */}
@@ -294,14 +324,14 @@ function Header() {
           <div
             className={`T-detectgoodfriendwrapper ${
               comfirmfcardon ? 'active' : ''
-            }`}
+              }`}
           >
             <div
               className={`M-popUpDivheader ${
                 comfirmfcardon && addFevent.addfriendsignal && pop
                   ? 'active'
                   : ''
-              }`}
+                }`}
               style={{
                 display: `${addFevent.addfriendsignal && pop ? '' : 'none'}`,
               }}
@@ -315,7 +345,7 @@ function Header() {
                   comfirmfcardon && loginAut && addFevent.addfriendsignal
                     ? ''
                     : 'none'
-                }`,
+                  }`,
               }}
               onClick={() => {
                 setPop(false)
@@ -362,11 +392,11 @@ function Header() {
                 <IoMdNotificationsOutline
                   className={`T-notification ${
                     addFevent.addfriendsignal && loginAut ? 'active' : ''
-                  }`}
+                    }`}
                   style={{
                     color: `${
                       addFevent.addfriendsignal && loginAut ? '#F9A451' : ''
-                    }`,
+                      }`,
                   }}
                   onClick={() => {
                     setPop(true)

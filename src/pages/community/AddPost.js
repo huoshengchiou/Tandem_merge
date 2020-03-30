@@ -22,6 +22,72 @@ export default function AddPost(props) {
   }, [])
 
   const handleSubmit = () => {
+    if (!imagefromchild) {
+      return Swal.fire({
+        icon: 'error',
+        title: '錯誤',
+        text: '請選擇圖片！',
+      })
+
+      // aNameInput.current.focus()
+    }
+    // } else if (!aLimit) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '至少兩人才能舉辦活動喲！',
+    //   })
+    //   aLimitInput.current.focus()
+    // } else if (!aBudget) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '若無預算請填寫0元',
+    //   })
+    //   aBudgetInput.current.focus()
+    // } else if (!aCostTime) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '最低時數是半小時喲！',
+    //   })
+    //   aCostTimeInput.current.focus()
+    // } else if (!aCategoryId) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '請選擇活動類別！',
+    //   })
+    //   aCategoryIdInput.current.focus()
+    // } else if (!aDate) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '別忘了活動日期！',
+    //   })
+    //   aDateInput.current.focus()
+    // } else if (!aStartDate || !aEndDate) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '報名時間要設定喲！！',
+    //   })
+    //   aStartDateInput.current.focus()
+    // } else if (!aContent) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '請描述一下這次要辦的活動是怎樣的活動～',
+    //   })
+    //   aContentInput.current.focus()
+    // } else if (!aLocation) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: '錯誤',
+    //     text: '地址記得填喲！',
+    //   })
+    //   aLocationInput.current.focus()
+    // }
     // async function sendDatatoServer(postData, callback) {
     // 注意資料格式要設定，伺服器才知道是json格式
 
@@ -83,7 +149,7 @@ export default function AddPost(props) {
                 className="d-block"
                 onClick={() => {
                   Swal.fire({
-                    title: '确定離開畫面吗？',
+                    title: '確定要離開畫面嗎？',
                     // text: '确定離開畫面吗？',
                     icon: 'warning',
                     showCancelButton: true,

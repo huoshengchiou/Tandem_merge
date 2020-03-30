@@ -17,6 +17,7 @@ import {
 import '../../css/shop.scss'
 import Swal from 'sweetalert2'
 import addToLike from './addToLike'
+import unazen from './unazen'
 
 function ProductList(props) {
   const [mycart, setMycart] = useState([])
@@ -261,11 +262,18 @@ function ProductList(props) {
     // let mbAzen_arr = mbAzen_str.split(',')
     const currentLocalAzen = JSON.parse(localStorage.getItem('Azen')) || []
     let newMbAzen_arr = [...currentLocalAzen]
-    newMbAzen_arr.push(`${ID}`)
-    setMbAzen_arr_state(newMbAzen_arr)
-    localStorage.setItem('Azen', JSON.stringify(newMbAzen_arr))
+    if (newMbAzen_arr.indexOf(`${ID}`) !== -1) {
+      let remove_arr = newMbAzen_arr.filter(id => id !== `${ID}`)
+      setMbAzen_arr_state(remove_arr)
+      localStorage.setItem('Azen', JSON.stringify(remove_arr))
+    } else {
+      newMbAzen_arr.push(`${ID}`)
+      setMbAzen_arr_state(newMbAzen_arr)
+      localStorage.setItem('Azen', JSON.stringify(newMbAzen_arr))
+    }
     // console.log('mbAzen_arr', mbAzen_arr)
   }
+
   //一開始複製一份LoginUserData的Azen，set到Local的Azen值、setMbAzen_arr_state
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('LoginUserData')) !== null) {
@@ -337,39 +345,61 @@ function ProductList(props) {
                           style={{ color: '#79cee2', fontSize: '24px' }}
                         />
                       </Link>
-                      <Link
-                        className="col-2"
-                        onClick={() => {
-                          if (
-                            JSON.parse(
-                              localStorage.getItem('LoginUserData')
-                            ) !== null
-                          ) {
-                            addToLike({
-                              userId: JSON.parse(
+
+                      {/* <i class="far fa-heart"></i> */}
+                      {JSON.parse(localStorage.getItem('LoginUserData')) !==
+                        null &&
+                      mbAzen_arr_state.indexOf(`${value.itemId}`) !== -1 ? (
+                        <Link
+                          className="col-2"
+                          onClick={() => {
+                            if (
+                              JSON.parse(
                                 localStorage.getItem('LoginUserData')
-                              ).mbId,
-                              likeproductId: value.itemId,
-                            })
-                            azen(value.itemId)
-                          } else {
-                            Swal.fire('請先登入')
-                          }
-                        }}
-                      >
-                        {/* <i class="far fa-heart"></i> */}
-                        {JSON.parse(localStorage.getItem('LoginUserData')) !==
-                          null &&
-                        mbAzen_arr_state.indexOf(`${value.itemId}`) !== -1 ? (
+                              ) !== null
+                            ) {
+                              azen(value.itemId)
+                              unazen({
+                                userId: JSON.parse(
+                                  localStorage.getItem('LoginUserData')
+                                ).mbId,
+                                unlikeproductId: value.itemId,
+                              })
+                            } else {
+                              Swal.fire('請先登入')
+                            }
+                          }}
+                        >
                           <AiFillHeart
                             style={{ color: '#F9A451', fontSize: '24px' }}
                           />
-                        ) : (
+                        </Link>
+                      ) : (
+                        <Link
+                          className="col-2"
+                          onClick={() => {
+                            if (
+                              JSON.parse(
+                                localStorage.getItem('LoginUserData')
+                              ) !== null
+                            ) {
+                              addToLike({
+                                userId: JSON.parse(
+                                  localStorage.getItem('LoginUserData')
+                                ).mbId,
+                                likeproductId: value.itemId,
+                              })
+                              azen(value.itemId)
+                            } else {
+                              Swal.fire('請先登入')
+                            }
+                          }}
+                        >
                           <AiOutlineHeart
                             style={{ color: '#F9A451', fontSize: '24px' }}
                           />
-                        )}
-                      </Link>
+                        </Link>
+                      )}
                     </div>
                   </div>
                   {/* <div className="card-footer">
