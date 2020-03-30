@@ -548,8 +548,8 @@ body {
   text-align: center;
   background: white;
   position: absolute;
-  left: 5rem;
-  top: 10rem;
+  left: 3rem;
+  top: 10.5rem;
   transition: 0.75s;
 }
 .M-Deschagebtnicon {
@@ -603,6 +603,7 @@ body {
   top: 6rem;
   left: 0.5rem;
   z-index: 2;
+  cursor: pointer;
 }
 /* 齒輪轉動 */
 @keyframes Rotate {
@@ -637,10 +638,10 @@ body {
 .M-comLink {
   width: 3rem;
   height: 3rem;
-  background: white;
+  /* background: white; */
   position: absolute;
-  left: 14rem;
-  top: 9.4rem;
+  left: 13rem;
+  top: 9.8rem;
   color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
@@ -652,10 +653,10 @@ body {
 .M-MajorLink {
   width: 3rem;
   height: 3rem;
-  background: white;
+  /* background: white; */
   position: absolute;
-  left: 17rem;
-  top: 9.3rem;
+  left: 16.5rem;
+  top: 9.7rem;
   color: #f9a451;
   text-align: center;
   font-size: 1.8rem;
@@ -2060,7 +2061,7 @@ border: 1px solid black;
   line-height: 2.5rem;
   margin-top: 0.15rem;
   text-align: center;
-  background: white;
+  /* background: white; */
   color: #f9a451;
   z-index: 1;
   /* border: 0.5px solid black; */
@@ -2068,7 +2069,7 @@ border: 1px solid black;
   transition: 0.75s;
   position: absolute;
   right: 0.4rem;
-  top: 9.2rem;
+  top: 9.6rem;
   cursor: pointer;
 }
 .M-mycupontopbtn:hover {

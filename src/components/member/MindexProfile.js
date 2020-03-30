@@ -357,7 +357,13 @@ function MindexProfile() {
           className="M-avatarWrapper"
           style={{ height: `${editlistopen ? '52rem' : ''}` }}
         >
-          <div className="M-avatarmsg1">
+          {/* //讓提示同時control紙娃娃選單 */}
+          <div
+            className="M-avatarmsg1"
+            onClick={() => {
+              dispatch(dollCall(true))
+            }}
+          >
             <p>紙娃娃</p>
           </div>
           <section className="M-avatarTop">

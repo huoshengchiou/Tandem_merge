@@ -148,6 +148,10 @@ function Header() {
     </>
   )
 
+  // 登錄卡開啟redux
+
+  const logcardopensignal = useSelector(state => state.Mcallogcard)
+
   const memberava = (
     <>
       <Link to="/member">
@@ -307,7 +311,11 @@ function Header() {
         {/* 右邊個人ICON區 */}
         <div className="T-personicon">
           {/* //登入卡掛入 */}
-          <div className={`T-Mlogcardwrapper ${logcardon ? 'active' : ''}`}>
+          <div
+            className={`T-Mlogcardwrapper ${
+              logcardon || logcardopensignal ? 'active' : ''
+            }`}
+          >
             <Mlogcard />
           </div>
           {/* //好友提示卡掛入 */}

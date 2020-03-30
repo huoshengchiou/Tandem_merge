@@ -51,7 +51,7 @@ function App() {
         <Header />
 
         <ScrollToTop>
-          {/* <Mbtestpage /> */}
+          <Mbtestpage />
           <Switch>
             <Route exact path="/">
               <Home />
