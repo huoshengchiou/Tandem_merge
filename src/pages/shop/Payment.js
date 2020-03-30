@@ -286,7 +286,7 @@ function Payment(props) {
                 </select>
               </div>
               <label className="col-auto col-form-label p px-0 mr-1">
-                安全碼CVV
+                卡片後3碼
               </label>
 
               <input
@@ -313,9 +313,12 @@ function Payment(props) {
             <div className="col-sm-3">
               <input
                 type="text"
-                className="form-control"
+                className="form-control-plaintext"
                 id="exampleInputPassword1"
                 placeholder=""
+                value={
+                  `/` + JSON.parse(localStorage.getItem('LoginUserData')).mbInv
+                }
               />
             </div>
           </div>

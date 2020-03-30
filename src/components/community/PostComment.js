@@ -44,8 +44,10 @@ export default function PostComment(props) {
         showConfirmButton: false,
         timer: 2000,
       }).then(r => {
+        if (r.value) {
+          window.location.reload()
+        }
         // window.location.href = `/Communityprofile/${loginUserId}`
-        window.location.reload()
       })
     )
     async function sendCommentDataToServer() {
@@ -75,8 +77,8 @@ export default function PostComment(props) {
 
   const deleteComment = () => {
     Swal.fire({
-      title: '确定删除留言吗？',
-      text: '你将无法恢复它！',
+      title: '確定删除留言嗎？',
+      text: '你無法恢復它！',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#79cee2',
