@@ -109,7 +109,7 @@ function Home() {
       }
     body.addEventListener('scroll', function(e) {
       scrollTop = body.scrollTop
-      console.log('scroll', window.pageYOffSet)
+      // console.log('scroll', window.pageYOffSet)
       var progress = getProgress(),
         // Gate 33 233 433 = 33 + n * 200
         threshold = Math.floor((progress + 167) / 200)
@@ -211,7 +211,7 @@ function Home() {
             class="parallax__layer parallax__layer--base"
             style={{ top: -9994 }}
           >
-            <div class="shot" style={{ marginTop: 300 }}>
+            <div class="card" style={{ marginTop: 300, opacity: 0.8 }}>
               <div class="title h-base1">
                 這裡是基以程式技術與原畫創作交流為初衷的遊戲平台
                 <br />

@@ -42,14 +42,14 @@ function Article(props) {
       'http://localhost:6001/articles' + props.location.pathname
     )
     const data = await request.json()
-    console.log('文章細節data', data.articleId)
+    // console.log('文章細節data', data.articleId)
 
     setArticle(data)
   }
 
   // console.log('article', article)
   useEffect(() => {
-    console.log('文章2')
+    // console.log('文章2')
     getDetailFromServer()
   }, [])
 

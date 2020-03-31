@@ -20,7 +20,7 @@ function ArticleRelative(props) {
   const articleId = props.match.params.articleId
     ? props.match.params.articleId
     : ''
-  console.log('相關文章ID', articleId)
+  // console.log('相關文章ID', articleId)
 
   async function getDetailFromServer(articleId) {
     const request = new Request(
@@ -44,7 +44,7 @@ function ArticleRelative(props) {
   //   const relativeId = articleId + 1
   //   const relativeArticle = article.relativeId
 
-  console.log('內容2', article)
+  // console.log('內容2', article)
   return (
     <>
       {/* 相關文章 */}

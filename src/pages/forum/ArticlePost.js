@@ -56,7 +56,7 @@ function ArticlePost(props) {
   const [loginStatus, setLoginStatus] = useState(false)
   const [mbId, setmbId] = useState('')
 
-  console.log('ID', mbId)
+  // console.log('ID', mbId)
 
   // 進入即判斷localStorage裡面的登入Data(沒有表示尚未登入或已經登出)
   // 為避免被使用者以輸入網址的方式跳轉過來
@@ -68,10 +68,10 @@ function ArticlePost(props) {
 
       // setMinDate(rightNow)
       setLoginStatus(true)
-      console.log('OK')
+      // console.log('OK')
     } else {
       setLoginStatus(false)
-      console.log('NO')
+      // console.log('NO')
       Swal.fire({ title: '請先登入喲！', icon: 'warning' }).then(function(r) {
         history.push('/forum')
       })
@@ -92,7 +92,7 @@ function ArticlePost(props) {
     articleClassId: '',
     articleContent: '',
   }
-  console.log('info', articleInfo)
+  // console.log('info', articleInfo)
 
   //寫入文章資訊
   function articleFormInfo(e, info) {
@@ -128,7 +128,7 @@ function ArticlePost(props) {
 
     const res = await fetch(req)
     const order = await res.json()
-    console.log('order', order)
+    // console.log('order', order)
     if (order.result.affectedRows == 1) {
       Swal.fire({
         // icon: 'success',
@@ -285,7 +285,7 @@ function ArticlePost(props) {
                         data=""
                         onInit={editor => {
                           // You can store the "editor" and use when it is needed.
-                          console.log('Editor is ready to use!', editor)
+                          // console.log('Editor is ready to use!', editor)
                         }}
                         name="articleContent"
                         id="articleContent"
@@ -299,10 +299,10 @@ function ArticlePost(props) {
                           // console.log({ event, editor, data })
                         }}
                         onBlur={(event, editor) => {
-                          console.log('Blur.', editor)
+                          // console.log('Blur.', editor)
                         }}
                         onFocus={(event, editor) => {
-                          console.log('Focus.', editor)
+                          // console.log('Focus.', editor)
                         }}
                       />
                     </div>
