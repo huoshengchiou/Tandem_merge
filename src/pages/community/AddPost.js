@@ -22,28 +22,25 @@ export default function AddPost(props) {
   }, [])
 
   const handleSubmit = () => {
-    if (!imagefromchild) {
+    // console.log('image', imagefromchild)
+    if (imagefromchild.length === 0) {
       Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請選擇圖片！',
       })
-
-      // aNameInput.current.focus()
     } else if (!titlefromchild) {
       Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請輸入貼文標題！',
       })
-      //   aLimitInput.current.focus()
     } else if (!contentfromchild) {
       Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請輸入貼文內容',
       })
-      //   aBudgetInput.current.focus()
     } else if (!categoryfromchild) {
       Swal.fire({
         icon: 'error',
