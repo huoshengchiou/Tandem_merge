@@ -52,6 +52,10 @@ function ActivityContentInfo(props) {
       //收到資料，做報名時間的判斷
       let bookLife = infoData.aBookingTime.substr(11)
       let rightnow = moment(new Date()).format('YYYY-MM-DD')
+      // console.log(
+      //   Date.parse(bookLife).valueOf(),
+      //   Date.parse(rightnow).valueOf()
+      // )
       if (bookLife < rightnow) {
         // 今天日期超過報名時間，隱藏報名選項
         $('.aBook').css('display', 'none')
