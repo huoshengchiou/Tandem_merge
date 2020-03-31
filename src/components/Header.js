@@ -4,6 +4,8 @@ import { NavLink } from 'react-bootstrap'
 import logo from '../logo.svg'
 import { Link, useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
+// Redux登入卡
+import { Callcard } from '../actions/Maction'
 
 import {
   AiOutlineCalendar,
@@ -79,8 +81,10 @@ function Header() {
   }
   //  render前先檢查localstorage有沒有使用者紀錄轉成state
 
-  // 登入卡彈跳
-  const [logcardon, setLogcardOn] = useState(false)
+  // 登入卡彈跳  //修正redux控制logcard
+  // const [logcardon, setLogcardOn] = useState(false)
+  const dispatch = useDispatch()
+  const reduxlogcardon = useSelector(state => state.Mcallogcard)
 
   //用另外一個callback傳給確認卡控制狀態
 
@@ -142,7 +146,9 @@ function Header() {
       <NavLink>
         <AiOutlineUser
           onClick={() => {
-            setLogcardOn(!logcardon)
+            //修正redux控制logcard
+            dispatch(Callcard(!reduxlogcardon))
+            // setLogcardOn(!logcardon)
           }}
         />
       </NavLink>
@@ -192,7 +198,8 @@ function Header() {
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          setLogcardOn(true)
+          dispatch(Callcard(true))
+          // setLogcardOn(true)
           // history.push('/login')
         }
       })
@@ -324,7 +331,8 @@ function Header() {
           {/* //登入卡掛入 */}
           <div
             className={`T-Mlogcardwrapper ${
-              logcardon || logcardopensignal ? 'active' : ''
+              //修正redux控制logcard
+              reduxlogcardon || logcardopensignal ? 'active' : ''
             }`}
           >
             <Mlogcard />
