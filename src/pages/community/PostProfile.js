@@ -274,6 +274,7 @@ function PostProfile(props) {
                         postMemberId={postProfile.mbId}
                         loginMemberId={loginUserId}
                       />
+                      <div>button</div>
                     </div>
                   ) : (
                     <div

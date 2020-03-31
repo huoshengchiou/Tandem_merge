@@ -54,9 +54,7 @@ export default function PostCollectionProfile(props) {
       if (willDelete.value) {
         Swal.fire('刪除移除!', '成功移除收藏', 'success')
 
-        delCommentDataFromServer(postCollectionId, () =>
-          window.location.reload()
-        )
+        delCommentDataFromServer(postCollectionId)
 
         // console.log('propsId:', props.memberID)
         async function delCommentDataFromServer() {
@@ -75,7 +73,9 @@ export default function PostCollectionProfile(props) {
           // console.log(JSON.stringify(commentId))
           const response = await fetch(request)
           const data = await response.json()
-          window.location.reload()
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
           // window.location.href = `/Communityprofile/${props.memberID}`
         }
       } else if (willDelete.dismiss === Swal.DismissReason.cancel) {
