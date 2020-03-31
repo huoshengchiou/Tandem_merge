@@ -75,10 +75,10 @@ function Activity(props) {
   // 若是鉤子更動登入狀態則重新判斷一次
   useEffect(() => {
     if (loginStatus) {
-      console.log('登入中')
+      // console.log('登入中')
       // const localUserData = JSON.parse(localStorage.getItem('LoginUserData'))
     } else {
-      console.log('尚未登入或已登出')
+      // console.log('尚未登入或已登出')
     }
   }, [loginStatus])
 
@@ -98,6 +98,7 @@ function Activity(props) {
       }).then(result => {
         if (result.value) {
           dispatch(Callcard(true))
+          window.scrollTo(0, 0)
         }
       })
     }
@@ -236,9 +237,9 @@ function Activity(props) {
           </Button>
         </Col>
         {/* 新增活動入口 */}
-        <Link className="aAddActivity" onClick={mayIShow}>
+        <div className="aAddActivity" onClick={mayIShow}>
           {fill ? fillIcon : outlineIcon}
-        </Link>
+        </div>
       </Col>
       {/* 列表 */}
       <Container className="d-flex flex-wrap justify-content-between mt-2">

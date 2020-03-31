@@ -85,10 +85,10 @@ function ActivityAddNew(props) {
       setAMId(localUserData.mbId)
       setMinDate(rightNow)
       setLoginStatus(true)
-      console.log('OK')
+      // console.log('OK')
     } else {
       setLoginStatus(false)
-      console.log('NO')
+      // console.log('NO')
       Swal.fire({ title: '請先登入喲！', icon: 'warning' }).then(function (r) {
         history.push('/login')
       })

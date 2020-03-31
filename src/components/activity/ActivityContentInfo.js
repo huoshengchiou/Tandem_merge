@@ -9,8 +9,8 @@ import {
 import {
   AiOutlineCarryOut,
   AiFillCarryOut,
-  AiOutlineHeart,
-  AiFillHeart,
+  // AiOutlineHeart,
+  // AiFillHeart,
   AiOutlineLike,
   AiFillLike,
   AiOutlineLink,
@@ -28,18 +28,17 @@ function ActivityContentInfo(props) {
   const infoData = props.aData
   const [ready, setReady] = useState(false)
   const [book, setBook] = useState(false)
-  const [follow, setFollow] = useState(false)
+  // const [follow, setFollow] = useState(false)
   const [like, setLike] = useState(false)
   const [loginStatus, setLoginStatus] = useState(false)
+  const [mbId, setMbId] = useState('')
 
   // 進入即判斷localStorage裡面的登入Data(沒有表示尚未登入或已經登出)
   // 為判斷能否觸發參加活動或收藏按讚的功能
   useEffect(() => {
     if (localStorage.getItem('LoginUserData')) {
       setLoginStatus(true)
-      const mbId = JSON.parse(localStorage.getItem('LoginUserData')).mbId
-      console.log('mbId', mbId)
-      // getBFLstatus(mbId)
+      setMbId(JSON.parse(localStorage.getItem('LoginUserData')).mbId)
     } else {
       setLoginStatus(false)
     }
@@ -57,9 +56,57 @@ function ActivityContentInfo(props) {
         // 今天日期超過報名時間，隱藏報名選項
         $('.aBook').css('display', 'none')
       }
+      // 讓畫面render
       setReady(true)
+      //抓取props裡面訂閱、按讚、追蹤的會員編號是否與登入的會員相符
+      const aBFL = props.aData
+      let bookIndex = -1
+      if (aBFL && aBFL.aBook.length > 0) {
+        const aBookArr = JSON.parse(aBFL.aBook)
+        bookIndex = aBookArr.findIndex((v, i) => v === mbId)
+      }
+      let likeIndex = -1
+      if (aBFL && aBFL.aLike.length > 0) {
+        const aLikeArr = JSON.parse(aBFL.aLike)
+        likeIndex = aLikeArr.findIndex((v, i) => v === mbId)
+      }
+      // 如果資料內有該會員編號，初始值應為true
+      if (bookIndex !== -1) {
+        setBook(true)
+      }
+      if (likeIndex !== -1) {
+        setLike(true)
+      }
     }
   }, [infoData])
+
+  const aSetBFL = () => {
+    const aId = infoData.aId
+    console.log('aId', aId)
+
+    const BFLData = { book, like, mbId, aId }
+    sendBFLtoServer(BFLData)
+  }
+
+  async function sendBFLtoServer(BFLData) {
+    const request = new Request(`http://localhost:6001/activity/setBFL`, {
+      method: 'POST',
+      body: JSON.stringify(BFLData),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+    const response = await fetch(request)
+    const data = await response.json()
+
+    console.log(data)
+    // 回頭設定取得的狀態(有沒有參加活動跟按讚)
+
+    // Swal.fire({ title: '新增成功', icon: 'success' }).then(function (r) {
+    //   history.push('/activity')
+    // })
+  }
 
   //點選判斷
   $('.aBook').click(function () {
@@ -81,38 +128,44 @@ function ActivityContentInfo(props) {
       }).then(result => {
         if (result.value) {
           dispatch(Callcard(true))
+          window.scrollTo(0, 0)
         }
       })
     }
+    aSetBFL()
   })
-  $('.aFollow').click(function () {
-    if (loginStatus) {
-      if (follow) {
-        setFollow(false)
-      } else {
-        setFollow(true)
-      }
-    } else {
-      Swal.fire({
-        title: '請先登入喲！',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#79CEE2',
-        cancelButtonColor: '#F9A451',
-        confirmButtonText: '登入',
-        cancelButtonText: '取消',
-      }).then(result => {
-        if (result.value) {
-          dispatch(Callcard(true))
-        }
-      })
-    }
-  })
+  // $('.aFollow').click(function () {
+  //   if (loginStatus) {
+  //     if (follow) {
+  //       aSetBFL()
+  //       setFollow(false)
+  //     } else {
+  //       aSetBFL()
+  //       setFollow(true)
+  //     }
+  //   } else {
+  //     Swal.fire({
+  //       title: '請先登入喲！',
+  //       icon: 'warning',
+  //       showCancelButton: true,
+  //       confirmButtonColor: '#79CEE2',
+  //       cancelButtonColor: '#F9A451',
+  //       confirmButtonText: '登入',
+  //       cancelButtonText: '取消',
+  //     }).then(result => {
+  //       if (result.value) {
+  //         dispatch(Callcard(true))
+  //       }
+  //     })
+  //   }
+  // })
   $('.aLike').click(function () {
     if (loginStatus) {
       if (like) {
+        aSetBFL()
         setLike(false)
       } else {
+        aSetBFL()
         setLike(true)
       }
     } else {
@@ -127,6 +180,7 @@ function ActivityContentInfo(props) {
       }).then(result => {
         if (result.value) {
           dispatch(Callcard(true))
+          window.scrollTo(0, 0)
         }
       })
     }
@@ -175,48 +229,48 @@ function ActivityContentInfo(props) {
       </OverlayTrigger>{' '}
     </>
   )
-  const outlineFollow = (
-    <>
-      <OverlayTrigger
-        placement="top"
-        overlay={
-          <div
-            style={{
-              backgroundColor: 'rgba(255, 100, 100, 0.85)',
-              padding: '2px 10px',
-              color: 'white',
-              borderRadius: 3,
-            }}
-          >
-            收藏
-          </div>
-        }
-      >
-        <AiOutlineHeart />
-      </OverlayTrigger>{' '}
-    </>
-  )
-  const fillFollow = (
-    <>
-      <OverlayTrigger
-        placement="top"
-        overlay={
-          <div
-            style={{
-              backgroundColor: 'rgba(255, 100, 100, 0.85)',
-              padding: '2px 10px',
-              color: 'white',
-              borderRadius: 3,
-            }}
-          >
-            取消收藏
-          </div>
-        }
-      >
-        <AiFillHeart />
-      </OverlayTrigger>{' '}
-    </>
-  )
+  // const outlineFollow = (
+  //   <>
+  //     <OverlayTrigger
+  //       placement="top"
+  //       overlay={
+  //         <div
+  //           style={{
+  //             backgroundColor: 'rgba(255, 100, 100, 0.85)',
+  //             padding: '2px 10px',
+  //             color: 'white',
+  //             borderRadius: 3,
+  //           }}
+  //         >
+  //           收藏
+  //         </div>
+  //       }
+  //     >
+  //       <AiOutlineHeart />
+  //     </OverlayTrigger>{' '}
+  //   </>
+  // )
+  // const fillFollow = (
+  //   <>
+  //     <OverlayTrigger
+  //       placement="top"
+  //       overlay={
+  //         <div
+  //           style={{
+  //             backgroundColor: 'rgba(255, 100, 100, 0.85)',
+  //             padding: '2px 10px',
+  //             color: 'white',
+  //             borderRadius: 3,
+  //           }}
+  //         >
+  //           取消收藏
+  //         </div>
+  //       }
+  //     >
+  //       <AiFillHeart />
+  //     </OverlayTrigger>{' '}
+  //   </>
+  // )
   const outlineLike = (
     <>
       <OverlayTrigger
@@ -363,7 +417,7 @@ function ActivityContentInfo(props) {
         <Col md={{ span: 4, offset: 2 }}>
           <Row className="aIcon d-flex justify-content-between">
             <Col className="aBook">{book ? fillBook : outlineBook}</Col>
-            <Col className="aFollow">{follow ? fillFollow : outlineFollow}</Col>
+            {/* <Col className="aFollow">{follow ? fillFollow : outlineFollow}</Col> */}
             <Col className="aLike">{like ? fillLike : outlineLike}</Col>
             <Col className="aLink">
               <OverlayTrigger

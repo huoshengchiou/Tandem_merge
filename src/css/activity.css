@@ -142,6 +142,8 @@ ActivityPageNumber */
   position:fixed;
   display: none;
   z-index: 1;
+  cursor: pointer;
+
 }
 .aAddActivity:hover{
   color: #F9A451;

@@ -13,7 +13,7 @@ function ActivityListCard(props) {
               src={`/images/activity/${props.activity.aKV}`}
             />
             <Card.Body className="aListCardBody">
-              <Card.Title>活動名稱：{props.activity.aName}</Card.Title>
+              <Card.Title>{props.activity.aName}</Card.Title>
               <Card.Text>日期：{props.activity.aDate}</Card.Text>
             </Card.Body>
           </Link>

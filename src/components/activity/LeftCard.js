@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
 function LeftCard(props) {
-  console.log('Card', props)
   const topData = props.topData
   const [RUOK, setRUOK] = useState(false)
   const [topId, setTopId] = useState('')

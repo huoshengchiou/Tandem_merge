@@ -27,7 +27,7 @@ function ActivityComment(props) {
 
   //將留言送至後端
   async function sendNewCommentDataToServer(addCommentData, callback) {
-    console.log(addCommentData)
+    // console.log(addCommentData)
     const request = new Request(
       `http://localhost:6001/activity${props.location.pathname}`,
       {
@@ -41,7 +41,7 @@ function ActivityComment(props) {
     )
     const response = await fetch(request)
     const success = await response.json()
-    console.log(success)
+    // console.log(success)
     callback()
   }
 
