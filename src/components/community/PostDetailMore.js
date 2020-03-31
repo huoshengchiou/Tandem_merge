@@ -16,8 +16,8 @@ export default function PostDetailMore(props) {
   console.log('props', props.postContent)
   const deletePost = () => {
     Swal.fire({
-      title: '確定删除貼文吗？',
-      text: '你将无法恢复它！',
+      title: '確定删除貼文嗎？',
+      text: '你將無法恢復它！',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#79cee2',

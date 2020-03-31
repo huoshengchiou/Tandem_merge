@@ -130,7 +130,9 @@ function Product(props) {
 
     console.log('加入收藏', data)
     if (data.r.affectedRows == 1) {
-      Swal.fire('商品成功加入收藏!')
+      Swal.fire('商品成功加入收藏!').then(result => {
+        window.location.reload() //重新整理頁面
+      })
     }
   }
   //從localstorage撈出登入者是否喜歡目前商品

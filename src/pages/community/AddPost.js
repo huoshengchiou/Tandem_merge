@@ -22,33 +22,37 @@ export default function AddPost(props) {
   }, [])
 
   const handleSubmit = () => {
-    if (!imagefromchild) {
-      Swal.fire({
+    // console.log('image', imagefromchild)
+    if (imagefromchild.length === 0) {
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請選擇圖片！',
+        confirmButtonColor: '#79cee2',
       })
-
-      // aNameInput.current.focus()
-    } else if (!titlefromchild) {
-      Swal.fire({
+    }
+    if (!titlefromchild) {
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請輸入貼文標題！',
+        confirmButtonColor: '#79cee2',
       })
-      //   aLimitInput.current.focus()
-    } else if (!contentfromchild) {
-      Swal.fire({
+    }
+    if (!contentfromchild) {
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請輸入貼文內容',
+        confirmButtonColor: '#79cee2',
       })
-      //   aBudgetInput.current.focus()
-    } else if (!categoryfromchild) {
-      Swal.fire({
+    }
+    if (!categoryfromchild) {
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請選擇貼文分類',
+        confirmButtonColor: '#79cee2',
       })
     }
 
@@ -63,7 +67,6 @@ export default function AddPost(props) {
     formdata.append('memberId', loginUserId)
     console.log(imagefromchild)
     addNewPosttoServer(formdata)
-
     async function addNewPosttoServer(formdata) {
       // 注意資料格式要設定，伺服器才知道是json格式
       const request = new Request('http://localhost:6001/items/uploaditem/', {
@@ -84,6 +87,7 @@ export default function AddPost(props) {
         icon: 'success',
         title: '貼文新增成功',
         showConfirmButton: false,
+        confirmButtonColor: '#79cee2',
         timer: 2000,
       }).then(r => {
         window.location.href = `/Communityprofile/${loginUserId}`
