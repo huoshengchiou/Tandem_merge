@@ -38,7 +38,7 @@ function ArticleComments(props) {
   const articleId = props.match.params.articleId
     ? props.match.params.articleId
     : ''
-  console.log('留言ID', articleId)
+  // console.log('留言ID', articleId)
   function post() {
     Swal.fire({
       icon: 'success',
@@ -56,10 +56,10 @@ function ArticleComments(props) {
 
       // setMinDate(rightNow)
       setLoginStatus(true)
-      console.log('OK')
+      // console.log('OK')
     } else {
       setLoginStatus(false)
-      console.log('NO')
+      // console.log('NO')
       Swal.fire({ title: '請先登入喲！', icon: 'warning' }).then(function(r) {
         history.push('/forum')
       })
@@ -102,7 +102,7 @@ function ArticleComments(props) {
     articleId: articleId,
     mbId: mbId,
   }
-  console.log('info', commentInfo)
+  // console.log('info', commentInfo)
 
   //寫入文章資訊
   function commentFormInfo(e, info) {
@@ -132,7 +132,7 @@ function ArticleComments(props) {
 
     const res = await fetch(req)
     const order = await res.json()
-    console.log('order', order)
+    // console.log('order', order)
     // if (order.result.affectedRows == 1) {
     Swal.fire({
       // icon: 'success',

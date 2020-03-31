@@ -11,7 +11,7 @@ import ArticleTag from '../../components/forum/ArticleTag'
 import '../../css/forum.scss'
 
 function ForumHotPostBox(props) {
-  console.log('ForumHotPostBox', props)
+  // console.log('ForumHotPostBox', props)
   return (
     <>
       <div class="col-md-6 col-lg-3">
@@ -35,7 +35,12 @@ function ForumHotPostBox(props) {
             </div>
             {/* </div> */}
             <div class="f-hot-post-text">
-              <p>{props.data.articleContent}</p>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: props.data.articleContent,
+                }}
+              ></p>
+              {/* <p>{props.data.articleContent}</p> */}
             </div>
             <div class="f-gap"></div>
             <div class="d-flex justify-content-between">
