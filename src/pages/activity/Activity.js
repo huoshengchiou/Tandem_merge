@@ -8,6 +8,7 @@ import {
   InputGroup,
   FormControl,
   OverlayTrigger,
+  Button,
 } from 'react-bootstrap'
 import {
   AiFillPlusCircle,
@@ -18,12 +19,13 @@ import {
 } from 'react-icons/ai'
 import $ from 'jquery'
 import Swal from 'sweetalert2'
-// import { Maction } from '../../actions'
+import { useDispatch } from 'react-redux'
+import { Callcard } from '../../actions/Maction'
 
 function Activity(props) {
-  // console.log('Maction', Maction)
   // 基本設定
   const history = useHistory()
+  const dispatch = useDispatch()
   const [loginStatus, setLoginStatus] = useState(false)
   const [aData, setAData] = useState([])
   const [pageNum, setPageNum] = useState(1)
@@ -95,7 +97,7 @@ function Activity(props) {
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          history.push('/')
+          dispatch(Callcard(true))
         }
       })
     }
@@ -204,34 +206,34 @@ function Activity(props) {
           </Container>
         </Col>
         <Col className="text-center mb-5">
-          <Link
+          <Button
             className="aCategory"
-            to="/activity/1/ACG01"
+            // to="/activity/1/ACG01"
             onClick={() => setACategoryId('ACG01')}
           >
             輕鬆聚會
-          </Link>
-          <Link
+          </Button>
+          <Button
             className="aCategory"
-            to="/activity/1/ACG02"
+            // to="/activity/1/ACG02"
             onClick={() => setACategoryId('ACG02')}
           >
             專題講座
-          </Link>
-          <Link
+          </Button>
+          <Button
             className="aCategory"
-            to="/activity/1/ACG03"
+            // to="/activity/1/ACG03"
             onClick={() => setACategoryId('ACG03')}
           >
             技能競賽
-          </Link>
-          <Link
+          </Button>
+          <Button
             className="aCategory"
-            to="/activity/1/ACG04"
+            // to="/activity/1/ACG04"
             onClick={() => setACategoryId('ACG04')}
           >
             運動休閒
-          </Link>
+          </Button>
         </Col>
         {/* 新增活動入口 */}
         <Link className="aAddActivity" onClick={mayIShow}>

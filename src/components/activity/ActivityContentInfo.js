@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import {
   Container,
   Row,
@@ -20,10 +19,12 @@ import moment from 'moment'
 import $ from 'jquery'
 import Swal from 'sweetalert2'
 import copy from 'copy-to-clipboard'
+import { useDispatch } from 'react-redux'
+import { Callcard } from '../../actions/Maction'
 
 function ActivityContentInfo(props) {
   //基本設定
-  const history = useHistory()
+  const dispatch = useDispatch()
   const infoData = props.aData
   const [ready, setReady] = useState(false)
   const [book, setBook] = useState(false)
@@ -79,7 +80,7 @@ function ActivityContentInfo(props) {
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          history.push('/login')
+          dispatch(Callcard(true))
         }
       })
     }
@@ -102,7 +103,7 @@ function ActivityContentInfo(props) {
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          history.push('/login')
+          dispatch(Callcard(true))
         }
       })
     }
@@ -125,7 +126,7 @@ function ActivityContentInfo(props) {
         cancelButtonText: '取消',
       }).then(result => {
         if (result.value) {
-          history.push('/login')
+          dispatch(Callcard(true))
         }
       })
     }
