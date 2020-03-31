@@ -32,7 +32,7 @@ function PostProfile(props) {
 
   // const [postMember, setPostMember] = useState([])
   const [loginUserId, setLoginUserId] = useState('')
-
+  console.log('friendList', friendList)
   //連資料庫 fetch API
   async function fetchPost() {
     let res = await fetch('http://localhost:6001/items/posts')
@@ -353,7 +353,7 @@ function PostProfile(props) {
                       </p>
                       <p className="mx-1 font-weight-bold text-center">
                         {' '}
-                        20 好友
+                        {friendList.length} 好友
                       </p>
                     </div>
                     {member.mbId !== loginUserId ? (
@@ -694,7 +694,10 @@ function PostProfile(props) {
                     {' '}
                     {arr.length} 貼文
                   </p>
-                  <p className="mx-1 font-weight-bold text-center"> 20 好友</p>
+                  <p className="mx-1 font-weight-bold text-center">
+                    {' '}
+                    {friendList.length} 好友
+                  </p>
                 </div>
                 {postProfile.mbId !== loginUserId ? (
                   <button
