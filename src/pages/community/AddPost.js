@@ -24,28 +24,35 @@ export default function AddPost(props) {
   const handleSubmit = () => {
     // console.log('image', imagefromchild)
     if (imagefromchild.length === 0) {
-      Swal.fire({
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請選擇圖片！',
+        confirmButtonColor: '#79cee2',
       })
-    } else if (!titlefromchild) {
-      Swal.fire({
+    }
+    if (!titlefromchild) {
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請輸入貼文標題！',
+        confirmButtonColor: '#79cee2',
       })
-    } else if (!contentfromchild) {
-      Swal.fire({
+    }
+    if (!contentfromchild) {
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請輸入貼文內容',
+        confirmButtonColor: '#79cee2',
       })
-    } else if (!categoryfromchild) {
-      Swal.fire({
+    }
+    if (!categoryfromchild) {
+      return Swal.fire({
         icon: 'error',
         title: '錯誤',
         text: '請選擇貼文分類',
+        confirmButtonColor: '#79cee2',
       })
     }
 
@@ -59,33 +66,33 @@ export default function AddPost(props) {
     formdata.append('category', categoryfromchild)
     formdata.append('memberId', loginUserId)
     console.log(imagefromchild)
-    addNewPosttoServer()
-  }
+    addNewPosttoServer(formdata)
+    async function addNewPosttoServer(formdata) {
+      // 注意資料格式要設定，伺服器才知道是json格式
+      const request = new Request('http://localhost:6001/items/uploaditem/', {
+        method: 'POST',
+        credentials: 'include',
+        body: formdata,
+        headers: new Headers({
+          Accept: 'application/json',
+        }),
+      })
+      console.log('JSON.stringify(formdata)')
 
-  async function addNewPosttoServer(formdata) {
-    // 注意資料格式要設定，伺服器才知道是json格式
-    const request = new Request('http://localhost:6001/items/uploaditem/', {
-      method: 'POST',
-      credentials: 'include',
-      body: formdata,
-      headers: new Headers({
-        Accept: 'application/json',
-      }),
-    })
-    console.log('JSON.stringify(formdata)')
-
-    const response = await fetch(request)
-    const data = await response.json()
-    console.log('from addpost :', data)
-    // callback()
-    Swal.fire({
-      icon: 'success',
-      title: '貼文新增成功',
-      showConfirmButton: false,
-      timer: 2000,
-    }).then(r => {
-      window.location.href = `/Communityprofile/${loginUserId}`
-    })
+      const response = await fetch(request)
+      const data = await response.json()
+      console.log('from addpost :', data)
+      // callback()
+      Swal.fire({
+        icon: 'success',
+        title: '貼文新增成功',
+        showConfirmButton: false,
+        confirmButtonColor: '#79cee2',
+        timer: 2000,
+      }).then(r => {
+        window.location.href = `/Communityprofile/${loginUserId}`
+      })
+    }
   }
 
   return (
